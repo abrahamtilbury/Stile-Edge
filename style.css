@@ -157,20 +157,13 @@ button {
 .header-inner {
     width: min(
         calc(100% - (var(--page-padding) * 2)),
-        var(--max-width)
-    );
+        var(--max-width);
 
     min-height: 76px;
     margin-inline: auto;
 
     display: grid;
 
-    /*
-       Logo | Navigation | Actions
-
-       The middle column gets all available space,
-       while the logo and CTA remain stable.
-    */
     grid-template-columns: 190px minmax(0, 1fr) auto;
 
     align-items: center;
@@ -1434,6 +1427,8 @@ button {
 
     .top-bar {
         display: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .14);
+        background: rgba(0, 0, 0, .35);
     }
 
     .menu-button {
