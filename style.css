@@ -106,6 +106,7 @@ button {
     left: 0;
     width: 100%;
     z-index: 100;
+    background: transparent;
 }
 
 
@@ -116,9 +117,8 @@ button {
 .top-bar {
     width: 100%;
     height: 38px;
-
     border-bottom: 1px solid rgba(255, 255, 255, .12);
-    background: rgba(0, 0, 0, .35);
+    background: rgba(255, 255, 255, .055);
     color: rgba(255, 255, 255, .62);
     font-size: 9px;
     font-weight: 700;
@@ -158,19 +158,14 @@ button {
     width: min(
         calc(100% - (var(--page-padding) * 2)),
         var(--max-width);
-
     min-height: 76px;
     margin-inline: auto;
-
     display: grid;
-
     grid-template-columns: 190px minmax(0, 1fr) auto;
-
     align-items: center;
-
     column-gap: 40px;
-
     border-bottom: 1px solid rgba(255, 255, 255, .12);
+    background: rgba(255, 255, 255, .025);
 }
 
 .site-logo {
@@ -1397,7 +1392,7 @@ button {
 
     .site-header {
         top: 0;
-        background: rgba(10, 10, 10, .92);
+        background: rgba(10, 10, 10, .45);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
