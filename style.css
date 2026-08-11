@@ -113,16 +113,11 @@ button {
 .header-inner {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding:
-        22px
-        var(--page-padding);
+    padding: 22px var(--page-padding);
     display: grid;
-    grid-template-columns:
-        auto
-        1fr
-        auto;
+    grid-template-columns: 190px 1fr auto;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
 }
 
 .site-logo {
@@ -203,13 +198,15 @@ button {
 ========================== */
 
 .mobile-menu {
-        position: absolute;
-        top: 76px;
-        left: 0;
-        right: 0;
-        z-index: 99;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
 }
-
 
 .mobile-menu.open {
     display: flex;
@@ -1248,8 +1245,17 @@ button {
         min-height: 76px;
     }
 
+    .site-logo {
+        display: block;
+        width: 160px;
+        flex-shrink: 0;
+    }
+
     .site-logo img {
-        width: 170px;
+        display: block;
+        width: 160px;
+        height: auto;
+        max-width: none;
     }
 
     .desktop-nav,
