@@ -91,10 +91,6 @@ button:focus-visible {
     outline-offset: 6px;
 }
 
-button:hover {
-    color: var(--color-red);
-}
-
 button {
     font: inherit;
 }
