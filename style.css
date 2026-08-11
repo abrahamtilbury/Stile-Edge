@@ -184,14 +184,14 @@ button {
 
 
 /* =========================================================
-   COMPACT DESKTOP HEADER
+COMPACT DESKTOP HEADER
 ========================================================= */
 
 @media (max-width: 1200px) {
 
     .header-inner {
         grid-template-columns: 160px minmax(0, 1fr) auto;
-        gap: 16px;
+        gap: 20px;
     }
 
     .site-logo,
@@ -200,21 +200,14 @@ button {
     }
 
     .desktop-nav {
-        gap: 12px;
+        gap: clamp(10px, 1.5vw, 20px);
     }
 
     .desktop-nav a {
         font-size: 10px;
-        letter-spacing: .07em;
+        letter-spacing: .06em;
     }
 
-    .header-actions {
-        gap: 12px;
-    }
-
-    .header-phone {
-        display: none;
-    }
 }
 
 /* =========================================================
