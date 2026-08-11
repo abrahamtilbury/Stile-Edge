@@ -200,7 +200,7 @@ COMPACT DESKTOP HEADER
     }
 
     .desktop-nav {
-        gap: clamp(10px, 1.5vw, 20px);
+        gap: 16px;
     }
 
     .desktop-nav a {
