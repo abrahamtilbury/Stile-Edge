@@ -1215,6 +1215,19 @@ button {
     gap: 30px;
 }
 
+.footer-inner {
+    width: min(
+        calc(100% - (var(--page-padding) * 2)),
+        var(--max-width)
+    );
+
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+}
+
 /* ==========================
    Mobile
 ========================== */
