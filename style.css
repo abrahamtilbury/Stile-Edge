@@ -138,9 +138,7 @@ button {
 .header-contact {
     display: flex;
     align-items: center;
-
     gap: 40px;
-
     margin-left: auto;
 }
 
@@ -148,23 +146,28 @@ button {
 .header-contact-item {
     display: flex;
     flex-direction: column;
-
     gap: 2px;
 }
 
 
 .header-contact-label {
     color: var(--color-text-muted);
-
     font-size: 10px;
     font-weight: 700;
-
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
+.header-phone {
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 700;
+}
 
-.header-phone,
+.header-phone:hover {
+    color: var(--color-red);
+}
+
 .header-hours {
     font-size: 14px;
     font-weight: 700;
@@ -723,12 +726,16 @@ section:not(.hero) {
         --section-space: 75px;
     }
 
-    .site-header {
+    .header-top {
         min-height: 75px;
     }
 
     .site-logo img {
         width: 170px;
+    }
+
+    .header-contact {
+        display: none;
     }
 
     .site-header nav {
@@ -737,9 +744,7 @@ section:not(.hero) {
 
     .menu-button {
         display: block;
-
         margin-left: auto;
-
         font-size: 24px;
     }
 
