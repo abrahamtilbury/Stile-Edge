@@ -103,11 +103,45 @@ button {
 
 .site-header {
     position: absolute;
-    top: 0;
+    top: 38px;
     left: 0;
     width: 100%;
     z-index: 100;
     border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 101;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    background: rgba(0,0,0,.35);
+}
+
+.top-bar-inner {
+    width: min(
+        calc(100% - (var(--page-padding) * 2)),
+        var(--max-width)
+    );
+
+    min-height: 38px;
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: rgba(255,255,255,.62);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.top-bar a:hover {
+    color: #fff;
 }
 
 .header-inner {
@@ -1256,6 +1290,14 @@ button {
         width: 160px;
         height: auto;
         max-width: none;
+    }
+
+    .top-bar {
+        display: none;
+    }
+
+    .site-header {
+        top: 0;
     }
 
     .desktop-nav,
