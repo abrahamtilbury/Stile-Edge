@@ -49,7 +49,12 @@
     <header class="site-header">
     <div class="header-inner">
         <a href="/" class="site-logo">
-            <img src="images/logo.webp" alt="Stile Edge">
+            <img
+                src="images/logo.webp"
+                alt="Stile Edge"
+                width="350"
+                height="106"
+            >
         </a>
         <nav class="desktop-nav" aria-label="Primary navigation">
             <a href="#about">About</a>
@@ -72,6 +77,8 @@
             class="menu-button"
             type="button"
             aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
         >
             <span></span>
             <span></span>
@@ -81,7 +88,11 @@
 
 </header>
 
-    <nav class="mobile-menu" aria-label="Mobile navigation">
+    <nav 
+        id="mobile-menu"
+        class="mobile-menu" 
+        aria-label="Mobile navigation"
+    >
 
     <a href="/">Home</a>
     <a href="#about">About</a>
@@ -105,6 +116,10 @@
         src="images/hero1.webp"
         alt="Custom profiled tile edging by Stile Edge"
         class="hero-image"
+        width="1920"
+        height="750"
+        fetchpriority="high"
+        decoding="async"
     >
 
     <div class="hero-overlay"></div>
@@ -1161,8 +1176,8 @@
             <img
                 src="images/logo.webp"
                 alt="Stile Edge"
-                width="300"
-                height="113"
+                width="350"
+                height="106"
                 loading="lazy"
             >
 
