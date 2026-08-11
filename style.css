@@ -83,9 +83,71 @@ button {
 ========================== */
 
 .site-header {
-    margin: 0 var(--page-margin);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,.12);
+}
 
-    border-bottom: 1px solid var(--color-border);
+.header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 22px var(--page-padding);
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 50px;
+}
+
+.site-logo img {
+    width: 190px;
+}
+
+.desktop-nav {
+    display: flex;
+    justify-content: center;
+    gap: 34px;
+}
+
+.desktop-nav a {
+    color: rgba(255,255,255,.72);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.desktop-nav a:hover {
+    color: #fff;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-phone {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.header-cta {
+    padding: 12px 18px;
+    background: #fff;
+    color: #111;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.header-cta:hover {
+    background: var(--accent);
+    color: #fff;
 }
 
 
