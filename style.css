@@ -115,13 +115,13 @@ button {
     height: 38px;
     z-index: 101;
     
-    border-bottom: 1px solid rgba(255, 255, 255, .12);
+    border-bottom: 1px solid rgba(255, 255, 255, .18);
     
-    background: rgba(20, 20, 20, .72);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, .10);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     
-    color: rgba(255, 255, 255, .68);
+    color: rgba(255, 255, 255, .78);
     font-size: 9px;
     font-weight: 700;
     letter-spacing: .08em;
