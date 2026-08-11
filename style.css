@@ -128,29 +128,46 @@ button {
     padding-block: var(--section-space);
 }
 
-/* ==========================
-   Header
-========================== */
-
+/* =========================================================
+   HEADER
+========================================================= */
 
 .site-header {
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
+
     z-index: 100;
+
     border-bottom: 1px solid rgba(255,255,255,.12);
 }
 
 .header-inner {
     max-width: var(--max-width);
+
     margin: 0 auto;
-    padding: 22px var(--page-padding);
+
+    padding:
+        22px
+        var(--page-padding);
 
     display: grid;
-    grid-template-columns: auto 1fr auto;
+
+    grid-template-columns:
+        auto
+        1fr
+        auto;
+
     align-items: center;
+
     gap: 50px;
+}
+
+.site-logo {
+    flex-shrink: 0;
 }
 
 .site-logo img {
@@ -159,15 +176,20 @@ button {
 
 .desktop-nav {
     display: flex;
+
     justify-content: center;
+
     gap: 34px;
 }
 
 .desktop-nav a {
     color: rgba(255,255,255,.72);
+
     font-size: 11px;
     font-weight: 700;
+
     letter-spacing: .1em;
+
     text-transform: uppercase;
 }
 
@@ -177,13 +199,19 @@ button {
 
 .header-actions {
     display: flex;
+
     align-items: center;
+
     gap: 20px;
 }
 
 .header-phone {
     font-size: 13px;
     font-weight: 700;
+}
+
+.header-phone:hover {
+    color: var(--accent);
 }
 
 .header-cta {
@@ -198,7 +226,18 @@ button {
 
 .header-cta:hover {
     background: var(--accent);
+
     color: #fff;
+}
+
+.menu-button {
+    display: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    cursor: pointer;
 }
 
 /* ==========================
@@ -927,53 +966,36 @@ button {
         --section-space: 75px;
     }
 
-    .header-top {
-        min-height: 75px;
+    .header-inner {
+        min-height: 76px;
     }
 
     .site-logo img {
         width: 170px;
     }
 
-    .header-contact {
-        display: none;
-    }
-
-    .site-header nav {
+    .desktop-nav,
+    .header-actions {
         display: none;
     }
 
     .menu-button {
         display: block;
         margin-left: auto;
-        font-size: 24px;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
     }
 
     .hero {
         min-height: 650px;
     }
-    
-    .hero-arrow {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-
-    .hero-arrow-left {
-        left: var(--page-margin);
-    }
-
-    .hero-arrow-right {
-        right: var(--page-margin);
-    }
-
-    .hero-dots {
-        bottom: 20px;
-    }
 
     .hero-content {
-        margin-left: var(--page-margin);
-        margin-right: var(--page-margin);
+        margin-left: var(--page-padding);
+        margin-right: var(--page-padding);
     }
 
     .hero h1 {
