@@ -19,14 +19,20 @@ let currentSlide = 0;
 
 
 function showSlide(index) {
-    currentSlide = index;
-    heroImage.src = heroImages[currentSlide];
-    heroDots.forEach((dot, index) => {
-        dot.classList.toggle(
-            'active',
-            index === currentSlide
-        );
-    });
+    heroImage.style.opacity = '0';
+    setTimeout(() => {
+        currentSlide = index;
+        heroImage.src = heroImages[currentSlide];
+        heroDots.forEach((dot, index) => {
+            dot.classList.toggle(
+                'active',
+                index === currentSlide
+            );
+        });
+
+        heroImage.style.opacity = '1';
+
+    }, 300);
 }
 
 
