@@ -137,6 +137,10 @@ button {
     max-width: 100%;
 }
 
+/* ==========================
+   Desktop Navigation
+========================== */
+
 .desktop-nav {
     min-width: 0;
 
@@ -157,16 +161,14 @@ button {
     text-transform: uppercase;
 }
 
+/* ==========================
+   Header Actions
+========================== */
+
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 20px;
     white-space: nowrap;
-}
-
-.header-phone {
-    font-size: 13px;
-    font-weight: 700;
 }
 
 .header-cta {
