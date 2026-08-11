@@ -157,7 +157,8 @@ button {
 .header-inner {
     width: min(
         calc(100% - (var(--page-padding) * 2)),
-        var(--max-width);
+        var(--max-width)
+        );
     min-height: 76px;
     margin-inline: auto;
     display: grid;
