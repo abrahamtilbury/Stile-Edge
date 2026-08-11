@@ -147,7 +147,7 @@ button {
 .header-inner {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 22px var(--page-padding);
+    padding: 18px var(--page-padding);
     display: grid;
     grid-template-columns: 190px 1fr auto;
     align-items: center;
@@ -295,6 +295,7 @@ button {
     display: flex;
     align-items: flex-end;
     overflow: hidden;
+    padding-top: 180px;
 }
 
 .hero-image {
@@ -325,13 +326,13 @@ button {
     width: min(850px, 100%);
     margin-left: var(--page-padding);
     margin-right: var(--page-padding);
-    margin-bottom: clamp(100px, 15vh, 170px);
+    margin-bottom: clamp(110px, 14vh, 160px);
 }
 
 .hero h1 {
     max-width: 850px;
     margin: 0 0 28px;
-    font-size: clamp(64px, 8.5vw, 132px);
+    font-size: clamp(58px, 7.5vw, 118px);
     line-height: .86;
     letter-spacing: -.065em;
 }
