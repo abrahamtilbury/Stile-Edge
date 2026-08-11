@@ -102,13 +102,25 @@ button {
 ========================== */
 
 .site-header {
-    min-height: 96px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
     margin: 0 var(--page-margin);
+
     border-bottom: 1px solid var(--color-border);
 }
+
+
+/* --------------------------
+   Header top
+-------------------------- */
+
+.header-top {
+    min-height: 96px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+}
+
 
 .site-logo {
     flex-shrink: 0;
@@ -118,12 +130,70 @@ button {
     width: 180px;
 }
 
+
+/* --------------------------
+   Header contact information
+-------------------------- */
+
+.header-contact {
+    display: flex;
+    align-items: center;
+
+    gap: 40px;
+
+    margin-left: auto;
+}
+
+
+.header-contact-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.header-contact-label {
+    color: var(--color-text-muted);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+
+.header-phone,
+.header-hours {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.header-phone {
+    color: var(--color-text);
+}
+
+
+.header-hours {
+    color: var(--color-text-muted);
+}
+
+
+/* --------------------------
+   Desktop navigation
+-------------------------- */
+
 .site-header nav {
     display: flex;
     align-items: center;
+
     gap: var(--nav-gap);
-    margin-left: auto;
+
+    min-height: 48px;
 }
+
 
 .site-header nav a {
     position: relative;
@@ -137,46 +207,49 @@ button {
 
     font-size: 11px;
     font-weight: 700;
+
     letter-spacing: 0.08em;
     text-transform: uppercase;
 
-    transition:
-        color var(--transition);
+    transition: color var(--transition);
 }
+
 
 .site-header nav a::after {
     content: "";
+
     position: absolute;
+
     left: 0;
-    bottom: 4px;
+    bottom: 0;
+
     width: 100%;
     height: 1px;
+
     background: var(--color-red);
+
     transform: scaleX(0);
     transform-origin: left;
+
     transition: transform var(--transition);
 }
+
 
 .site-header nav a:hover {
     color: var(--color-text);
 }
 
+
 .site-header nav a:hover::after {
     transform: scaleX(1);
 }
 
-p {
-    margin-top: 0;
-}
 
 .menu-button {
     display: none;
-
     border: 0;
     background: transparent;
-
     color: var(--color-text);
-
     cursor: pointer;
 }
 
