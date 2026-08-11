@@ -10,19 +10,18 @@
 :root {
 
     /* Colours */
+    
+--color-background: #0d0d0d;
+--color-surface: #151515;
+--color-surface-light: #1c1c1c;
 
-    --color-background: #111111;
-    --color-surface: #171717;
-    --color-surface-light: #202020;
+--color-text: #f5f5f5;
+--color-text-muted: #999999;
 
-    --color-text: #ffffff;
-    --color-text-muted: #aaaaaa;
+--color-red: #e43d32;
 
-    --color-red: #e43d32;
-    --color-yellow: #f2c230;
-
-    --color-border: #2b2b2b;
-
+--color-border: #303030;
+--color-border-light: #414141;
 
     /* Layout */
 
@@ -92,6 +91,10 @@ button:focus-visible {
     outline-offset: 6px;
 }
 
+button:hover {
+    color: var(--color-red);
+}
+
 button {
     font: inherit;
 }
@@ -102,14 +105,12 @@ button {
 ========================== */
 
 .site-header {
-    min-height: 90px;
-
+    min-height: 96px;
     display: flex;
     align-items: center;
-
-    gap: 40px;
-
+    gap: 30px;
     margin: 0 var(--page-margin);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .site-logo {
@@ -117,22 +118,44 @@ button {
 }
 
 .site-logo img {
-    width: 210px;
+    width: 180px;
 }
 
 .site-header nav {
     display: flex;
     align-items: center;
-
-    gap: var(--nav-gap);
-
+    gap: 8px;
     margin-left: auto;
 }
 
 .site-header nav a {
-    font-size: 13px;
+    padding: 9px 13px;
+    border: 1px solid var(--color-border);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    transition:
+        color var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.site-header nav a:hover {
+    color: var(--color-text);
+    background: var(--color-red);
+    border-color: var(--color-red);
+}
+
+.site-header nav a:last-child {
+    background: var(--color-red);
+    border-color: var(--color-red);
+}
+
+.site-header nav a:last-child:hover {
+    background: transparent;
+    border-color: var(--color-red);
+    color: var(--color-red);
 }
 
 .header-phone {
@@ -141,7 +164,11 @@ button {
     white-space: nowrap;
 }
 
-.menu-toggle {
+p {
+    margin-top: 0;
+}
+
+.menu-button {
     display: none;
 
     border: 0;
@@ -152,6 +179,25 @@ button {
     cursor: pointer;
 }
 
+.mobile-menu {
+    display: none;
+    padding: 20px var(--page-margin);
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-menu.open {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.mobile-menu a {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 
 /* ==========================
    Hero
@@ -159,38 +205,34 @@ button {
 
 .hero {
     position: relative;
-
     min-height: 680px;
-
     display: flex;
     align-items: center;
-
     overflow: hidden;
 }
 
 .hero-image-container {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .hero-image {
     width: 100%;
     height: 100%;
-
     object-fit: cover;
 }
 
 .hero-image-container::after {
     content: "";
-
     position: absolute;
     inset: 0;
-
     background:
         linear-gradient(
             90deg,
-            rgba(0, 0, 0, 0.85),
-            rgba(0, 0, 0, 0.35)
+            rgba(0, 0, 0, 0.78),
+            rgba(0, 0, 0, 0.15)
         );
 }
 
@@ -220,9 +262,9 @@ button {
     margin: 0 0 20px;
 
     font-size: clamp(48px, 7vw, 96px);
-    line-height: 0.95;
+    line-height: 0.9;
 
-    letter-spacing: -0.04em;
+    letter-spacing: -0.055em;
 }
 
 .hero-text {
@@ -390,9 +432,7 @@ section:not(.hero) {
 
 .gallery-grid {
     display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
+    grid-template-columns: 1.4fr 1fr;
     gap: 15px;
 }
 
@@ -503,10 +543,10 @@ section:not(.hero) {
    Mobile
 ========================== */
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
 
     .site-header nav {
-        gap: 15px;
+        gap: 6px;
     }
 
     .header-phone {
@@ -520,7 +560,7 @@ section:not(.hero) {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 700px) {
 
     :root {
         --page-margin: 20px;
@@ -539,7 +579,7 @@ section:not(.hero) {
         display: none;
     }
 
-    .menu-toggle {
+    .menu-button {
         display: block;
 
         margin-left: auto;
