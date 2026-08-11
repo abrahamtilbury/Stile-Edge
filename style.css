@@ -170,7 +170,7 @@ button {
 
 .desktop-nav a {
     color: rgba(255,255,255,.72);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: .1em;
     text-transform: uppercase;
@@ -1243,7 +1243,7 @@ button {
     padding-top: 25px;
     border-top: 1px solid var(--line);
     color: #666666;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .service-grid {
