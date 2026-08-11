@@ -230,7 +230,7 @@ p {
 
 
 /* ==========================
-   Hero
+   Hero images x3 Sliding with controls
 ========================== */
 
 .hero {
@@ -269,10 +269,67 @@ p {
 .hero-content {
     position: relative;
     z-index: 2;
-
     max-width: 700px;
-
     margin-left: var(--page-margin);
+}
+
+.hero-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--color-text);
+    font-size: 20px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition:
+        background-color var(--transition),
+        border-color var(--transition);
+}
+
+.hero-arrow:hover {
+    background: var(--color-red);
+    border-color: var(--color-red);
+}
+
+.hero-arrow-left {
+    left: var(--page-margin);
+}
+
+.hero-arrow-right {
+    right: var(--page-margin);
+}
+
+.hero-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+    transform: translateX(-50%);
+}
+
+.hero-dots button {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 1px solid var(--color-text);
+    border-radius: 50%;
+    background: transparent;
+    opacity: 0.6;
+    cursor: pointer;
+    transition:
+        background-color var(--transition),
+        opacity var(--transition);
+}
+
+.hero-dots button.active {
+    background: var(--color-text);
+    opacity: 1;
 }
 
 .hero-eyebrow,
@@ -613,6 +670,24 @@ section:not(.hero) {
 
     .hero {
         min-height: 650px;
+    }
+    
+    .hero-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    .hero-arrow-left {
+        left: var(--page-margin);
+    }
+
+    .hero-arrow-right {
+        right: var(--page-margin);
+    }
+
+    .hero-dots {
+        bottom: 20px;
     }
 
     .hero-content {
