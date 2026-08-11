@@ -32,7 +32,7 @@ function showSlide(index) {
 
         heroImage.style.opacity = '1';
 
-    }, 300);
+    }, 500);
 }
 
 
