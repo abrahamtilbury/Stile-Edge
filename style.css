@@ -22,6 +22,7 @@
 
 --color-border: #303030;
 --color-border-light: #414141;
+--color-red-hover: #f05247;
 
     /* Layout */
 
@@ -32,7 +33,7 @@
 
     /* Navigation */
 
-    --nav-gap: 25px;
+    --nav-gap: 16px;
 
 
     /* Components */
@@ -120,7 +121,7 @@ button {
 .site-header nav {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: var(--nav-gap);
     margin-left: auto;
 }
 
@@ -134,7 +135,7 @@ button {
 
     color: var(--color-text-muted);
 
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -145,19 +146,14 @@ button {
 
 .site-header nav a::after {
     content: "";
-
     position: absolute;
     left: 0;
     bottom: 4px;
-
     width: 100%;
-    height: 2px;
-
+    height: 1px;
     background: var(--color-red);
-
     transform: scaleX(0);
     transform-origin: left;
-
     transition: transform var(--transition);
 }
 
@@ -167,12 +163,6 @@ button {
 
 .site-header nav a:hover::after {
     transform: scaleX(1);
-}
-
-.header-phone {
-    font-size: 14px;
-    font-weight: 600;
-    white-space: nowrap;
 }
 
 p {
@@ -190,23 +180,52 @@ p {
     cursor: pointer;
 }
 
+/* ==========================
+   Mobile Menu
+========================== */
+
 .mobile-menu {
     display: none;
-    padding: 20px var(--page-margin);
+
+    padding: 8px var(--page-margin) 20px;
+
     background: var(--color-background);
+
     border-bottom: 1px solid var(--color-border);
 }
 
 .mobile-menu.open {
     display: flex;
     flex-direction: column;
-    gap: 24px;
 }
 
 .mobile-menu a {
-    font-size: 14px;
+    display: flex;
+    align-items: center;
+
+    min-height: 52px;
+
+    border-bottom: 1px solid var(--color-border);
+
+    color: var(--color-text-muted);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+
+    transition:
+        color var(--transition),
+        padding-left var(--transition);
+}
+
+.mobile-menu a:hover {
+    padding-left: 8px;
+    color: var(--color-text);
+}
+
+.mobile-menu a:last-child {
+    border-bottom: 0;
 }
 
 
@@ -316,9 +335,7 @@ p {
 .hero-button:hover,
 .contact-button:hover {
     color: var(--color-text);
-
-    background: #f05247;
-
+    background: var(--color-red-hover);
     transform: translateY(-2px);
 }
 
@@ -398,38 +415,42 @@ section:not(.hero) {
 
 .service-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: var(--card-gap);
 }
 
 .service-card {
+    position: relative;
     min-height: 250px;
-
     padding: 30px;
-
     background: var(--color-surface);
-
     border: 1px solid var(--color-border);
-
+    overflow: hidden;
     transition:
-        border-color var(--transition),
-        transform var(--transition);
+        background-color var(--transition),
+        border-color var(--transition);
+}
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--color-red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition);
 }
 
 .service-card:hover {
-    border-color: var(--color-red);
-
-    transform: translateY(-5px);
+    background: var(--color-surface-light);
+    border-color: var(--color-border-light);
 }
 
-.service-card h3 {
-    margin: 0 0 15px;
-}
-
-.service-card p {
-    color: var(--color-text-muted);
+.service-card:hover::before {
+    transform: scaleX(1);
 }
 
 
@@ -444,7 +465,7 @@ section:not(.hero) {
 .gallery-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
-    gap: 15px;
+    gap: 4px;
 }
 
 .gallery-grid img {
@@ -555,14 +576,6 @@ section:not(.hero) {
 ========================== */
 
 @media (max-width: 900px) {
-
-    .site-header nav {
-        gap: 6px;
-    }
-
-    .header-phone {
-        display: none;
-    }
 
     .service-grid {
         grid-template-columns: repeat(2, 1fr);
