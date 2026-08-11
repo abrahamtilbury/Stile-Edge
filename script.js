@@ -10,9 +10,8 @@ const previousButton = document.querySelector('.hero-arrow-left');
 const nextButton = document.querySelector('.hero-arrow-right');
 const heroDots = document.querySelectorAll('.hero-dots button');
 const heroImages = [
-    'images/hero-1.jpg',
-    'images/hero-2.jpg',
-    'images/hero-3.jpg'
+    'images/hero1.webp',
+    'images/hero2.webp'
 ];
 
 let currentSlide = 0;
