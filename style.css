@@ -8,42 +8,23 @@
 ========================== */
 
 :root {
-
-    /* Colours */
-    
---color-background: #0d0d0d;
---color-surface: #151515;
---color-surface-light: #1c1c1c;
-
---color-text: #f5f5f5;
---color-text-muted: #999999;
-
---color-red: #e43d32;
-
---color-border: #303030;
---color-border-light: #414141;
---color-red-hover: #f05247;
-
-    /* Layout */
-
-    --page-margin: 50px;
-    --content-padding: 20px;
-    --section-space: 110px;
-
-
-    /* Navigation */
-
-    --nav-gap: 16px;
-
-
-    /* Components */
-
-    --card-gap: 20px;
-
-
-    /* Animation */
-
-    --transition: 0.3s;
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface-2: #171717;
+    --surface-3: #202020;
+    --text: #f4f4f1;
+    --text-muted: #a0a0a0;
+    --text-dim: #6f6f6f;
+    --accent: #e43d32;
+    --accent-soft: rgba(228, 61, 50, 0.15);
+    --line: rgba(255,255,255,0.10);
+    --line-strong: rgba(255,255,255,0.18);
+    --max-width: 1440px;
+    --page-padding: clamp(20px, 4vw, 72px);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --section-space: clamp(90px, 10vw, 160px);
+    --ease: cubic-bezier(.22, 1, .36, 1);
 }
 
 
