@@ -109,6 +109,30 @@ button {
     border-bottom: 1px solid rgba(255, 255, 255, .12);
 }
 
+.top-bar {
+    width: min(
+        calc(100% - (var(--page-padding) * 2)),
+        var(--max-width)
+    );
+
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 28px;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(255,255,255,.12);
+
+    color: rgba(255,255,255,.45);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
 .header-inner {
     width: min(
         calc(100% - (var(--page-padding) * 2)),
