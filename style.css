@@ -659,38 +659,31 @@ button {
 .about-image-bg {
     position: absolute;
     
-    width: 624px;
-    height: 416px;
+    width: 780px;
+    height: 520px;
     
     top: 50%;
     right: 0%;
     
     transform: translateY(-50%);
 
-    border-radius: 0px;
+    border-radius: 0;
     overflow: hidden;
     
-    background-image: url("images/aboutimage.webp");
+    background:
+        linear-gradient(
+            to right,
+            var(--surface) 0%,
+            rgba(17, 17, 17, .92) 8%,
+            rgba(17, 17, 17, .55) 22%,
+            rgba(17, 17, 17, 0) 42%
+        ),
+        url("images/aboutimage.webp");
+
     background-size: cover;
     background-position: center;
     
     z-index: 1;
-    pointer-events: none;
-}
-
-.about-image-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(
-        to right,
-        var(--surface) 0%,
-        rgba(17,17,17,.92) 8%,
-        rgba(17,17,17,.55) 22%,
-        rgba(17,17,17,0) 42%
-    );
-
     pointer-events: none;
 }
 
