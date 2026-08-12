@@ -53,13 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const dots = Array.from(dotsContainer.querySelectorAll('.hero-dot'));
 
     function goTo(index) {
+        const prev = current;
+        current = (index + slides.length) % slides.length;
+        
         slides[current].classList.remove('is-active');
         dots[current].classList.remove('is-active');
 
-        current = (index + slides.length) % slides.length;
-
-        slides[current].classList.add('is-active');
-        dots[current].classList.add('is-active');
+        requestAnimationFrame(() => {
+            slides[current].classList.add('is-active');
+            dots[current].classList.add('is-active');
+        });
     }
 
     function next() {
