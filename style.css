@@ -1724,8 +1724,13 @@ button {
 
 @media (max-width: 700px) {
 
+    .section {
+        padding-block: 0;
+    }
+
     .about {
-        padding-bottom: 30px;
+        padding-top: 40px;
+        padding-bottom: 20px;
     }
     
     .about-intro {
@@ -1738,7 +1743,7 @@ button {
     }
 
     .profiles {
-        padding-top: 30px;
+        padding-top: 20px;
         padding-bottom: 50px;
     }
     
