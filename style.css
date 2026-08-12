@@ -660,7 +660,7 @@ button {
     position: absolute;
     
     width: 780px;
-    height: 350px;
+    height: 520px;
     
     top: 50%;
     right: 8%;
@@ -671,8 +671,22 @@ button {
     object-position: center;
     
     border-radius: 22px;
-    
-    opacity: 1;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, .35) 10%,
+        #000 24%,
+        #000 100%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 0, 0, .35) 10%,
+        #000 24%,
+        #000 100%
+    );
     
     z-index: 1;
     pointer-events: none;
