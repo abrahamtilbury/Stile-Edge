@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     const dotsContainer = document.querySelector('.hero-dots');
-    if (!nextBtn || !dotsContainer) return;
+    if (!dotsContainer) return;
 
     let current = 0;
     let timer = null;
