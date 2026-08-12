@@ -655,10 +655,11 @@ button {
 .about::after {
     content: "";
     position: absolute;
-    top: 20%;
-    right: 7%;
-    width: 34%;
-    height: 42%;
+    top: 50%;
+    right: clamp(70px, 6vw, 100px);
+    width: min(520px, 34vw);
+    height: 240px;
+    transform: translateY(-50%);
     border-radius: 22px;
     background-image: url("images/aboutimage.webp");
     background-size: cover;
