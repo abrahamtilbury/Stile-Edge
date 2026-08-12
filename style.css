@@ -659,8 +659,8 @@ button {
 .about-image-bg {
     position: absolute;
     z-index: 0;
-    width: 520px;
-    height: 235px;
+    width: 650px;
+    height: 290px;
     top: 50%;
     right: 8%;
     transform: translateY(-50%);
@@ -668,7 +668,7 @@ button {
     background-image: url("images/aboutimage.webp");
     background-size: cover;
     background-position: center;
-    opacity: .22;
+    opacity: .95;
     pointer-events: none;
 }
 
