@@ -112,7 +112,6 @@ button {
 }
 
 .profiles {
-    padding-top: clamp(55px, 6vw, 90px);
     padding-top: clamp(50px, 6vw, 85px);
     padding-bottom: clamp(65px, 7vw, 100px);
 }
@@ -646,20 +645,21 @@ button {
 
 .about-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, .85fr);
-    gap: clamp(55px, 7vw, 110px);
-    align-items: center;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, .72fr);
+    gap: clamp(45px, 6vw, 85px);
+    align-items: stretch;
 }
 
 .about-copy {
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    padding-block: 8px;
 }
 
 .about-heading {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
 .about-copy h2 {
@@ -672,7 +672,7 @@ button {
 
 .about-intro {
     max-width: 690px;
-    margin: 0 0 55px;
+    margin: 0 0 40px;
     color: var(--text-muted);
     font-size: clamp(17px, 1.45vw, 20px);
     line-height: 1.65;
@@ -694,7 +694,6 @@ button {
     margin: 0 0 12px;
     font-size: clamp(20px, 1.8vw, 26px);
     line-height: 1.05;
-    margin-bottom: 10px;
     letter-spacing: -.025em;
 }
 
@@ -704,6 +703,15 @@ button {
     color: var(--text-muted);
     font-size: 14px;
     line-height: 1.65;
+}
+
+.about-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-height: 560px;
+    overflow: hidden;
+    background: var(--surface-2);
 }
 
 .about-image img {
@@ -1625,6 +1633,12 @@ button {
     .about-image {
         aspect-ratio: 16 / 10;
         order: -1;
+        max-height: none;
+    }
+
+    .about-copy {
+        padding-block: 0;
+        gap: 0;
     }
 
     .about-copy h2 {
