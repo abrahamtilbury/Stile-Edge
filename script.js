@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!slider) return;
 
     const slides = Array.from(slider.querySelectorAll('.hero-slide'));
-    const prevBtn = document.querySelector('.hero-arrow-prev');
     const nextBtn = document.querySelector('.hero-arrow-next');
     const dotsContainer = document.querySelector('.hero-dots');
 
@@ -62,10 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         goTo(current + 1);
     }
 
-    function prev() {
-        goTo(current - 1);
-    }
-
     function startAutoplay() {
         stopAutoplay();
         timer = setInterval(next, INTERVAL);
@@ -74,11 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function stopAutoplay() {
         if (timer) clearInterval(timer);
     }
-
-    prevBtn.addEventListener('click', () => {
-        prev();
-        startAutoplay();
-    });
 
     nextBtn.addEventListener('click', () => {
         next();
@@ -92,10 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Keyboard
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            prev();
-            startAutoplay();
-        }
         if (e.key === 'ArrowRight') {
             next();
             startAutoplay();
