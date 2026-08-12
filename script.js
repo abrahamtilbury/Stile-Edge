@@ -55,9 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function goTo(index) {
         const prev = current;
         current = (index + slides.length) % slides.length;
-        
-        slides[current].classList.remove('is-active');
-        dots[current].classList.remove('is-active');
+
+        slides[prev].classList.remove('is-active');
+        dots[prev].classList.remove('is-active');
 
         requestAnimationFrame(() => {
             slides[current].classList.add('is-active');
