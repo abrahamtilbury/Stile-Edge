@@ -1744,7 +1744,7 @@ button {
 
     .profiles {
         padding-top: 20px;
-        padding-bottom: 50px;
+        padding-bottom: 20px;
     }
     
     .profiles-intro {
@@ -1797,7 +1797,7 @@ button {
     }
 
     .feature-copy {
-        padding: 65px var(--page-padding);
+        padding: 50px var(--page-padding);
     }
 
     .feature-image {
