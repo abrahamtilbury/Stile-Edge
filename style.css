@@ -93,6 +93,10 @@ button {
     font: inherit;
 }
 
+.menu-button {
+    display: none;
+}
+
 /* ==========================
    Layout
 ========================== */
