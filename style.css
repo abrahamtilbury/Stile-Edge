@@ -357,7 +357,7 @@ button {
 .mobile-menu {
     display: none;
     position: absolute;
-    top: 100%;
+    top: 76px;
     left: 0;
     right: 0;
     z-index: 1001;
