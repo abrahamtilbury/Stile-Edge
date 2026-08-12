@@ -12,15 +12,16 @@
 :root {
     --bg: #0a0a0a;
     --surface: #111111;
-    --surface-2: #171717;
-    --text: #f4f4f1;
-    --text-muted: #a0a0a0;
-    --text-dim: #6f6f6f;
-    --accent: #e43d32;
+    --surface-2: #181818;
+    --text: #f5f5f2;
+    --text-muted: #9b9b9b;
+    --text-dim: #686868;
+    --accent: #f2c400;
+    --accent-bright: #ffd21a;
     --line: rgba(255,255,255,.10);
     --max-width: 1440px;
     --page-padding: clamp(20px, 4vw, 72px);
-    --section-space: clamp(90px, 10vw, 160px);
+    --section-space: clamp(75px, 8vw, 125px);
     --ease: cubic-bezier(.22, 1, .36, 1);
 }
 
@@ -28,6 +29,16 @@
 /* ==========================
    Base Styles
 ========================== */
+
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
 
 html {
     scroll-behavior: smooth;
@@ -96,12 +107,14 @@ button {
     padding-block: var(--section-space);
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+.about {
+    padding-bottom: clamp(55px, 6vw, 90px);
+}
 
-
-
+.profiles {
+    padding-top: clamp(55px, 6vw, 90px);
+    padding-bottom: clamp(65px, 7vw, 100px);
+}
 
 /* =========================================================
    TOP INFORMATION BAR
@@ -296,7 +309,7 @@ button {
 
 .header-cta:hover {
     background: var(--accent);
-    color: #fff;
+    color: #080808;
     transform: translateY(-1px);
 }
 
@@ -462,6 +475,7 @@ button {
     font-size: clamp(58px, 7.5vw, 118px);
     line-height: .86;
     letter-spacing: -.065em;
+    text-wrap: balance;
 }
 
 .hero h1 span {
@@ -549,9 +563,9 @@ button {
 
 
 .button-primary:hover {
-    background: #f04a3f;
-    border-color: #f04a3f;
-    color: #fff;
+    background: var(--accent-bright);
+    border-color: var(--accent-bright);
+    color: #080808;
     transform: translateY(-2px);
 }
 
@@ -630,7 +644,7 @@ button {
 
 .about-intro {
     max-width: 850px;
-    margin-bottom: 60px;
+    margin-bottom: 45px;
     color: var(--text-muted);
     font-size: 20px;
 }
@@ -638,12 +652,12 @@ button {
 .about-features {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
+    gap: 40px;
 }
 
 .about-features article {
-    padding-top: 20px;
-    border-top: 2px solid var(--accent);
+    padding-top: 16px;
+    border-top: 1px solid var(--accent);
 }
 
 .about-features h3 {
@@ -666,19 +680,20 @@ button {
 
 .profiles-intro {
     display: grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: 80px;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 60px;
     align-items: end;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 
 .profiles-heading h2 {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0;
-    font-size: clamp(52px, 6vw, 88px);
-    line-height: .92;
+    font-size: clamp(50px, 6vw, 88px);
+    line-height: .9;
     letter-spacing: -.055em;
+    text-wrap: balance;
 }
 
 
@@ -742,7 +757,7 @@ button {
     grid-template-columns: 60px minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(30px, 5vw, 80px);
     align-items: center;
-    padding: 45px 0;
+    padding: 38px 0;
     border-bottom: 1px solid var(--line);
     transition:
         background-color .5s var(--ease),
@@ -817,10 +832,11 @@ button {
 
 .profile-content > p:not(.profile-type) {
     max-width: 520px;
-    margin: 0 0 24px;
+    margin: 0 0 20px;
     color: var(--text-muted);
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.6;
+    text-wrap: pretty;
 }
 
 /* --------------------------
@@ -884,14 +900,14 @@ button {
     background:
         linear-gradient(
             90deg,
-            rgba(228,61,50,.06),
+            rgba(242,196,0,.055),
             transparent
         );
 }
 
 
 .profile-item-featured .profile-visual {
-    border: 1px solid rgba(228,61,50,.2);
+    border: 1px solid rgba(242,196,0,.22);
 }
 
 /* ==========================
@@ -901,7 +917,7 @@ button {
 .feature-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 700px;
+    min-height: 0;
     background: var(--surface);
 }
 
@@ -927,6 +943,7 @@ button {
     font-size: clamp(52px, 6vw, 88px);
     line-height: .92;
     letter-spacing: -.055em;
+    text-wrap: balance;
 }
 
 .aprons-heading h2 span {
@@ -1200,6 +1217,7 @@ button {
     font-size: clamp(30px, 4vw, 52px);
     line-height: .95;
     letter-spacing: -.045em;
+    text-wrap: balance;
 }
 
 /* --------------------------
@@ -1210,6 +1228,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-self: stretch;
     padding:
         clamp(50px, 7vw, 110px)
         max(
@@ -1219,11 +1238,12 @@ button {
 }
 
 .feature-copy h2 {
-    max-width: 700px;
-    margin: 0 0 30px;
-    font-size: clamp(52px, 6vw, 92px);
-    line-height: .9;
+    max-width: 620px;
+    margin: 0 0 26px;
+    font-size: clamp(50px, 6vw, 88px);
+    line-height: .92;
     letter-spacing: -.06em;
+    text-wrap: balance;
 }
 
 .feature-copy p:not(.eyebrow) {
@@ -1240,7 +1260,7 @@ button {
 
 .feature-image {
     position: relative;
-    min-height: 700px;
+    min-height: 560px;
     overflow: hidden;
     background: var(--surface-2);
 }
@@ -1297,12 +1317,23 @@ button {
 ========================== */
 
 .contact {
+    padding-block: clamp(90px, 9vw, 125px);
+    color: #080808;
     background: var(--accent);
     text-align: center;
 }
 
+.contact-content > a {
+    display: block;
+    width: fit-content;
+    margin: 10px auto 0;
+    color: #080808;
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.35;
+}
+
 .contact .eyebrow {
-    color: var(--bg);
+    color: #080808;
 }
 
 .contact-content {
@@ -1311,14 +1342,16 @@ button {
 }
 
 .contact h2 {
-    margin: 0 0 20px;
-
+    max-width: 850px;
+    margin: 0 auto 35px;
     font-size: clamp(40px, 6vw, 80px);
-    line-height: 1;
+    line-height: .94;
+    letter-spacing: -.045em;
+    text-wrap: balance;
 }
 
 .contact-button:hover {
-    background: #222222;
+    color: #fff;
 }
 
 /* ==========================
@@ -1326,11 +1359,8 @@ button {
 ========================== */
 
 .site-footer {
-    padding:
-        var(--section-space)
-        0
-        40px;
-    background: #0b0b0b;
+    padding: 60px 0 35px;
+    background: #080808;
 }
 
 .footer-brand img {
@@ -1338,6 +1368,7 @@ button {
 }
 
 .footer-contact {
+    margin-top: 45px;
     color: var(--text-muted);
 }
 
@@ -1353,6 +1384,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 35px;
 }
 
 .footer-links a {
@@ -1365,6 +1397,7 @@ button {
     border-top: 1px solid var(--line);
     color: #666666;
     font-size: 14px;
+    margin-top: 40px;
 }
 
 .service-grid {
@@ -1384,6 +1417,11 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
+}
+
+.footer-inner img {
+    width: 240px;
+    height: auto;
 }
 
 /* ==========================
@@ -1548,6 +1586,10 @@ button {
 
 @media (max-width: 700px) {
 
+    .about {
+        padding-bottom: 50px;
+    }
+    
     .about-intro {
         margin-bottom: 45px;
         font-size: 17px;
@@ -1555,6 +1597,11 @@ button {
 
     .about-features {
         gap: 35px;
+    }
+
+    .profiles {
+        padding-top: 55px;
+        padding-bottom: 65px;
     }
     
     .profiles-intro {
@@ -1568,7 +1615,7 @@ button {
     .profile-item {
         grid-template-columns: 32px minmax(0, 1fr);
         gap: 16px;
-        padding: 35px 0;
+        padding: 30px 0;
     }
 
     .profile-number {
@@ -1601,6 +1648,23 @@ button {
     .copyright {
         grid-column: 1;
     }
+
+    .section {
+        padding-block: 65px;
+    }
+
+    .feature-copy {
+        padding: 65px var(--page-padding);
+    }
+
+    .feature-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .contact {
+        padding-block: 80px;
+    }
+    
 }
 
 @media (max-width: 900px) {
