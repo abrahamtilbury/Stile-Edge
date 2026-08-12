@@ -1458,7 +1458,8 @@ button {
 }
 
 .footer-brand img {
-    width: 220px;
+    width: 240px;
+    height: auto;
 }
 
 .footer-contact {
@@ -1474,6 +1475,10 @@ button {
     color: var(--accent);
 }
 
+.footer-contact p {
+    margin: 0 0 18px;
+}
+
 .footer-links {
     display: flex;
     flex-direction: column;
@@ -1486,6 +1491,11 @@ button {
 }
 
 .copyright {
+    width: min(
+        calc(100% - (var(--page-padding) * 2)),
+        var(--max-width)
+    );
+    margin: 40px auto 0;
     grid-column: 1 / -1;
     padding-top: 25px;
     border-top: 1px solid var(--line);
@@ -1505,12 +1515,11 @@ button {
         calc(100% - (var(--page-padding) * 2)),
         var(--max-width)
     );
-
     margin-inline: auto;
-
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1.2fr 1fr 1fr;
     gap: 50px;
+    align-items: start;
 }
 
 .footer-inner img {
