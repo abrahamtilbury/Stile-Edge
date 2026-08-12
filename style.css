@@ -673,30 +673,33 @@ button {
     background-image: url("images/aboutimage.webp");
     background-size: cover;
     background-position: center;
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0,0,0,.2) 5%,
+        rgba(0,0,0,.55) 12%,
+        rgba(0,0,0,.85) 17%,
+        #000 22%
+    );
+
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0,0,0,.2) 5%,
+        rgba(0,0,0,.55) 12%,
+        rgba(0,0,0,.85) 17%,
+        #000 22%
+    );
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
     
     z-index: 1;
     pointer-events: none;
-}
-
-.about-image-bg::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 55%;
-    height: 100%;
-
-    background: linear-gradient(
-        to right,
-        #111111 0%,
-        rgba(17, 17, 17, .95) 18%,
-        rgba(17, 17, 17, .70) 38%,
-        rgba(17, 17, 17, .30) 65%,
-        rgba(17, 17, 17, 0) 100%
-    );
-
-    pointer-events: none;
-    z-index: 2;
 }
 
 .about-heading {
