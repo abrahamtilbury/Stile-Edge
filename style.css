@@ -139,6 +139,34 @@ button {
     opacity: 1;
 }
 
+.profile-visual,
+.apron-feature-image,
+.apron-product-image,
+.feature-image {
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.profiles-heading h2,
+.aprons-heading h2,
+.feature-copy h2,
+.section-heading h2 {
+    position: relative;
+    padding-bottom: 16px;
+}
+
+.profiles-heading h2::after,
+.aprons-heading h2::after,
+.feature-copy h2::after,
+.section-heading h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+}
+
 /* ==========================
    Layout
 ========================== */
@@ -980,14 +1008,17 @@ button {
 }
 
 .profile-tags span,
-.profile-specs span {
+.profile-specs span,
+.apron-product-specs span {
     padding: 7px 10px;
-    border: 1px solid var(--line);
+    border: 1px solid rgba(255,255,255,.18);
+    border-left: 2px solid var(--accent);
     color: var(--text-dim);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: .06em;
     text-transform: uppercase;
+    background: rgba(255,255,255,.02);
 }
 
 /* --------------------------
@@ -1283,17 +1314,6 @@ button {
     gap: 7px;
     margin-bottom: 28px;
 }
-
-.apron-product-specs span {
-    padding: 7px 10px;
-    border: 1px solid var(--line);
-    color: var(--text-dim);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-}
-
 
 /* --------------------------
    Apron Technical Strip
