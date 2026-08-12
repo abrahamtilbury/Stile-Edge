@@ -668,6 +668,10 @@ button {
     pointer-events: none;
 }
 
+.about-background-image {
+    display: none;
+}
+
 .about-heading {
     position: relative;
     z-index: 2;
