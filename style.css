@@ -663,11 +663,11 @@ button {
     height: 416px;
     
     top: 50%;
-    right: 8%;
+    right: 0%;
     
     transform: translateY(-50%);
 
-    border-radius: 22px;
+    border-radius: 0px;
     overflow: hidden;
     
     background:
@@ -675,10 +675,13 @@ button {
             to right,
             var(--surface) 0%,
             rgba(17, 17, 17, .85) 8%,
-            rgba(17, 17, 17, .35) 22%,
+            rgba(17, 17, 17, .40) 22%,
             rgba(17, 17, 17, 0) 38%
         ),
         url("images/aboutimage.webp");
+
+    background-size: cover;
+    background-position: center;
     
     z-index: 1;
     pointer-events: none;
