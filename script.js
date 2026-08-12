@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let current = 0;
     let timer = null;
-    const INTERVAL = 6000;
+    const INTERVAL = 9000;
 
     // Build dots
     slides.forEach((_, i) => {
