@@ -649,16 +649,21 @@ button {
 .about-container {
     position: relative;
     z-index: 2;
-    width: min(100% - (var(--page-padding) * 2), 1280px);
+    width: min(
+        100% - (var(--page-padding) * 2), 
+        1280px
+    );
+    padding-right: 8%;
 }
 
 .about::after {
     content: "";
     position: absolute;
     top: 50%;
+    right: 8%;
     right: clamp(70px, 6vw, 100px);
-    width: min(520px, 34vw);
-    height: 240px;
+    width: min(500px, 34vw);
+    height: 220px;
     transform: translateY(-50%);
     border-radius: 22px;
     background-image: url("images/aboutimage.webp");
@@ -666,6 +671,7 @@ button {
     background-position: center;
     z-index: 0;
     pointer-events: none;
+    opacity: .13;
 }
 
 .about-background-image {
