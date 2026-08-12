@@ -23,12 +23,17 @@
     --page-padding: clamp(20px, 4vw, 72px);
     --section-space: clamp(75px, 8vw, 125px);
     --ease: cubic-bezier(.22, 1, .36, 1);
+    
 }
 
 
 /* ==========================
    Base Styles
 ========================== */
+
+#about, #profiles, #laminate, #aprons, #gallery, #contact {
+    scroll-margin-top: 110px;
+}
 
 h1,
 h2,
@@ -41,6 +46,8 @@ p {
 }
 
 html {
+    color-scheme: dark;
+    scroll-padding-top: 110px;
     scroll-behavior: smooth;
 }
 
@@ -808,46 +815,39 @@ button {
 
 .about-image-bg {
     position: absolute;
-    
-    width: 780px;
-    height: 520px;
-    
-    top: 50%;
-    right: 0%;
-    
-    transform: translateY(-50%);
-
+    top: 0;
+    right: 0;
+    width: min(920px, 58vw);
+    height: 100%;
+    transform: none;
     border-radius: 0;
     overflow: hidden;
-
-    background-image: url("images/aboutimage.webp");
+    background-image: url("images/about.webp");
     background-size: cover;
-    background-position: center;
-
+    background-position: center right;
+    opacity: 0.55;
     -webkit-mask-image: linear-gradient(
         to right,
         transparent 0%,
-        rgba(0,0,0,.2) 5%,
-        rgba(0,0,0,.55) 12%,
-        rgba(0,0,0,.85) 17%,
-        #000 22%
+        transparent 18%,
+        rgba(0,0,0,0.15) 32%,
+        rgba(0,0,0,0.4) 48%,
+        rgba(0,0,0,0.75) 68%,
+        #000 100%
     );
-
     mask-image: linear-gradient(
         to right,
         transparent 0%,
-        rgba(0,0,0,.2) 5%,
-        rgba(0,0,0,.55) 12%,
-        rgba(0,0,0,.85) 17%,
-        #000 22%
+        transparent 18%,
+        rgba(0,0,0,0.15) 32%,
+        rgba(0,0,0,0.4) 48%,
+        rgba(0,0,0,0.75) 68%,
+        #000 100%
     );
-
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
-    
     z-index: 1;
     pointer-events: none;
 }
