@@ -639,19 +639,66 @@ button {
 ========================== */
 
 .about {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     background: var(--surface);
     padding-block: clamp(75px, 8vw, 110px);
 }
 
-.about-heading {
-    margin-bottom: 30px;
+.about-container {
+    position: relative;
+    z-index: 2;
 }
 
-.about-title-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: clamp(35px, 5vw, 70px);
-    align-items: center;
+.about-background-image {
+    position: absolute;
+    top: 11%;
+    right: 2%;
+    width: 52%;
+    height: 76%;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: 24px;
+    pointer-events: none;
+}
+
+.about-background-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: .18;
+}
+
+.about-background-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--surface) 0%,
+            rgba(17,17,17,.92) 25%,
+            rgba(17,17,17,.55) 55%,
+            rgba(17,17,17,.10) 100%
+        );
+}
+
+.about-heading {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+    margin-bottom: 25px;
+}
+
+.about-heading h2 {
+    max-width: 800px;
+    margin: 0;
+    font-size: clamp(52px, 6vw, 88px);
+    line-height: .9;
+    letter-spacing: -.055em;
 }
 
 .about-title-row h2 {
@@ -660,32 +707,6 @@ button {
     font-size: clamp(52px, 6vw, 88px);
     line-height: .9;
     letter-spacing: -.055em;
-}
-
-.about-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(320px, .72fr);
-    gap: clamp(45px, 6vw, 85px);
-    align-items: stretch;
-}
-
-.about-copy {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-block: 8px;
-}
-
-.about-image {
-    object-position: center;
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 4 / 5;
-    max-height: 560px;
-    overflow: hidden;
-    background: var(--surface-2);
-    transition: transform .8s var(--ease);
 }
 
 .about-copy h2 {
@@ -697,17 +718,27 @@ button {
 }
 
 .about-intro {
-    max-width: 820px;
-    margin: 0 0 55px;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 0 42px;
     color: var(--text-muted);
-    font-size: clamp(17px, 1.45vw, 20px);
+    font-size: clamp(17px, 1.4vw, 20px);
     line-height: 1.65;
 }
 
 .about-features {
+    position: relative;
+    z-index: 2;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));;
     gap: clamp(35px, 5vw, 70px);
+    max-width: 1000px;
+}
+
+.about-features article {
+    padding-top: 16px;
+    border-top: 1px solid var(--accent);
 }
 
 .about-feature-number {
@@ -725,18 +756,18 @@ button {
 }
 
 .about-features h3 {
-    margin: 0 0 12px;
-    font-size: clamp(20px, 1.8vw, 26px);
+    margin: 0 0 10px;
+    font-size: clamp(20px, 1.7vw, 25px);
     line-height: 1.05;
     letter-spacing: -.025em;
 }
 
 .about-features p {
-    max-width: 520px;
+    max-width: 480px;
     margin: 0;
     color: var(--text-muted);
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.6;
 }
 
 .about-image img {
@@ -1648,18 +1679,6 @@ button {
 
     .copyright {
         grid-column: auto;
-    }
-
-    .about-layout {
-        grid-template-columns: 1fr;
-        gap: 45px;
-    }
-
-    .about-image {
-        width: min(100%, 360px);
-        aspect-ratio: 16 / 10;
-        order: -1;
-        max-height: none;
     }
 
     .about-copy {
