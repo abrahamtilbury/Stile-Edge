@@ -96,13 +96,23 @@
         ========================== -->
 
         <section class="hero">
-            <img src="images/hero1.webp" alt="Custom profiled tile edging by Stile Edge" class="hero-image" width="1920" height="750" fetchpriority="high" decoding="async"/>
-            <div class="hero-overlay"></div>
+            <div class="hero-slider">
+                <div class="hero-slide is-active">
+                    <img src="images/hero1.webp" alt="Custom profiled tile edging by Stile Edge" class="hero-image" width="1920" height="750" fetchpriority="high" decoding="async"/>
+                </div>
+                <div class="hero-slide">
+                    <img src="images/hero2.webp" alt="Precision tile edging for pool coping" class="hero-image" width="1920" height="750" loading="lazy" decoding="async"/>
+                </div>
+                <div class="hero-slide">
+                    <img src="images/hero3.webp" alt="Architectural tile finishes by Stile Edge" class="hero-image" width="1920" height="750" loading="lazy" decoding="async"/>
+                </div> 
+            </div>
+            <div class="hero-overlay"></div>     
             <div class="hero-content">
                 <p class="eyebrow">CUSTOM TILE PROFILING</p>
                 <h1>
-                Quality Custom Edging
-                <span>Customize your tiling project.</span>
+                    Quality Custom Edging
+                    <span>Customize your tiling project.</span>
                 </h1>
                 <p class="hero-text">Precision tile edging for pool coping, stair nosing, aprons and architectural finishes across the Gold Coast.</p>
                 <div class="hero-actions">
@@ -110,7 +120,14 @@
                     <a href="#profiles" class="button button-secondary">View Profiles</a>
                 </div>
             </div>
-        </section>
+            <button class="hero-arrow hero-arrow-prev" type="button" aria-label="Previous slide">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="hero-arrow hero-arrow-next" type="button" aria-label="Next slide">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+    <div class="hero-dots" aria-hidden="true"></div>
+</section>
         <!-- =========================
              ABOUT
         ========================== -->
