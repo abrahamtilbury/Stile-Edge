@@ -668,7 +668,7 @@ button {
     background-image: url("images/aboutimage.webp");
     background-size: cover;
     background-position: center;
-    opacity: .95;
+    opacity: 1;
     pointer-events: none;
 }
 
