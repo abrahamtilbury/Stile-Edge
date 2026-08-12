@@ -1814,7 +1814,7 @@ button {
     }
 
     .feature-copy {
-        padding: 75px var(--page-padding);
+        padding: 40px var(--page-padding);
     }
 
     .feature-copy h2 {
