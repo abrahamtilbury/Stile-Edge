@@ -174,6 +174,15 @@ button {
     background: var(--accent);
 }
 
+.profile-visual,
+.apron-feature-image,
+.apron-product-image,
+.feature-image,
+.gallery-grid img {
+    border-radius: 4px;
+    overflow: hidden;
+}
+
 /* ==========================
    Layout
 ========================== */
@@ -356,20 +365,16 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     min-height: 42px;
     padding: 0 18px;
-
     background: #fff;
     color: #111;
-
     font-size: 11px;
     font-weight: 800;
     letter-spacing: .08em;
     line-height: 1;
-
     text-transform: uppercase;
-
+    border-radius: 2px 6px 2px 6px;
     transition:
         background-color .3s ease,
         color .3s ease,
@@ -474,20 +479,6 @@ button {
 }
 
 /* ==========================
-   Eyebrow Labels
-========================== */
-
-.eyebrow {
-    margin: 0 0 20px;
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .16em;
-    line-height: 1.2;
-    text-transform: uppercase;
-}
-
-/* ==========================
    Hero slider
 ========================== */
 .hero {
@@ -509,7 +500,8 @@ button {
     inset: 0;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 1.6s var(--ease), visibility 1.1s var(--ease);
+    transition: opacity 2.4s cubic-bezier(0.22, 1, 0.36, 1),
+                visibility 2.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-slide.is-active {
@@ -702,6 +694,7 @@ button {
     background: var(--accent);
     color: #fff;
     border: 1px solid var(--accent);
+    border-radius: 6px;
 }
 
 
@@ -721,6 +714,7 @@ button {
     background: transparent;
     color: #fff;
     border: 1px solid rgba(255,255,255,.35);
+    border-radius: 6px;
 }
 
 
@@ -999,8 +993,8 @@ button {
 
 
 .profile-item:hover {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 8px;
+    padding-right: 8px;
     background: var(--surface);
 }
 
@@ -1035,7 +1029,7 @@ button {
 }
 
 .profile-item:hover .profile-visual img {
-    transform: scale(1.04);
+    transform: scale(1.015);
 }
 
 /* --------------------------
@@ -1095,6 +1089,7 @@ button {
     letter-spacing: .06em;
     text-transform: uppercase;
     background: rgba(255,255,255,.02);
+    border-radius: 3px;
 }
 
 /* --------------------------
@@ -1559,7 +1554,7 @@ button {
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.03em;
-    border-radius: 2px;
+    border-radius: 6px;
     transition: background-color .3s ease, transform .3s ease;
 }
 
@@ -1571,9 +1566,9 @@ button {
 
 .contact-content > a[href^="mailto"],
 .contact-content > a[href*="facebook"] {
-    background: transparent;
-    border: 1px solid rgba(0,0,0,.25);
-    color: #080808;
+    background: #080808;
+    border: none;
+    color: #fff;
 }
 
 .contact-content > a[href^="mailto"]:hover,
