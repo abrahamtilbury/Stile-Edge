@@ -658,12 +658,13 @@ button {
 
 .about-image-bg {
     position: absolute;
-    z-index: 0;
+    z-index: 1;
     width: 650px;
     height: 290px;
     top: 50%;
     right: 8%;
     transform: translateY(-50%);
+    overflow: hidden;
     border-radius: 22px;
     background-image: url("images/aboutimage.webp");
     background-size: cover;
