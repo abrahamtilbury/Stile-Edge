@@ -653,25 +653,23 @@ button {
         100% - (var(--page-padding) * 2), 
         1280px
     );
-    padding-right: 8%;
+    padding-right: 3%;
 }
 
-.about::after {
-    content: "";
+.about-image-bg {
     position: absolute;
+    z-index: 0;
+    width: 420px;
+    height: 190px;
     top: 50%;
     right: 8%;
-    right: clamp(70px, 6vw, 100px);
-    width: min(500px, 34vw);
-    height: 220px;
     transform: translateY(-50%);
     border-radius: 22px;
     background-image: url("images/aboutimage.webp");
     background-size: cover;
     background-position: center;
-    z-index: 0;
-    pointer-events: none;
     opacity: .13;
+    pointer-events: none;
 }
 
 .about-background-image {
