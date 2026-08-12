@@ -107,15 +107,6 @@ button {
     padding-block: var(--section-space);
 }
 
-.about {
-    padding-bottom: clamp(55px, 6vw, 90px);
-}
-
-.profiles {
-    padding-top: clamp(40px, 6vw, 85px);
-    padding-bottom: clamp(65px, 7vw, 100px);
-}
-
 /* =========================================================
    TOP INFORMATION BAR
 ========================================================= */
@@ -643,7 +634,7 @@ button {
     isolation: isolate;
     overflow: hidden;
     background: var(--surface);
-    padding-block: clamp(50px, 5vw, 70px);
+    padding-block: clamp(40px, 4vw, 55px);
 }
 
 .about-container {
@@ -776,6 +767,8 @@ button {
 
 .profiles {
     background: var(--bg);
+    padding-top: clamp(20px, 3vw, 45px);
+    padding-bottom: clamp(50px, 6vw, 80px);
 }
 
 
@@ -1716,7 +1709,7 @@ button {
 @media (max-width: 700px) {
 
     .about {
-        padding-bottom: 50px;
+        padding-bottom: 30px;
     }
     
     .about-intro {
@@ -1729,8 +1722,8 @@ button {
     }
 
     .profiles {
-        padding-top: 55px;
-        padding-bottom: 65px;
+        padding-top: 30px;
+        padding-bottom: 50px;
     }
     
     .profiles-intro {
