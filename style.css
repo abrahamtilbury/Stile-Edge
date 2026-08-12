@@ -1895,6 +1895,10 @@ button {
 ========================== */
 
 @media (max-width: 1100px) {
+    .about-image-bg {
+        display: block;
+    }
+    
     .profiles-intro {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -1936,6 +1940,7 @@ button {
 
     .about-features {
         gap: 35px;
+        grid-template-columns: 1fr;
     }
 
     .profiles {
