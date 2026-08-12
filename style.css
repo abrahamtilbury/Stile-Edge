@@ -653,13 +653,14 @@ button {
 
 .about-background-image {
     position: absolute;
-    top: 22%;
-    right: 2%;
-    width: 46%;
-    height: 56%;
+    top: 50%;
+    right: 4%;
+    width: 360px;
+    height: 220px;
+    transform: translateY(-50%);
     z-index: 0;
     overflow: hidden;
-    border-radius: 24px;
+    border-radius: 22px;
     pointer-events: none;
     max-width: 600px;
     max-height: 280px;
@@ -670,7 +671,7 @@ button {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    opacity: .18;
+    opacity: .14;
 }
 
 .about-background-image::after {
@@ -683,7 +684,7 @@ button {
             90deg,
             var(--surface) 0%,
             rgba(17,17,17,.92) 25%,
-            rgba(17,17,17,.70) 55%,
+            rgba(17,17,17,.78) 55%,
             rgba(17,17,17,.10) 100%
         );
 }
