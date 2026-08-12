@@ -30,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const slides = Array.from(slider.querySelectorAll('.hero-slide'));
     const nextBtn = document.querySelector('.hero-arrow-next');
+    const nextBtn = document.querySelector('.hero-arrow-next');
+    const dotsContainer = document.querySelector('.hero-dots');
+
+    if (!nextBtn || !dotsContainer) return;   // ← add this line
     const dotsContainer = document.querySelector('.hero-dots');
 
     let current = 0;
