@@ -1307,7 +1307,7 @@ button {
     letter-spacing: -.04em;
 }
 
-.apron-product-content > p:not(.product-label) {
+.apron-product-content > p {
     max-width: 520px;
     margin: 0 0 25px;
     color: var(--text-muted);
@@ -1509,8 +1509,8 @@ button {
 
 .contact-content > a[href^="mailto"]:hover,
 .contact-content > a[href*="facebook"]:hover {
-    background: rgba(0,0,0,.08);
-    color: #080808;
+    background: #222;
+    color: #fff;
 }
 
 .contact .eyebrow {
