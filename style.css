@@ -112,7 +112,7 @@ button {
 }
 
 .profiles {
-    padding-top: clamp(50px, 6vw, 85px);
+    padding-top: clamp(40px, 6vw, 85px);
     padding-bottom: clamp(65px, 7vw, 100px);
 }
 
@@ -643,7 +643,7 @@ button {
     isolation: isolate;
     overflow: hidden;
     background: var(--surface);
-    padding-block: clamp(75px, 8vw, 110px);
+    padding-block: clamp(50px, 5vw, 70px);
 }
 
 .about-container {
@@ -653,14 +653,16 @@ button {
 
 .about-background-image {
     position: absolute;
-    top: 11%;
+    top: 22%;
     right: 2%;
-    width: 52%;
-    height: 76%;
+    width: 46%;
+    height: 56%;
     z-index: 0;
     overflow: hidden;
     border-radius: 24px;
     pointer-events: none;
+    max-width: 600px;
+    max-height: 280px;
 }
 
 .about-background-image img {
@@ -681,7 +683,7 @@ button {
             90deg,
             var(--surface) 0%,
             rgba(17,17,17,.92) 25%,
-            rgba(17,17,17,.55) 55%,
+            rgba(17,17,17,.70) 55%,
             rgba(17,17,17,.10) 100%
         );
 }
@@ -701,27 +703,11 @@ button {
     letter-spacing: -.055em;
 }
 
-.about-title-row h2 {
-    max-width: 800px;
-    margin: 0;
-    font-size: clamp(52px, 6vw, 88px);
-    line-height: .9;
-    letter-spacing: -.055em;
-}
-
-.about-copy h2 {
-    max-width: 700px;
-    margin: 0;
-    font-size: clamp(52px, 6vw, 88px);
-    line-height: .9;
-    letter-spacing: -.055em;
-}
-
 .about-intro {
     position: relative;
     z-index: 2;
     max-width: 800px;
-    margin: 0 0 42px;
+    margin: 0 0 34px;
     color: var(--text-muted);
     font-size: clamp(17px, 1.4vw, 20px);
     line-height: 1.65;
@@ -732,7 +718,7 @@ button {
     z-index: 2;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));;
-    gap: clamp(35px, 5vw, 70px);
+    gap: clamp(30px, 4vw, 55px);
     max-width: 1000px;
 }
 
@@ -768,32 +754,6 @@ button {
     color: var(--text-muted);
     font-size: 14px;
     line-height: 1.6;
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform .8s var(--ease);
-}
-
-.about-image:hover img {
-    transform: scale(1.03);
-}
-
-.about-image-label {
-    position: absolute;
-    left: 14px;
-    bottom: 14px;
-    padding: 6px 8px;
-    background: rgba(8,8,8,.75);
-    color: var(--text);
-    font-size: 8px;
-    font-weight: 800;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    backdrop-filter: blur(8px);
 }
 
 /* ==========================
