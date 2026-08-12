@@ -356,21 +356,14 @@ button {
 
 .mobile-menu {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 76px;
     left: 0;
     right: 0;
     z-index: 1001;
-    background: var(--bg);
+    background: #0a0a0a;
     border-top: 1px solid var(--line);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, .35);
-}
-
-.menu-button span {
-    display: block;
-    width: 22px;
-    height: 1px;
-    background: var(--text);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .5);
 }
 
 .mobile-menu.open {
@@ -1596,6 +1589,22 @@ button {
         background: transparent;
         color: var(--text);
         cursor: pointer;
+    }
+    
+    .menu-button span {
+        display: block;
+        width: 22px;
+        height: 1px;
+        background: var(--text);
+        transition: transform .3s ease, opacity .3s ease;
+    }
+
+    .menu-button[aria-expanded="true"] span:first-child {
+        transform: translateY(3.5px) rotate(45deg);
+    }
+
+    .menu-button[aria-expanded="true"] span:last-child {
+        transform: translateY(-3.5px) rotate(-45deg);
     }
 
     .hero {
