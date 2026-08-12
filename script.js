@@ -20,3 +20,87 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+/* ==========================
+   Hero Slider
+========================== */
+(function () {
+    const slider = document.querySelector('.hero-slider');
+    if (!slider) return;
+
+    const slides = Array.from(slider.querySelectorAll('.hero-slide'));
+    const prevBtn = document.querySelector('.hero-arrow-prev');
+    const nextBtn = document.querySelector('.hero-arrow-next');
+    const dotsContainer = document.querySelector('.hero-dots');
+
+    let current = 0;
+    let timer = null;
+    const INTERVAL = 6000;
+
+    // Build dots
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot' + (i === 0 ? ' is-active' : '');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsContainer.querySelectorAll('.hero-dot'));
+
+    function goTo(index) {
+        slides[current].classList.remove('is-active');
+        dots[current].classList.remove('is-active');
+
+        current = (index + slides.length) % slides.length;
+
+        slides[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
+    }
+
+    function next() {
+        goTo(current + 1);
+    }
+
+    function prev() {
+        goTo(current - 1);
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        timer = setInterval(next, INTERVAL);
+    }
+
+    function stopAutoplay() {
+        if (timer) clearInterval(timer);
+    }
+
+    prevBtn.addEventListener('click', () => {
+        prev();
+        startAutoplay();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        next();
+        startAutoplay();
+    });
+
+    // Pause on hover
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('mouseenter', stopAutoplay);
+    hero.addEventListener('mouseleave', startAutoplay);
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prev();
+            startAutoplay();
+        }
+        if (e.key === 'ArrowRight') {
+            next();
+            startAutoplay();
+        }
+    });
+
+    startAutoplay();
+})();
