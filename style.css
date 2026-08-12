@@ -101,48 +101,6 @@ button {
     display: none;
 }
 
-.contact-content > a {
-    display: block;
-    width: fit-content;
-    margin: 8px auto 0;
-    color: #080808;
-    font-size: clamp(16px, 2vw, 20px);
-    font-weight: 600;
-    line-height: 1.4;
-    letter-spacing: 0.01em;
-}
-
-.contact-content > a:first-of-type {
-    margin-top: 28px;
-    font-size: clamp(20px, 2.4vw, 26px);
-    font-weight: 700;
-}
-
-.contact-content > a:hover {
-    color: #000;
-    opacity: 0.75;
-}
-
-.contact-content > a[href^="tel:"]:first-of-type {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 32px;
-    padding: 14px 28px;
-    background: #080808;
-    color: #fff;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    border-radius: 2px;
-}
-
-.contact-content > a[href^="tel:"]:first-of-type:hover {
-    background: #222;
-    color: #fff;
-    opacity: 1;
-}
-
 .profile-visual,
 .apron-feature-image,
 .apron-product-image,
@@ -1037,15 +995,6 @@ button {
     padding-right: 30px;
 }
 
-.profile-type {
-    margin: 0 0 12px;
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-}
-
 .profile-content h3 {
     margin: 0 0 16px;
     font-size: clamp(30px, 3vw, 48px);
@@ -1053,7 +1002,7 @@ button {
     letter-spacing: -.04em;
 }
 
-.profile-content > p:not(.profile-type) {
+.profile-content > p {
     max-width: 520px;
     margin: 0 0 20px;
     color: var(--text-muted);
@@ -1188,16 +1137,6 @@ button {
     margin: 0 0 25px;
 }
 
-.product-label {
-    margin: 0 0 12px;
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-}
-
-
 /* --------------------------
    Featured Apron
 -------------------------- */
@@ -1275,7 +1214,7 @@ button {
     line-height: 1.6;
 }
 
-.apron-feature-content > p:not(.product-label):not(.apron-feature-lead) {
+.apron-feature-content > p:not(.apron-feature-lead) {
     max-width: 520px;
     margin: 0 0 35px;
     color: var(--text-muted);
