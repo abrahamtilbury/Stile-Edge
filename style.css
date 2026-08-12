@@ -1465,19 +1465,45 @@ button {
 ========================== */
 
 .contact {
-    padding-block: clamp(90px, 9vw, 125px);
+    padding-block: clamp(70px, 8vw, 100px);
     color: #080808;
     background: var(--accent);
     text-align: center;
 }
 
 .contact-content > a {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: fit-content;
-    margin: 10px auto 0;
+    margin: 10px 8px 0;
+    padding: 14px 26px;
+    background: #080808;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    border-radius: 2px;
+    transition: background-color .3s ease, transform .3s ease;
+}
+
+.contact-content > a:hover {
+    background: #222;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.contact-content > a[href^="mailto"],
+.contact-content > a[href*="facebook"] {
+    background: transparent;
+    border: 1px solid rgba(0,0,0,.25);
     color: #080808;
-    font-size: clamp(18px, 2vw, 24px);
-    line-height: 1.35;
+}
+
+.contact-content > a[href^="mailto"]:hover,
+.contact-content > a[href*="facebook"]:hover {
+    background: rgba(0,0,0,.08);
+    color: #080808;
 }
 
 .contact .eyebrow {
