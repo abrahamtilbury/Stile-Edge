@@ -1589,6 +1589,9 @@ button {
         background: transparent;
         color: var(--text);
         cursor: pointer;
+        position: relative;
+        z-index: 20;
+        -webkit-tap-highlight-color: transparent;
     }
     
     .menu-button span {
