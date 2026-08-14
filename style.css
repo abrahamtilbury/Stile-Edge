@@ -2135,6 +2135,20 @@ button {
         border-bottom: 1px solid rgba(255, 255, 255, .14);
         background: rgba(0, 0, 0, .35);
     }
+    
+    .top-bar a,
+    .top-bar span {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .hero-dot {
+        width: 12px;
+        height: 12px;
+        min-width: 12px;
+        min-height: 12px;
+    }
 
     .menu-button {
         appearance: none;
