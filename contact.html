@@ -46,7 +46,7 @@
         type="image/png"
         href="images/favicon.png"
     >
-
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <!-- Canonical URL -->
     <link
         rel="canonical"
@@ -80,11 +80,8 @@
     ========================== -->
 
     <header class="site-header">
-
         <div class="header-inner">
-
-            <a href="/" class="site-logo">
-
+            <a href="index.html" class="site-logo">
                 <img
                     src="images/logo.webp"
                     alt="Stile Edge"
@@ -92,31 +89,19 @@
                     height="106"
                 >
             </a>
+
             <nav class="desktop-nav" aria-label="Primary navigation">
                 <a href="index.html">Home</a>
                 <a href="profiles.html">Profiles</a>
-                <a href="design-ideas.html">Design Ideas</a>
-                <a href="contact.html">Contact</a>
+                <a href="designideas.html">Design Ideas</a>
+                <a href="contact.html" aria-current="page">Contact</a>
                 <a href="about.html">About</a>
             </nav>
+
             <div class="header-actions">
-
-                <a
-                    href="tel:0755982908"
-                    class="header-phone"
-                >
-                    (07) 5598 2908
-                </a>
-
-                <a
-                    href="mailto:sales@stileedge.com"
-                    class="header-cta"
-                >
-                    Get a Quote
-                </a>
-
+                <a href="tel:0755982908" class="header-phone">(07) 5598 2908</a>
+                <a href="mailto:sales@stileedge.com" class="header-cta">Get a Quote</a>
             </div>
-
 
             <button
                 class="menu-button"
@@ -125,35 +110,46 @@
                 aria-expanded="false"
                 aria-controls="mobile-menu"
             >
-
                 <span></span>
                 <span></span>
-
             </button>
-
         </div>
 
+        <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+            <a href="index.html">Home</a>
+            <a href="profiles.html">Profiles</a>
+            <a href="designideas.html">Design Ideas</a>
+            <a href="contact.html" aria-current="page">Contact</a>
+            <a href="about.html">About</a>
+        </nav>
     </header>
-    <!-- =========================
-         MOBILE NAVIGATION
-    ========================== -->
-    <nav
-        id="mobile-menu"
-        class="mobile-menu"
-        aria-label="Mobile navigation"
-    >
-        <a href="index.html">Home</a>
-        <a href="profiles.html">Profiles</a>
-        <a href="design-ideas.html">Design Ideas</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About</a>
 
-    </nav>
-    <main>
-        <!-- =========================
-             CONTACT HERO
-        ========================== -->
-        <section class="contact-page">
+<main>
+    <!-- HERO -->
+    <section class="about-hero" style="min-height: 50vh;">
+        <img
+            src="images/herocontact.webp"
+            alt="Contact Stile Edge for custom tile edging"
+            class="about-hero-image"
+            width="1015"
+            height="507"
+            fetchpriority="high"
+            decoding="async"
+        >
+        <div class="about-hero-overlay"></div>
+        <div class="about-hero-content">
+            <h1>
+                Let's talk
+                <span>tile.</span>
+            </h1>
+            <p class="about-hero-text">
+                Have a tile that needs profiling? Send the Stile Edge team the details.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTACT DETAILS -->
+    <section class="contact-page">
             <div class="container">
 
                 <div class="contact-page-grid">
@@ -164,29 +160,16 @@
                     ========================== -->
 
                     <div class="contact-page-intro">
-
-                        <p class="eyebrow">
-                            GET IN TOUCH
-                        </p>
-
-                        <h1>
-                            Let's talk
-                            <span>tile.</span>
-                        </h1>
+                        <p class="eyebrow">GET IN TOUCH</p>
 
                         <p class="contact-page-lead">
-                            Have a tile that needs profiling?
-                            Send the Stile Edge team an email and
-                            tell us about your project.
+                            Email the Stile Edge team with your tile details.
+                            We’ll send a worksheet to confirm the job, then come back with pricing and lead time.
                         </p>
 
-                        <a
-                            href="mailto:sales@stileedge.com"
-                            class="button button-primary"
-                        >
+                        <a href="mailto:sales@stileedge.com" class="button button-primary">
                             Email Stile Edge
                         </a>
-
                     </div>
 
 
@@ -402,7 +385,7 @@
             <div class="footer-links">
                 <a href="index.html">Home</a>
                 <a href="profiles.html">Profiles</a>
-                <a href="design-ideas.html">Design Ideas</a>
+                <a href="designideas.html">Design Ideas</a>
                 <a href="contact.html">Contact</a>
                 <a href="about.html">About</a>
             </div>
