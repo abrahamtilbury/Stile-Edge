@@ -228,19 +228,19 @@ button {
     min-height: 76px;
     margin-inline: auto;
     display: grid;
-    grid-template-columns: 190px minmax(0, 1fr) auto;
+    grid-template-columns: 260px minmax(0, 1fr) auto;
     align-items: center;
     column-gap: 40px;
 }
 
 .site-logo {
     display: block;
-    width: 190px;
+    width: 260px;
 }
 
 .site-logo img {
     display: block;
-    width: 190px;
+    width: 260px;
     height: auto;
     max-width: 100%;
 }
@@ -350,13 +350,13 @@ button {
 @media (max-width: 1200px) {
 
     .header-inner {
-        grid-template-columns: 160px minmax(0, 1fr) auto;
+        grid-template-columns: 220px minmax(0, 1fr) auto;
         column-gap: 24px;
     }
 
     .site-logo,
     .site-logo img {
-        width: 160px;
+        width: 220px;
     }
 
     .desktop-nav {
@@ -1545,7 +1545,7 @@ button {
 }
 
 .footer-brand img {
-    width: 180px;
+    width: 220px;
     height: auto;
 }
 
@@ -2031,9 +2031,44 @@ button {
     color: #fff;
 }
 
-/* ----- About page responsive ----- */
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width: 600px) {
+
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .hero-actions .button {
+        width: 100%;
+    }
+
+}
+
 @media (max-width: 900px) {
-    .about-hero {
+    :root {
+        --page-padding: 20px;
+        --section-space: 75px;
+    }
+
+    .top-bar a,
+    .top-bar span {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .hero-dot {
+        width: 12px;
+        height: 12px;
+        min-width: 12px;
+        min-height: 12px;
+    }
+
+     .about-hero {
         min-height: min(620px, 90svh);
         padding-top: 96px;
     }
@@ -2075,29 +2110,90 @@ button {
     .about-hero-meta {
         display: none;
     }
-}
 
-/* ==========================
-   Mobile
-========================== */
+    .feature-section {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
 
-@media (max-width: 600px) {
+    .feature-copy {
+        padding: 40px var(--page-padding);
+    }
 
-    .hero-actions {
-        width: 100%;
+    .feature-copy h2 {
+        font-size: clamp(48px, 13vw, 72px);
+    }
+
+    .feature-image {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-grid img {
+        height: auto;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+    }
+
+    .aprons-intro {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 55px;
+    }
+
+    .aprons-heading h2 {
+        font-size: clamp(44px, 13vw, 72px);
+    }
+
+    .apron-feature {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .apron-feature-image {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+    }
+
+    .apron-feature-content {
+        padding: 55px var(--page-padding);
+    }
+
+    .apron-feature-content h3 {
+        font-size: clamp(38px, 10vw, 58px);
+    }
+
+    .apron-feature-details {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .apron-feature-details div {
+        padding: 15px 0;
+    }
+
+    .apron-products {
+        grid-template-columns: 1fr;
+    }
+
+    .apron-product-content {
+        padding: 30px var(--page-padding);
+    }
+
+    .apron-tech {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 55px 0;
+    }
+
+    .apron-cta {
         flex-direction: column;
-    }
-
-    .hero-actions .button {
-        width: 100%;
-    }
-
-}
-
-@media (max-width: 900px) {
-    :root {
-        --page-padding: 20px;
-        --section-space: 75px;
+        align-items: flex-start;
+        padding-top: 50px;
     }
 
     .site-header {
@@ -2120,12 +2216,12 @@ button {
     
     .site-logo {
         display: block;
-        width: 160px;
+        width: 180px;
     }
 
     .site-logo img {
         display: block;
-        width: 160px;
+        width: 180px;
         height: auto;
         max-width: none;
     }
@@ -2134,20 +2230,6 @@ button {
         display: none;
         border-bottom: 1px solid rgba(255, 255, 255, .14);
         background: rgba(0, 0, 0, .35);
-    }
-    
-    .top-bar a,
-    .top-bar span {
-        min-height: 44px;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .hero-dot {
-        width: 12px;
-        height: 12px;
-        min-width: 12px;
-        min-height: 12px;
     }
 
     .menu-button {
@@ -2414,95 +2496,6 @@ button {
         padding-block: 60px;
     }
     
-}
-
-@media (max-width: 900px) {
-
-    .feature-section {
-        grid-template-columns: 1fr;
-        min-height: 0;
-    }
-
-    .feature-copy {
-        padding: 40px var(--page-padding);
-    }
-
-    .feature-copy h2 {
-        font-size: clamp(48px, 13vw, 72px);
-    }
-
-    .feature-image {
-        min-height: 0;
-        aspect-ratio: 4 / 3;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-grid img {
-        height: auto;
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
-    }
-
-    .aprons-intro {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        margin-bottom: 55px;
-    }
-
-    .aprons-heading h2 {
-        font-size: clamp(44px, 13vw, 72px);
-    }
-
-    .apron-feature {
-        grid-template-columns: 1fr;
-        min-height: 0;
-    }
-
-    .apron-feature-image {
-        min-height: 0;
-        aspect-ratio: 4 / 3;
-    }
-
-    .apron-feature-content {
-        padding: 55px var(--page-padding);
-    }
-
-    .apron-feature-content h3 {
-        font-size: clamp(38px, 10vw, 58px);
-    }
-
-    .apron-feature-details {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .apron-feature-details div {
-        padding: 15px 0;
-    }
-
-    .apron-products {
-        grid-template-columns: 1fr;
-    }
-
-    .apron-product-content {
-        padding: 30px var(--page-padding);
-    }
-
-    .apron-tech {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding: 55px 0;
-    }
-
-    .apron-cta {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-top: 50px;
-    }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
