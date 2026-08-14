@@ -228,19 +228,19 @@ button {
     min-height: 76px;
     margin-inline: auto;
     display: grid;
-    grid-template-columns: 260px minmax(0, 1fr) auto;
+    grid-template-columns: 200px minmax(0, 1fr) auto;
     align-items: center;
     column-gap: 40px;
 }
 
 .site-logo {
     display: block;
-    width: 260px;
+    width: 200px;
 }
 
 .site-logo img {
     display: block;
-    width: 260px;
+    width: 200px;
     height: auto;
     max-width: 100%;
 }
@@ -350,13 +350,13 @@ button {
 @media (max-width: 1200px) {
 
     .header-inner {
-        grid-template-columns: 220px minmax(0, 1fr) auto;
+        grid-template-columns: 170px minmax(0, 1fr) auto;
         column-gap: 24px;
     }
 
     .site-logo,
     .site-logo img {
-        width: 220px;
+        width: 170px;
     }
 
     .desktop-nav {
@@ -438,11 +438,11 @@ button {
 ========================== */
 .hero {
     position: relative;
-    min-height: 88vh;
-    display: flex;
+    height: min(620px, 70vh);
+    display: block;
     align-items: flex-end;
     overflow: hidden;
-    padding-top: 160px;
+    padding-top: 0;
 }
 
 .hero-slider {
@@ -486,12 +486,14 @@ button {
 }
 
 .hero-content {
-    position: relative;
+    position: absolute;
     z-index: 3;
     width: min(850px, 100%);
-    margin-left: var(--page-padding);
-    margin-right: var(--page-padding);
+    left: var(--page-padding);
+    right: var(--page-padding);
+    bottom: 56px;
     margin-bottom: clamp(90px, 11vh, 140px);
+    margin: 0;
 }
 
 .hero h1 {
@@ -2269,8 +2271,9 @@ button {
     }
 
     .hero {
-        min-height: min(680px, 100svh);
-        padding-top: 96px;
+        height: min(520px, 78svh);
+        min-height: unset;
+        padding-top: 0;
     }
 
     .hero-arrow {
@@ -2293,8 +2296,9 @@ button {
     .hero-content {
         width: 100%;
         margin: 0;
-        margin-bottom: clamp(90px, 12vh, 115px);
+        margin-bottom: 0;
         padding-inline: var(--page-padding);
+        bottom: 48px;
     }
 
     .hero h1 {

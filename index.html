@@ -19,9 +19,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <!-- Canonical URL -->
     <link rel="canonical" href="https://stileedge.com/"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&display=swap" rel="stylesheet">
 </head>
 
 
@@ -47,12 +44,11 @@
             <img src="images/logo.webp" alt="Stile Edge" width="350" height="106"/>
         </a>
         <nav class="desktop-nav" aria-label="Primary navigation">
-            <a href="about.html">About Us</a>
-            <a href="#profiles">Standard Profiles</a>
-            <a href="laminate.html">Laminate Profile</a>
-            <a href="aprons.html">Aprons</a>
-            <a href="gallery.html">Gallery</a>
+            <a href="index.html">Home</a>
+            <a href="profiles.html">Profiles</a>
+            <a href="design-ideas.html">Design Ideas</a>
             <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
         </nav>
         <div class="header-actions">
             <a href="contact.html" class="header-cta">Get a Quote</a>
@@ -72,11 +68,11 @@
     </div>
 
     <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-        <a href="about.html">About</a>
-        <a href="laminate.html">Laminate</a>
-        <a href="aprons.html">Aprons</a>
-        <a href="gallery.html">Gallery</a>
+        <a href="index.html">Home</a>
+        <a href="profiles.html">Profiles</a>
+        <a href="design-ideas.html">Design Ideas</a>
         <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
     </nav>
     
 </header>
@@ -92,7 +88,17 @@
         <section class="hero">
             <div class="hero-slider">
                 <div class="hero-slide is-active">
-                    <img src="images/hero4.webp" alt="Custom profiled tile edging by Stile Edge" class="hero-image" width="1920" height="750" fetchpriority="high" decoding="async"/>
+                    <img
+                        src="images/hero4.webp"
+                        srcset="images/hero4-800.webp 800w, images/hero4.webp 1600w"
+                        sizes="100vw"
+                        alt="Step tread groove edging by Stile Edge"
+                        class="hero-image"
+                        width="1025"
+                        height="768"
+                        fetchpriority="high"
+                        decoding="async"
+                    />
                 </div>
                 <div class="hero-slide">
                     <img src="images/hero2.webp" alt="Precision tile edging for pool coping" class="hero-image" width="1920" height="750" loading="lazy" decoding="async"/>
