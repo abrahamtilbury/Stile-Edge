@@ -2239,6 +2239,7 @@ button {
 
     .profile-content {
         grid-column: 2;
+        padding: 20px 16px 32px;
     }
 
     .profile-content h3 {
