@@ -2666,7 +2666,17 @@ button {
     }
 
     .footer-contact {
-        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 24px;
+        text-align: left;
+        width: 100%;
+        max-width: 340px;
+        margin-inline: auto;
+    }
+    
+    .footer-contact p {
+        margin: 0;
     }
 
     .footer-contact p {
