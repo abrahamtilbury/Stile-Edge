@@ -2775,6 +2775,22 @@ button {
     .hero-dots {
         bottom: 16px;
     }
+    
+    .apron-feature,
+    .apron-product {
+        grid-template-columns: 1fr 1fr;
+        min-height: 0;
+    }
+
+    .apron-feature-image,
+    .apron-product-image {
+        aspect-ratio: 4 / 3;
+    }
+
+    .apron-feature-content,
+    .apron-product-content {
+        padding: 24px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
