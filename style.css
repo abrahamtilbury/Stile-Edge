@@ -2752,46 +2752,48 @@ button {
 
 @media (max-width: 720px) and (orientation: landscape) {
     .hero {
-        height: 100svh;
-        min-height: 100svh;
-        padding-top: 0;
+        height: auto;
+        min-height: 100dvh;
+        padding-top: 110px; /* clears top-bar + header */
     }
 
     .hero-content {
-        position: absolute;
-        top: 120px;          /* clears the header */
+        position: relative;
+        top: auto;
         bottom: auto;
         left: var(--page-padding);
-        right: calc(var(--page-padding) + 50px);
+        right: var(--page-padding);
         transform: none;
         margin: 0;
         width: auto;
         max-width: none;
+        padding-bottom: 20px;
     }
 
     .hero h1 {
-        font-size: clamp(28px, 6vw, 40px);
-        margin-bottom: 10px;
+        font-size: clamp(26px, 5.5vw, 36px);
+        margin-bottom: 8px;
     }
 
     .hero-text {
         font-size: 14px;
-        margin-bottom: 16px;
+        margin-bottom: 14px;
     }
-    
+
     .hero-actions {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 36px;
+        position: relative;
+        left: auto;
+        transform: none;
+        bottom: auto;
+        margin-top: 12px;
         width: max-content;
         z-index: 3;
     }
 
     .hero-dots {
-        bottom: 14px;
+        bottom: 12px;
     }
-    
+
     .apron-feature,
     .apron-product {
         grid-template-columns: 1fr 1fr;
