@@ -2455,6 +2455,15 @@ button {
         padding-top: 40px;
         padding-bottom: 40px;
     }
+    
+    .contact-email-cta {
+        padding-block: 40px;
+    }
+    
+    .contact-info {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
 
     .contact-page-grid,
     .contact-email-cta-inner,
