@@ -2450,6 +2450,11 @@ button {
     .profile-list {
         grid-template-columns: 1fr;
     }
+    
+    .contact-page {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 
     .contact-page-grid,
     .contact-email-cta-inner,
