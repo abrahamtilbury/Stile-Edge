@@ -2465,7 +2465,9 @@ button {
     .hero-content {
         left: var(--page-padding);
         right: calc(var(--page-padding) + 52px); /* room for the arrow */
-        bottom: 36px;
+        top: 50%;
+        bottom: auto;
+        transform: translateY(-50%);
         width: auto;
         max-width: none;
         margin: 0;
