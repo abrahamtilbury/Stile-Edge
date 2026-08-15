@@ -2756,6 +2756,18 @@ button {
         min-height: 100dvh !important;
         padding-top: 0 !important;
     }
+    
+    .mobile-menu.open {
+        max-height: 0 !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .menu-button[aria-expanded="true"] span:first-child,
+    .menu-button[aria-expanded="true"] span:last-child {
+        transform: none !important;
+    }
 
     .hero-content {
         position: absolute !important;
