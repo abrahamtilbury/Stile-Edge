@@ -2334,6 +2334,10 @@ button {
         letter-spacing: .06em;
     }
 
+    .about-applications {
+        padding-top: 40px;
+    }
+
     .top-bar-inner {
         height: 32px;
         gap: 16px;
