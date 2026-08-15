@@ -2514,10 +2514,11 @@ button {
     .about-hero {
         min-height: min(620px, 90svh);
         padding-top: 96px;
+        align-items: center;
     }
 
     .about-hero-content {
-        margin: 0 0 90px;
+        margin: 0;
         padding-inline: var(--page-padding);
     }
 
