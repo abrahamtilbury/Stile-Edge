@@ -1000,7 +1000,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 7px;
-    margin-bottom: 28px;
+    margin-bottom: 0;
 }
 
 .profile-tags span,
@@ -2239,7 +2239,7 @@ button {
 
     .profile-content {
         grid-column: 2;
-        padding: 20px 16px 32px;
+        padding: 20px 16px 24px;
     }
 
     .profile-content h3 {
