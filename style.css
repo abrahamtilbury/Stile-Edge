@@ -2465,9 +2465,9 @@ button {
     .hero-content {
         left: var(--page-padding);
         right: calc(var(--page-padding) + 52px); /* room for the arrow */
-        top: 46%;
+        top: 26%;
         bottom: auto;
-        transform: translateY(-50%);
+        transform: none;
         width: auto;
         max-width: none;
         margin: 0;
@@ -2490,15 +2490,17 @@ button {
     }
 
     .hero-actions {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 68px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
         gap: 10px;
         width: 100%;
-        margin-left: calc(-1 * var(--page-padding));
-        position: relative;
-        left: 0;
+        margin-left: 0;
     }
 
     .hero-actions .button {
