@@ -2752,46 +2752,48 @@ button {
 
 @media (max-width: 720px) and (orientation: landscape) {
     .hero {
-        height: auto;
-        min-height: 100dvh;
-        padding-top: 110px; /* clears top-bar + header */
+        height: 100dvh !important;
+        min-height: 100dvh !important;
+        padding-top: 0 !important;
     }
 
     .hero-content {
-        position: relative;
-        top: auto;
-        bottom: auto;
-        left: var(--page-padding);
-        right: var(--page-padding);
-        transform: none;
-        margin: 0;
-        width: auto;
-        max-width: none;
-        padding-bottom: 20px;
+        position: absolute !important;
+        top: 130px !important;          /* force clear of header */
+        bottom: auto !important;
+        left: var(--page-padding) !important;
+        right: calc(var(--page-padding) + 48px) !important;
+        transform: none !important;
+        margin: 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        padding: 0 !important;
     }
 
     .hero h1 {
-        font-size: clamp(26px, 5.5vw, 36px);
-        margin-bottom: 8px;
+        font-size: clamp(24px, 5vw, 34px) !important;
+        margin-bottom: 8px !important;
+        line-height: 1 !important;
     }
 
     .hero-text {
-        font-size: 14px;
-        margin-bottom: 14px;
+        font-size: 13px !important;
+        margin-bottom: 12px !important;
     }
 
     .hero-actions {
-        position: relative;
-        left: auto;
-        transform: none;
-        bottom: auto;
-        margin-top: 12px;
-        width: max-content;
-        z-index: 3;
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: 32px !important;
+        top: auto !important;
+        width: max-content !important;
+        margin: 0 !important;
+        z-index: 5 !important;
     }
 
     .hero-dots {
-        bottom: 12px;
+        bottom: 12px !important;
     }
 
     .apron-feature,
