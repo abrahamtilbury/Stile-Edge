@@ -1987,6 +1987,7 @@ button {
 .application-card {
     background: var(--surface);
     padding: 32px 28px;
+    border-radius: 12px;
 }
 .application-card span {
     display: block;
