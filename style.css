@@ -2491,7 +2491,7 @@ button {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        bottom: 46px;
+        bottom: 40px;
         z-index: 3;
         display: flex;
         gap: 10px;
