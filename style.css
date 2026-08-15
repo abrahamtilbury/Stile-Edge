@@ -887,6 +887,9 @@ button {
     border-top: none;
 }
 
+.profile-number {
+    display: none;
+}
 
 .profile-item {
     display: flex;
@@ -2221,9 +2224,9 @@ button {
     }
 
     .profile-item {
-        grid-template-columns: 32px minmax(0, 1fr);
-        gap: 16px;
-        padding: 30px 0;
+        grid-template-columns: 1;
+        gap: 0;
+        padding: 0;
     }
 
     .profile-number {
@@ -2236,7 +2239,7 @@ button {
     }
 
     .profile-content {
-        grid-column: 2;
+        grid-column: auto;
         padding: 20px 16px 24px;
     }
 
