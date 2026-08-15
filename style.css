@@ -1391,6 +1391,11 @@ button {
     text-align: center;
 }
 
+.contact-highlight {
+    color: var(--accent);
+    font-weight: 600;
+}
+
 .contact-content > a {
     display: inline-flex;
     align-items: center;
