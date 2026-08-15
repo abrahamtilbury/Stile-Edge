@@ -2745,6 +2745,38 @@ button {
     }
 }
 
+@media (max-width: 720px) and (orientation: landscape) {
+    .hero {
+        height: auto;
+        min-height: 100svh;
+        padding-top: 110px;
+    }
+
+    .hero-content {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        left: var(--page-padding);
+        right: var(--page-padding);
+        margin: 0;
+        padding-bottom: 80px;
+    }
+
+    .hero-actions {
+        position: relative;
+        left: auto;
+        transform: none;
+        bottom: auto;
+        margin-top: 24px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .hero-dots {
+        bottom: 16px;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     html {
