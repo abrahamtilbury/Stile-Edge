@@ -2538,6 +2538,15 @@ button {
         padding-bottom: 36px;
     }
     
+    .about-service {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    
+    .about-service-grid {
+        gap: 20px;
+    }
+
     .about-introduction-grid {
         gap: 20px;
     }
