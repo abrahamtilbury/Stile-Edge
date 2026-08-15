@@ -2448,14 +2448,14 @@ button {
         gap: 32px;
     }
 
-.contact-page-details {
-    padding: 28px 22px;
-}
-
-.contact-detail a,
-.contact-detail p {
-    font-size: 16px;
-}
+    .contact-page-details {
+        padding: 28px 22px;
+    }
+    
+    .contact-detail a,
+    .contact-detail p {
+        font-size: 16px;
+    }
 
     .hero {
         height: min(560px, 85svh);
@@ -2466,7 +2466,7 @@ button {
         right: calc(var(--page-padding) + 52px); /* room for the arrow */
         bottom: 36px;
         width: auto;
-        max-width: 80%;
+        max-width: none;
         margin: 0;
     }
 
@@ -2489,7 +2489,7 @@ button {
     .hero-actions {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         justify-content: center;
         gap: 10px;
         width: 100%;
@@ -2497,7 +2497,7 @@ button {
 
     .hero-actions .button {
         min-height: 52px;
-        padding: 15px 28px;
+        padding: 12px 16px;
         font-size: 12px;
     }
 
