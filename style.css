@@ -2750,7 +2750,7 @@ button {
     }
 }
 
-@media (max-width: 720px) and (orientation: landscape) {
+@media (max-width: 950px) and (orientation: landscape) {
     .hero {
         height: 100dvh !important;
         min-height: 100dvh !important;
