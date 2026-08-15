@@ -1786,9 +1786,12 @@ button {
 .about-hero,
 .about-introduction,
 .about-statement,
-.about-service,
-.about-cta {
+.about-service {
     border-radius: 0 0 18px 18px;
+}
+
+.about-cta {
+    border-radius: 18px;
 }
 
 .about-statement,
