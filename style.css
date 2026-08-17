@@ -505,8 +505,8 @@ button {
 
 .hero-content {
     position: absolute;
-    left: var(--page-padding);
-    right: var(--page-padding);
+    left: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
+    right: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
     bottom: 56px;
     z-index: 3;
     width: min(850px, 100%);
@@ -693,10 +693,7 @@ button {
 .about-container {
     position: relative;
     z-index: 2;
-    width: min(
-        100% - (var(--page-padding) * 2), 
-        1280px
-    );
+    width: min(100% - (var(--page-padding) * 2), var(--max-width));
     padding-right: 3%;
 }
 
@@ -932,7 +929,7 @@ button {
 }
 
 .profile-content {
-    padding: 20px 16px 24px;
+    padding: 20px 30px 24px 0;
 }
 
 .profile-content h3 {
