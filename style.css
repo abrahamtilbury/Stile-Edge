@@ -256,6 +256,33 @@ button {
     text-transform: uppercase;
 }
 
+.mini-profile-full {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.mini-profile-full .mini-profile-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mini-profile-full .mini-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mini-profile-full strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+}
+
 .mini-profile {
     display: flex;
     gap: 14px;
