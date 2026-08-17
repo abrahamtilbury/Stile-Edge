@@ -688,6 +688,7 @@ button {
     overflow: hidden;
     background: var(--surface);
     padding-block: clamp(40px, 4vw, 55px);
+    border-radius: 18px;
 }
 
 .about-container {
