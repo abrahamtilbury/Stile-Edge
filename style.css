@@ -277,7 +277,7 @@ button {
 
 .mini-profile-full .mini-profile-image {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    height: 58%;
     border-radius: 0;
     overflow: hidden;
     flex-shrink: 0;
@@ -1633,110 +1633,6 @@ button {
   object-fit: cover;
   display: block;
 }
-
-.project-card-back {
-  background: var(--surface);
-  transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  padding: 28px;
-}
-
-.project-back-content h3 {
-  margin: 0 0 12px;
-  font-size: 22px;
-  letter-spacing: -0.03em;
-}
-
-.project-back-content p {
-  margin: 0 0 18px;
-  color: var(--text-muted);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.project-back-image {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.project-back-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.project-profile-used {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
-}
-
-.project-profile-label {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--text-dim);
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.mini-profile {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-.mini-profile-image {
-  width: 72px;
-  height: 52px;
-  border-radius: 6px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.mini-profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.mini-profile-info strong {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 15px;
-}
-
-.project-profile strong {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.project-profile-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.project-profile-tags span {
-  padding: 5px 9px;
-  border: 1px solid rgba(255,255,255,.18);
-  border-left: 2px solid var(--accent);
-  color: var(--text-dim);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  border-radius: 6px;
-  background: rgba(255,255,255,.02);
-}
-
 
 /* ==========================
    Contact
