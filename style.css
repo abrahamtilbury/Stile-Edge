@@ -129,7 +129,7 @@ button {
 .apron-feature-image,
 .apron-product-image,
 .feature-image {
-    border: 1px solid rgba(255,255,255,.08);
+    border: 0;
 }
 
 .profiles-heading h2,
