@@ -221,6 +221,7 @@ button {
     background: var(--surface);
     transform: rotateY(180deg);
     display: flex;
+    flex-direction: column;
     padding: 0;
     overflow: hidden;
 }
@@ -269,20 +270,22 @@ button {
 }
 
 .mini-profile-full {
-    display: contents;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .mini-profile-full .mini-profile-image {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 10;
     border-radius: 0;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .project-back-content {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 
@@ -290,7 +293,8 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 24px 22px;
+    padding: 20px 22px 22px;
+    flex: 1;
 }
 
 .project-profile-label {
