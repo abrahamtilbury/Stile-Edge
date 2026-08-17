@@ -209,8 +209,8 @@ button {
     background: var(--surface);
     transform: rotateY(180deg);
     display: flex;
-    align-items: center;
-    padding: 28px;
+    padding: 0;
+    overflow: hidden;
 }
 
 .project-back-content h3 {
@@ -257,17 +257,32 @@ button {
 }
 
 .mini-profile-full {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 12px;
+    display: contents;
 }
 
 .mini-profile-full .mini-profile-image {
     width: 100%;
-    aspect-ratio: 16 / 10;
-    border-radius: 8px;
+    height: 100%;
+    border-radius: 0;
     overflow: hidden;
+}
+
+.project-back-content {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    width: 100%;
+    height: 100%;
+}
+
+.mini-profile-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px 22px;
+}
+
+.project-profile-label {
+    display: none;
 }
 
 .mini-profile-full .mini-profile-image img {
@@ -305,8 +320,9 @@ button {
 
 .mini-profile-info strong {
     display: block;
-    margin-bottom: 6px;
-    font-size: 15px;
+    margin-bottom: 12px;
+    font-size: 22px;
+    letter-spacing: -0.03em;
 }
 
 .project-profile-tags {
@@ -1713,6 +1729,7 @@ button {
     color: #080808;
     background: var(--accent);
     text-align: center;
+    border-radius: 18px;
 }
 
 .contact-highlight {
@@ -2622,10 +2639,6 @@ button {
     
       .gallery-grid {
         grid-template-columns: 1fr;
-      }
-      
-      .project-card-back {
-        padding: 22px;
       }
     
 }
