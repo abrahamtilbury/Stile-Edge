@@ -507,7 +507,7 @@ button {
     position: absolute;
     left: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
     right: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
-    bottom: 56px;
+    bottom: 130px;
     z-index: 3;
     width: min(850px, 100%);
 }
@@ -534,6 +534,10 @@ button {
 }
 
 .hero-actions {
+    position: absolute;
+    left: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
+    bottom: 56px;
+    z-index: 3;
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
