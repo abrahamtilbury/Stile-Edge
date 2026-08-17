@@ -926,7 +926,7 @@ button {
 }
 
 .profile-content {
-    padding: 20px 30px 24px 0;
+    padding: 20px 24px 24px 0;
 }
 
 .profile-content h3 {
@@ -966,10 +966,6 @@ button {
 /* --------------------------
    Profile Content
 -------------------------- */
-
-.profile-content {
-    padding-right: 30px;
-}
 
 .profile-content h3 {
     margin: 0 0 16px;
