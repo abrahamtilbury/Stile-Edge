@@ -819,6 +819,9 @@ button {
     padding-bottom: clamp(50px, 7vw, 110px);
 }
 
+.profile-content {
+    padding: 20px 22px 22px;
+}
 
 .profiles-intro {
     display: grid;
@@ -941,7 +944,7 @@ button {
 }
 
 .profile-content {
-    padding: 20px 24px 24px 0;
+    padding: 20px 22px 22px;
 }
 
 .profile-content h3 {
@@ -2204,7 +2207,6 @@ button {
 
     .profile-content {
         grid-column: auto;
-        padding-right: 0;
     }
 }
 
