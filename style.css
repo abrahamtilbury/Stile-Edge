@@ -1095,8 +1095,6 @@ button {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     border-top: none;
-    max-width: 1200px;
-    margin-inline: auto;
 }
 
 .profile-number {
