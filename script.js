@@ -108,3 +108,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+/* ==========================
+   Contact Form (Formspree)
+========================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const started = document.getElementById('form-started');
+    const status = document.getElementById('form-status');
+    const submitBtn = form.querySelector('[type="submit"]');
+
+    if (started) started.value = String(Date.now());
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const website = form.querySelector('[name="website"]');
+        const gotcha = form.querySelector('[name="_gotcha"]');
+        if ((website && website.value.trim() !== '') ||
+            (gotcha && gotcha.value.trim() !== '')) {
+            return;
+        }
+
+        const t0 = Number(started?.value || 0);
+        if (t0 && Date.now() - t0 < 2500) {
+            showStatus('Please take a moment and try again.', false);
+            return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            });
+
+            if (res.ok) {
+                form.reset();
+                if (started) started.value = String(Date.now());
+                showStatus('Message sent. We’ll get back to you shortly.', true);
+            } else {
+                const data = await res.json().catch(() => ({}));
+                showStatus(
+                    data.error || 'Something went wrong. Email sales@stileedge.com instead.',
+                    false
+                );
+            }
+        } catch {
+            showStatus('Network error. Please email sales@stileedge.com.', false);
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send message';
+        }
+    });
+
+    function showStatus(msg, ok) {
+        status.hidden = false;
+        status.textContent = msg;
+        status.classList.toggle('is-success', ok);
+        status.classList.toggle('is-error', !ok);
+    }
+});
