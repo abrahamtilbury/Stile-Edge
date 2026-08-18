@@ -194,6 +194,63 @@
             </div>
         </section>
 
+        <section class="contact-form-section">
+    <div class="container">
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/mqpzgkbg" method="POST" novalidate>
+            <p class="eyebrow">SEND A MESSAGE</p>
+            <h2>Tell us about the job</h2>
+            <p class="contact-form-lead">
+                Include the tile name or type, dimensions, quantity and what the edge is for. Photos help.
+            </p>
+
+            <div class="form-grid">
+                <div class="form-field">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required autocomplete="name">
+                </div>
+
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required autocomplete="email">
+                </div>
+
+                <div class="form-field">
+                    <label for="phone">Phone <span class="optional">(optional)</span></label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel">
+                </div>
+
+                <div class="form-field">
+                    <label for="company">Company <span class="optional">(optional)</span></label>
+                    <input type="text" id="company" name="company" autocomplete="organization">
+                </div>
+
+                <div class="form-field form-field--full">
+                    <label for="message">Project details</label>
+                    <textarea id="message" name="message" rows="6" required
+                        placeholder="Tile type, sizes, quantity, profile needed, site location…"></textarea>
+                </div>
+            </div>
+
+            <input type="hidden" name="_subject" value="Website enquiry — Stile Edge">
+            <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <!-- Honeypot — leave empty. Real users never see this. -->
+            <div class="hp" aria-hidden="true">
+                <label for="website">Website</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- Time check token (set by JS) -->
+            <input type="hidden" name="form_started" id="form-started" value="">
+
+            <button type="submit" class="button button-primary contact-form-submit">
+                Send message
+            </button>
+
+            <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
+        </form>
+    </div>
+</section>
+
     </main>
 
     <!-- =========================
