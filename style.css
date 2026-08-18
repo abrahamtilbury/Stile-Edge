@@ -2543,7 +2543,7 @@ button {
 }
 
 .contact-form-intro {
-    max-width: 720px;
+    max-width: none;
     margin-bottom: 32px;
 }
 
@@ -2555,7 +2555,7 @@ button {
 }
 
 .contact-form {
-    max-width: 900px;
+    max-width: none;
 }
 
 .contact-form-lead {
