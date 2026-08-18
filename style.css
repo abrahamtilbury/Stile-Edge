@@ -1657,7 +1657,7 @@ button {
 }
 
 .contact-form {
-    max-width: 900px; /* wider, still readable */
+    max-width: 900px;
 }
 
 .contact-form-lead {
@@ -1667,7 +1667,7 @@ button {
     max-width: 620px;
 }
 
-.contact-form-lead:last-child {
+.contact-form-lead:last-of-type {
     margin-bottom: 0;
 }
 
@@ -1754,6 +1754,46 @@ button {
 
 .form-status.is-error {
     color: #ff6b6b;
+}
+
+/* Contact details row */
+.contact-page {
+    padding-block: clamp(36px, 4vw, 56px);
+    border-top: 1px solid var(--line);
+}
+
+.contact-page-details {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 28px 24px;
+}
+
+.contact-detail-label {
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.contact-detail a,
+.contact-highlight {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text);
+}
+
+.contact-detail a:hover {
+    color: var(--accent);
+}
+
+/* Hero text aligns with container / form */
+.about-hero-content {
+    left: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
+    right: auto;
+    width: min(720px, calc(100% - (var(--page-padding) * 2)));
+    padding-inline: 0;
 }
 
 /* Details row — stretched, not a single column */
@@ -2497,34 +2537,43 @@ button {
 ========================== */
 
 .contact-form-section {
-    padding-block: var(--section-space);
+    padding-block: clamp(40px, 5vw, 64px);
     background: var(--bg);
     border-top: 1px solid var(--line);
 }
 
-.contact-form {
+.contact-form-intro {
     max-width: 720px;
+    margin-bottom: 32px;
 }
 
-.contact-form h2 {
+.contact-form-intro h2 {
     margin: 0 0 14px;
     font-size: clamp(32px, 4vw, 48px);
     line-height: .95;
     letter-spacing: -.03em;
 }
 
+.contact-form {
+    max-width: 900px;
+}
+
 .contact-form-lead {
-    margin: 0 0 36px;
+    margin: 0 0 12px;
     color: var(--text-muted);
     font-size: 16px;
-    max-width: 520px;
+    max-width: 620px;
+}
+
+.contact-form-lead:last-of-type {
+    margin-bottom: 0;
 }
 
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px 24px;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 .form-field {
@@ -2584,6 +2633,10 @@ button {
     overflow: hidden;
 }
 
+.cf-turnstile {
+    margin: 4px 0 20px;
+}
+
 .contact-form-submit {
     min-width: 180px;
 }
@@ -2599,6 +2652,46 @@ button {
 
 .form-status.is-error {
     color: #ff6b6b;
+}
+
+/* Contact details — full width row */
+.contact-page {
+    padding-block: clamp(36px, 4vw, 56px);
+    border-top: 1px solid var(--line);
+}
+
+.contact-page-details {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 28px 24px;
+}
+
+.contact-detail-label {
+    margin: 0 0 8px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.contact-detail a,
+.contact-highlight {
+    margin: 0;
+    font-size: 15px;
+    color: var(--text);
+}
+
+.contact-detail a:hover {
+    color: var(--accent);
+}
+
+/* Hero text lines up with container / form */
+.about-hero-content {
+    left: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
+    right: auto;
+    width: min(720px, calc(100% - (var(--page-padding) * 2)));
+    padding-inline: 0;
 }
 
 /* ==========================
@@ -2908,10 +3001,6 @@ button {
     .contact-info-grid {
         grid-template-columns: 1fr;
         gap: 32px;
-    }
-
-    .contact-page-details {
-        padding: 28px 22px;
     }
     
     .contact-detail a,
