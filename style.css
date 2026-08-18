@@ -255,8 +255,7 @@ button {
 
 .mini-profile-full .mini-profile-image {
     width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 10;
+    height: 55%;
     border-radius: 0;
     overflow: hidden;
     flex-shrink: 0;
@@ -274,6 +273,13 @@ button {
     justify-content: flex-start;
     padding: 20px 22px 22px;
     flex: 1;
+}
+
+.mini-profile-info p {
+    margin: 0 0 16px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .project-profile-label {
