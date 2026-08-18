@@ -1620,6 +1620,11 @@ button {
     color: #fff;
 }
 
+.contact .about-cta-actions {
+    justify-content: center;
+    margin-top: 28px;
+}
+
 /* ==========================
    Contact Page
 ========================== */
