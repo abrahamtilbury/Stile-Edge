@@ -642,6 +642,7 @@ button {
 .hero {
     position: relative;
     height: min(620px, 70vh);
+    min-height: 520px;
     display: block;
     overflow: hidden;
     padding-top: 0;
@@ -691,7 +692,7 @@ button {
     position: absolute;
     left: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
     right: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
-    bottom: 130px;
+    bottom: clamp(110px, 16vh, 130px);
     z-index: 3;
     width: min(850px, 100%);
 }
@@ -720,7 +721,7 @@ button {
 .hero-actions {
     position: absolute;
     left: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
-    bottom: 56px;
+    bottom: clamp(28px, 5vh, 56px);
     z-index: 3;
     display: flex;
     gap: 12px;
@@ -2342,6 +2343,16 @@ button {
     .profile-visual {
         max-width: 420px;
         width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 5vw, 64px);
+        margin-bottom: 14px;
+    }
+
+    .hero-text {
+        font-size: 16px;
+        margin-bottom: 20px;
     }
 }
 
