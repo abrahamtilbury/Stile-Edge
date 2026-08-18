@@ -30,10 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const slides = Array.from(slider.querySelectorAll('.hero-slide'));
     const nextBtn = document.querySelector('.hero-arrow-next');
-    if (!nextBtn) {
-        console.log('next button not found');
-        return;
-    }
+    if (!nextBtn) return;
     const dotsContainer = document.querySelector('.hero-dots');
     if (!dotsContainer) return;
 
@@ -85,8 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pause on hover
     const hero = document.querySelector('.hero');
-    hero.addEventListener('mouseenter', stopAutoplay);
-    hero.addEventListener('mouseleave', startAutoplay);
+    if (hero) {
+        hero.addEventListener('mouseenter', stopAutoplay);
+        hero.addEventListener('mouseleave', startAutoplay);
+    }
 
     // Keyboard
     document.addEventListener('keydown', (e) => {
@@ -102,8 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ==========================
    Project Cards Flip
 ========================== */
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', () => {
-        card.classList.toggle('is-flipped');
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('is-flipped');
+        });
     });
 });
