@@ -1879,6 +1879,11 @@ button {
     overflow: hidden;
     padding-top: 160px;
 }
+
+.about-hero--short {
+    min-height: 50vh;
+}
+
 .about-hero-image {
     position: absolute;
     inset: 0;
@@ -1888,9 +1893,6 @@ button {
     object-position: center 35%;
 }
 
-.about-hero {
-    min-height: 50vh;
-}
 .about-hero-overlay {
     position: absolute;
     inset: 0;
@@ -1929,11 +1931,6 @@ button {
     color: rgba(255,255,255,.85);
     font-size: clamp(17px, 1.8vw, 20px);
     line-height: 1.6;
-}
-
-.about-hero.profiles-hero,
-.about-hero[style] {   /* or better: add a class */
-    min-height: 50vh;
 }
 
 /* Soft section transitions */
