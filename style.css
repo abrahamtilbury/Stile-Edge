@@ -1927,6 +1927,11 @@ button {
     line-height: 1.6;
 }
 
+.about-hero.profiles-hero,
+.about-hero[style] {   /* or better: add a class */
+    min-height: 50vh;
+}
+
 /* Soft section transitions */
 .about-hero,
 .about-introduction,
