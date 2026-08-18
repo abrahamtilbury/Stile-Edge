@@ -138,6 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Turnstile required
+        const token = form.querySelector('[name="cf-turnstile-response"]')?.value;
+        if (!token) {
+            showStatus('Please complete the verification check.', false);
+            return;
+        }
+
         submitBtn.disabled = true;
         submitBtn.textContent = 'Sending…';
 
@@ -151,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (res.ok) {
                 form.reset();
                 if (started) started.value = String(Date.now());
+                if (window.turnstile) turnstile.reset();
                 showStatus('Message sent. We’ll get back to you shortly.', true);
             } else {
                 const data = await res.json().catch(() => ({}));
