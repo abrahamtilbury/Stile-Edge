@@ -1543,8 +1543,210 @@ button {
     background: rgba(255,255,255,.02);
 }
 
+/* ==========================
+   7.7 HOME PAGE - GOOGLE REVIEWS
+========================== */
+
+.google-reviews {
+    position: relative;
+    overflow: hidden;
+}
+
+.google-reviews-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: end;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.google-reviews-heading h2 {
+    margin: 0;
+}
+
+.google-reviews-rating {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.google-rating-stars,
+.google-review-stars {
+    display: flex;
+    gap: 0.16rem;
+    line-height: 1;
+}
+
+.google-rating-star {
+    font-size: 1.15rem;
+}
+
+.google-rating-star--empty {
+    opacity: 0.25;
+}
+
+.google-rating-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.google-rating-copy strong {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.google-rating-copy span {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.google-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.google-review-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 280px;
+    padding: clamp(1.4rem, 2.5vw, 2rem);
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 18px;
+}
+
+.google-review-card--loading {
+    justify-content: center;
+    color: var(--text-muted);
+}
+
+.google-review-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.25rem;
+}
+
+.google-review-author-image {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--surface-2);
+}
+
+.google-review-author-placeholder {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    font-size: 0.9rem;
+}
+
+.google-review-author {
+    min-width: 0;
+}
+
+.google-review-author a,
+.google-review-author strong {
+    display: block;
+    color: inherit;
+    font-weight: 600;
+    line-height: 1.25;
+    text-decoration: none;
+}
+
+.google-review-author a:hover {
+    text-decoration: underline;
+}
+
+.google-review-date {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+}
+
+.google-review-stars {
+    margin-bottom: 1rem;
+}
+
+.google-review-text {
+    margin: 0 0 1.5rem;
+    line-height: 1.65;
+}
+
+.google-review-translation {
+    display: block;
+    margin-top: -0.8rem;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+.google-review-source {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.google-review-source a {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.google-review-source a:hover {
+    color: var(--text);
+}
+
+.google-reviews-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.google-reviews-disclosure {
+    max-width: 720px;
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.google-reviews-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+/*
+   Google Maps requires attribution when Places content is
+   displayed without a Google Map.
+*/
+.google-maps-attribution {
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: normal;
+    white-space: nowrap;
+    color: #ffffff;
+}
+
+
 /* =============================
-   7.7 Home Page — Contact CTA
+   7.8 Home Page — Contact CTA
 ============================= */
 
 .contact {
@@ -2546,26 +2748,28 @@ button {
 /* ==========================
    12. RESPONSIVE OVERRIDES
 ========================== */
+@media (max-width: 640px) {
 
-@media (max-width: 1100px) {
-    .profiles-intro {
+    .google-reviews-header {
         grid-template-columns: 1fr;
-        gap: 30px;
+        align-items: start;
     }
 
-    .profile-visual {
-        max-width: 420px;
-        width: 100%;
+    .google-reviews-grid {
+        grid-template-columns: 1fr;
     }
 
-    .hero h1 {
-        font-size: clamp(40px, 5vw, 64px);
-        margin-bottom: 14px;
+    .google-review-card:last-child {
+        grid-column: auto;
     }
 
-    .hero-text {
-        font-size: 16px;
-        margin-bottom: 20px;
+    .google-review-card {
+        min-height: 0;
+    }
+
+    .google-reviews-footer {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -2657,6 +2861,28 @@ button {
     
 }
 
+@media (max-width: 1100px) {
+    .profiles-intro {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .profile-visual {
+        max-width: 420px;
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: clamp(40px, 5vw, 64px);
+        margin-bottom: 14px;
+    }
+
+    .hero-text {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+}
+
 @media (min-width: 901px) {
     .apron-feature + .apron-products {
         display: contents; /* lets the single product sit in the same visual row if you prefer */
@@ -2664,7 +2890,14 @@ button {
 }
 
 @media (max-width: 900px) and (min-width: 721px) {
+    .google-reviews-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 
+    .google-review-card:last-child {
+        grid-column: 1 / -1;
+    }
+    
     .header-inner {
         grid-template-columns: 140px minmax(0, 1fr) auto;
         column-gap: 12px;
