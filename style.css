@@ -497,7 +497,7 @@ button {
 }
 
 /* ----------------------------------------------
-   6.1.1 SHARED COMPONENTS - BUTTONS SECONDARY
+   6.1.2 SHARED COMPONENTS - BUTTONS SECONDARY
 ----------------------------------------------- */
 
 .button-secondary {
@@ -1014,7 +1014,7 @@ button {
 }
 
 /* ==========================
-   7.4.1 HOME PAGE - Laminate Profiles
+   7.4 HOME PAGE - Laminate Profiles
 ========================== */
 
 .feature-section {
@@ -1025,7 +1025,7 @@ button {
 }
 
 /* -----------------------------------
-   7.4.2 HOME PAGE - Laminate Content
+   7.4.1 HOME PAGE - Laminate Content
 ----------------------------------- */
 
 .feature-copy {
@@ -1059,7 +1059,7 @@ button {
 }
 
 /* ------------------------------------
-   7.4.3 HOME PAGE - Laminate Image
+   7.4.2 HOME PAGE - Laminate Image
 ------------------------------------ */
 
 .feature-image {
@@ -1096,7 +1096,7 @@ button {
 }
 
 /* =================================
-   7.5.1 HOME PAGE - Apron Profiles
+   7.5 HOME PAGE - Apron Profiles
 ================================= */
 
 .aprons-section {
@@ -1136,7 +1136,7 @@ button {
 }
 
 /* --------------------------------
-   7.5.2 HOME PAGE - Apron Feature
+   7.5.1 HOME PAGE - Apron Feature
 -------------------------------- */
 
 .apron-product,
@@ -1266,7 +1266,7 @@ button {
 
 
 /* --------------------------
-   7.5.3 HOME PAGE - Apron Products
+   7.5.2 HOME PAGE - Apron Products
 -------------------------- */
 
 .apron-products {
@@ -1296,7 +1296,7 @@ button {
 }
 
 /* --------------------------
-   7.5.4 HOME PAGE - Apron Technical Strip
+   7.5.3 HOME PAGE - Apron Technical Strip
 -------------------------- */
 
 .apron-tech {
@@ -1328,7 +1328,7 @@ button {
 
 
 /* -----------------------------
-   7.5.5 HOME PAGE - Apron CTA
+   7.5.4 HOME PAGE - Apron CTA
 ----------------------------- */
 
 .apron-cta {
@@ -2321,7 +2321,7 @@ button {
     color: var(--accent);
 }
 
-/* Hero text lines up with container / form */
+/* About Hero — Final Alignment Override */
 .about-hero-content {
     left: max(var(--page-padding), calc((100vw - var(--max-width)) / 2));
     right: auto;
@@ -3190,7 +3190,7 @@ button {
 }
 
 /* ==========================
-   14. RESPONSIVE OVERRIDES
+   14. REDUCED MOTION
 ========================== */
 
 @media (prefers-reduced-motion: reduce) {
