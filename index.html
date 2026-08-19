@@ -645,8 +645,20 @@
                     id="google-reviews-grid"
                     aria-live="polite"
                 >
-                    <article class="google-review-card google-review-card--loading">
-                        <p>Loading Google reviews…</p>
+                    <article class="google-review-card google-review-card--fallback">
+                        <div>
+                            <h3>Google Reviews</h3>
+                            <p>See what customers have said about Stile Edge on Google Maps.</p>
+                        </div>
+                    
+                        <a
+                            class="text-link"
+                            href="https://maps.app.goo.gl/a8c4T1dNi5eyxDtG7"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Google reviews ↗
+                        </a>
                     </article>
                 </div>
         
@@ -748,9 +760,5 @@
     
     <script src="script.js"></script>
 
-    <script
-        async
-        src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&loading=async&libraries=places&callback=initGoogleReviews&v=weekly"
-    ></script>
 </body>
 </html>
