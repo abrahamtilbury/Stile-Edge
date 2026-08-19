@@ -58,6 +58,16 @@
    3. Base / Reset
 ========================== */
 
+@view-transition {
+    navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 180ms;
+    animation-timing-function: ease-out;
+}
+
 #about, #profiles, #laminate, #aprons, #gallery, #contact {
     scroll-margin-top: 110px;
 }
@@ -1111,6 +1121,7 @@ button {
 
 .aprons-section {
     background: var(--bg);
+    padding-bottom: 0;
 }
 
 .aprons-intro {
@@ -1302,7 +1313,7 @@ button {
     display: flex;
     flex-wrap: wrap;
     gap: 7px;
-    margin-bottom: 28px;
+    margin-bottom: 0;
 }
 
 /* --------------------------
@@ -1364,6 +1375,8 @@ button {
 
 .gallery {
     background: var(--surface);
+    padding-top: clamp(48px, 5vw, 72px);
+    padding-bottom: 0;
 }
 
 /* ==========================
@@ -1556,6 +1569,15 @@ button {
 /* ==========================
    7.7 HOME PAGE - GOOGLE REVIEWS
 ========================== */
+
+.google-place-attributions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 12px;
+}
 
 .google-reviews {
     position: relative;
@@ -3286,7 +3308,7 @@ button {
     }
 
     .aprons-section {
-        padding-bottom: 40px;
+        padding-bottom: 0;
     }
 
     .gallery {
@@ -3490,6 +3512,11 @@ button {
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none !important;
     }
 
 }
