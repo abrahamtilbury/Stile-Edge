@@ -404,7 +404,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const card = document.createElement("article");
 
-        card.className = "google-review-card";
+        card.className =
+            "google-review-card google-review-card--fallback";
 
         const heading = document.createElement("h3");
 
@@ -423,7 +424,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.appendChild(card);
 
         if (footer) {
-            footer.hidden = false;
+            footer.hidden = true;
         }
     }
 
@@ -453,6 +454,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     "googleMapsLinks"
                 ]
             });
+
+            const attributionContainer =
+                document.getElementById("google-place-attributions");
+            
+            if (attributionContainer) {
+                attributionContainer.replaceChildren();
+            
+                (place.attributions || []).forEach((attribution) => {
+                    if (!attribution.provider) return;
+            
+                    const element = attribution.providerURI
+                        ? document.createElement("a")
+                        : document.createElement("span");
+            
+                    element.textContent = attribution.provider;
+            
+                    if (attribution.providerURI) {
+                        element.href = attribution.providerURI;
+                        element.target = "_blank";
+                        element.rel = "noopener noreferrer";
+                    }
+            
+                    attributionContainer.appendChild(element);
+                });
+            }
 
 
             /* Overall rating */
