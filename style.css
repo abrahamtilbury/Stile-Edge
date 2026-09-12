@@ -127,6 +127,7 @@ html {
     scroll-behavior: smooth;
 }
 
+
 body {
     margin: 0;
     background: var(--bg);
@@ -1235,6 +1236,13 @@ button {
 
 .profile-card-link:hover span {
     transform: translateX(4px);
+}
+
+#half-bullnose,
+#full-bullnose,
+#flat-edge-bevel,
+#pencil-round {
+    scroll-margin-top: 24px;
 }
 
 /* ====================================
