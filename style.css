@@ -22,6 +22,7 @@
     --page-padding: clamp(20px, 4vw, 72px);
     --section-space: clamp(55px, 6vw, 90px);
     --ease: cubic-bezier(.22, 1, .36, 1);
+    --feature-red: #b6403d;
     
     /* Stile edge motif */
     --brand-edge-length: 40px;
@@ -2047,11 +2048,50 @@ button {
 ============================= */
 
 .contact {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     padding-block: clamp(70px, 8vw, 100px);
-    color: var(--text);
-    background: var(--surface);
+    color: #fff;
+    background: var(--feature-red);
     text-align: center;
     border-radius: var(--radius-section);
+}
+
+.contact::before,
+.contact::after,
+.about-cta::before,
+.about-cta::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 50%;
+}
+
+.contact::before,
+.about-cta::before {
+    width: 760px;
+    height: 250px;
+    top: -110px;
+    right: -170px;
+    transform: rotate(-8deg);
+}
+
+.contact::after,
+.about-cta::after {
+    width: 620px;
+    height: 220px;
+    bottom: -145px;
+    left: -180px;
+    transform: rotate(10deg);
+}
+
+.contact-content,
+.about-cta-inner {
+    position: relative;
+    z-index: 1;
 }
 
 .contact-highlight {
@@ -2565,11 +2605,15 @@ button {
 =================================== */
 
 .about-cta {
-    background: var(--accent);
-    color: #080808;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--feature-red);
+    color: #fff;
     text-align: center;
     padding-block: clamp(70px, 8vw, 110px);
 }
+
 .about-cta-inner {
     max-width: 800px;
     margin: 0 auto;
@@ -2581,11 +2625,14 @@ button {
     line-height: .95;
     letter-spacing: -.045em;
 }
+
 .about-cta h2 span {
     display: block;
 }
+
 .about-cta p {
     margin: 0 0 32px;
+    color: rgba(255,255,255,.78);
     font-size: 17px;
 }
 
@@ -2598,11 +2645,11 @@ button {
 
 /* Inverse primary button on yellow CTA sections */
 .about-cta .button-primary {
-    --button-face: #080808;
-    --button-face-hover: #222;
-    --button-ink: #fff;
+    --button-face: var(--accent);
+    --button-face-hover: var(--accent-bright);
+    --button-ink: #080808;
     --button-depth-color: #080808;
-    --button-divider: rgba(255,255,255,.20);
+    --button-divider: rgba(8,8,8,.18);
 }
 
 .about-cta .button-secondary {
