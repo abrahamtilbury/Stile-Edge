@@ -355,13 +355,10 @@ button {
 
 .desktop-nav {
     min-width: 0;
-
     display: flex;
     align-items: center;
-    justify-content: center;
-
+    justify-content: flex-end;
     gap: clamp(18px, 2vw, 30px);
-
     white-space: nowrap;
 }
 
@@ -864,45 +861,6 @@ button {
     gap: 12px;
     flex-wrap: nowrap;
     width: max-content;
-}
-
-/* =====================================
-   7.1.0.5 HOME PAGE - PROOF RAIL
-===================================== */
-
-.hero-proof {
-    height: 38px;
-    background: #0d0d0d;
-    border-bottom: 1px solid rgba(255,255,255,.12);
-    color: rgba(255,255,255,.82);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    line-height: 1;
-    text-transform: uppercase;
-}
-
-.hero-proof-grid {
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: clamp(12px, 3vw, 36px);
-}
-
-.hero-proof-item {
-    min-width: 0;
-    padding: 0;
-    color: inherit;
-    font: inherit;
-    letter-spacing: inherit;
-    line-height: inherit;
-    text-align: center;
-    white-space: nowrap;
-}
-
-.hero-proof-item::before {
-    content: none;
 }
 
 /* =====================================
@@ -2085,99 +2043,43 @@ button {
 }
 
 /* -----------------------------------
-   Stile profile-contour CTA artwork
+   Stile Edge — profile line artwork
 ----------------------------------- */
 
 .contact::before,
 .about-cta::before {
     content: "";
-
     position: absolute;
+    inset: 0;
     z-index: 0;
-
-    width: 820px;
-    height: 520px;
-
     pointer-events: none;
-
-    background:
-        repeating-radial-gradient(
-            ellipse at center,
-            transparent 0 29px,
-            rgba(255,255,255,.17) 30px 31px,
-            transparent 32px 60px
-        );
-
-    opacity: .65;
-
-    filter: blur(.25px);
-
-    -webkit-mask-image:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            #000 18%,
-            #000 82%,
-            transparent 100%
-        );
-
-    mask-image:
-        linear-gradient(
-            90deg,
-            transparent 0%,
-            #000 18%,
-            #000 82%,
-            transparent 100%
-        );
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='.22' vector-effect='non-scaling-stroke'%3E%3Cpath d='M20 300H180C275 300 320 255 320 170C320 95 365 55 455 55H900'/%3E%3Cpath d='M75 330H315L470 175H900'/%3E%3Cpath d='M210 360V275L380 105H900'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: min(900px, 78vw) auto;
+    background-position: right -80px center;
+    opacity: .85;
 }
 
-/* Homepage: profile lines sweep in from right */
-.contact::before {
-    top: -215px;
-    right: -265px;
-
-    transform:
-        rotate(-13deg)
-        scaleX(1.2);
-}
-
-/* Inner pages: deliberately opposite composition */
+/* Reverse the composition on inner-page CTAs */
 .about-cta::before {
-    left: -290px;
-    bottom: -235px;
-
-    transform:
-        rotate(11deg)
-        scaleX(1.28);
+    transform: scaleX(-1);
 }
 
-/* Soft depth rather than another drawn line */
+/* Very subtle tonal depth — no circles */
 .contact::after,
 .about-cta::after {
     content: "";
     position: absolute;
+    inset: 0;
     z-index: 0;
-    width: 480px;
-    height: 300px;
     pointer-events: none;
     background:
-        radial-gradient(
-            ellipse at center,
-            rgba(0,0,0,.30) 0%,
-            rgba(0,0,0,.14) 36%,
-            transparent 72%
+        linear-gradient(
+            105deg,
+            rgba(0,0,0,.18) 0%,
+            rgba(0,0,0,.06) 42%,
+            transparent 68%
         );
-    filter: blur(30px);
-}
-
-.contact::after {
-    left: -120px;
-    bottom: -190px;
-}
-
-.about-cta::after {
-    top: -190px;
-    right: -120px;
 }
 
 .contact-content,
@@ -2700,7 +2602,14 @@ button {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    background: var(--feature-red);
+    background:
+    linear-gradient(
+        110deg,
+        rgba(0,0,0,.13),
+        transparent 52%,
+        rgba(0,0,0,.05)
+    ),
+    var(--feature-red);
     color: #fff;
     text-align: center;
     padding-block: clamp(70px, 8vw, 110px);
@@ -3389,22 +3298,6 @@ button {
     :root {
         --page-padding: 20px;
         --section-space: 52px;
-    }
-
-    .hero-proof {
-        height: 32px;
-        font-size: 8px;
-        letter-spacing: .05em;
-    }
-    
-    .hero-proof-grid {
-        height: 32px;
-        gap: 8px;
-    }
-    
-    .hero-proof-item {
-        min-width: 0;
-        font-size: inherit;
     }
         
     /* ==========================
