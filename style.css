@@ -20,9 +20,12 @@
     --line: rgba(255,255,255,.10);
     --max-width: 1180px;
     --page-padding: clamp(20px, 4vw, 72px);
-    --section-space: clamp(55px, 6vw, 90px);
+    --section-space: clamp(56px, 6vw, 80px);
     --ease: cubic-bezier(.22, 1, .36, 1);
     --feature-red: #f7403e;
+    --section-title-size: clamp(38px, 4vw, 54px);
+    --card-title-size: clamp(28px, 2.6vw, 36px);
+    --body-copy-size: 16px;
     
     /* Stile edge motif */
     --brand-edge-length: 40px;
@@ -200,6 +203,33 @@ button {
     width: var(--brand-edge-length);
     height: var(--brand-edge-thickness);
     background: var(--accent);
+}
+
+.profiles-heading h2,
+.aprons-heading h2,
+.section-heading h2,
+.feature-copy h2 {
+    font-size: var(--section-title-size);
+    line-height: .96;
+    letter-spacing: -.04em;
+}
+
+.profile-content h3,
+.apron-product-content h3,
+.apron-feature-content h3 {
+    font-size: var(--card-title-size);
+    line-height: 1;
+    letter-spacing: -.035em;
+}
+
+.profiles-description,
+.aprons-intro-copy,
+.profile-content > p,
+.apron-product-content > p,
+.apron-feature-content > p,
+.feature-copy p:not(.eyebrow) {
+    font-size: var(--body-copy-size);
+    line-height: 1.6;
 }
 
 .profile-visual,
@@ -1117,15 +1147,7 @@ button {
 .application-card::before,
 .google-review-card::before,
 .contact-page-details::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: var(--brand-edge-length);
-    height: var(--brand-edge-thickness);
-    background: var(--accent);
-    pointer-events: none;
+    content: none;
 }
 
 .profile-item {
@@ -3205,11 +3227,6 @@ button {
         gap: 35px;
         grid-template-columns: 1fr;
     }
-
-    .profiles {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
     
     .profiles-intro {
         margin-bottom: 30px;
@@ -3284,8 +3301,13 @@ button {
 @media (max-width: 1050px) and (min-width: 721px) {
 
     .profiles-intro,
-    .profile-list {
-        max-width: min(680px, 68vw);
+    .profile-list,
+    .aprons-intro,
+    .apron-feature,
+    .apron-products {
+        width: 100%;
+        max-width: 680px;
+        margin-inline: auto;
     }
 
     .profile-list {
@@ -3366,7 +3388,7 @@ button {
 
     :root {
         --page-padding: 20px;
-        --section-space: 75px;
+        --section-space: 52px;
     }
 
     .hero-proof {
