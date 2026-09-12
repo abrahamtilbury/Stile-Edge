@@ -3099,6 +3099,10 @@ button {
         --section-space: 75px;
     }
 
+    .header-cta {
+        display: none;
+    }
+        
     .google-reviews-header {
         grid-template-columns: 1fr;
         align-items: start;
