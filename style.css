@@ -2837,6 +2837,12 @@ button {
 
 .contact-form-submit {
     min-width: 180px;
+    justify-content: center;
+    padding: 0 26px;
+}
+
+.contact-form-submit .button-label {
+    padding-right: 0;
 }
 
 .form-status {
