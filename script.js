@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
 /* ==========================
    Hero Slider
 ========================== */
@@ -176,6 +177,299 @@ document.addEventListener('DOMContentLoaded', () => {
         status.classList.toggle('is-error', !ok);
     }
 });
+
+/* ==========================
+   MANUAL CUSTOMER REVIEWS
+========================== */
+
+(() => {
+    const gallery = document.querySelector('[data-review-gallery]');
+
+    if (!gallery) return;
+
+    const track =
+        gallery.querySelector('[data-review-track]');
+
+    const slides =
+        Array.from(
+            gallery.querySelectorAll('.review-gallery-slide')
+        );
+
+    const nextButton =
+        gallery.querySelector('[data-review-next]');
+
+    if (!track || !slides.length || !nextButton) return;
+
+    let currentIndex = 0;
+    let scrollFrame = null;
+
+    const reducedMotion =
+        window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const mobileQuery =
+        window.matchMedia('(max-width: 720px)');
+
+    /* --------------------------
+       Relative review dates
+    -------------------------- */
+
+    function getReviewDate(element) {
+        const exactDate =
+            element.dataset.reviewDate;
+
+        if (exactDate) {
+            return new Date(`${exactDate}T12:00:00`);
+        }
+
+        const captured =
+            element.dataset.reviewCaptured;
+
+        if (!captured) return null;
+
+        const date =
+            new Date(`${captured}T12:00:00`);
+
+        const months =
+            Number(element.dataset.reviewAgeMonths || 0);
+
+        const years =
+            Number(element.dataset.reviewAgeYears || 0);
+
+        if (months) {
+            date.setMonth(
+                date.getMonth() - months
+            );
+        }
+
+        if (years) {
+            date.setFullYear(
+                date.getFullYear() - years
+            );
+        }
+
+        return date;
+    }
+
+    function getCalendarMonthsBetween(start, end) {
+        let months =
+            (
+                end.getFullYear() -
+                start.getFullYear()
+            ) * 12;
+
+        months +=
+            end.getMonth() -
+            start.getMonth();
+
+        if (end.getDate() < start.getDate()) {
+            months -= 1;
+        }
+
+        return Math.max(0, months);
+    }
+
+    function formatRelativeDate(date) {
+        const now = new Date();
+
+        const milliseconds =
+            now.getTime() -
+            date.getTime();
+
+        const days =
+            Math.max(
+                0,
+                Math.floor(
+                    milliseconds /
+                    86400000
+                )
+            );
+
+        if (days < 1) {
+            return 'today';
+        }
+
+        if (days < 7) {
+            return `${days} ${days === 1 ? 'day' : 'days'} ago`;
+        }
+
+        const months =
+            getCalendarMonthsBetween(
+                date,
+                now
+            );
+
+        if (months < 1) {
+            const weeks =
+                Math.max(
+                    1,
+                    Math.floor(days / 7)
+                );
+
+            return `${weeks} ${weeks === 1 ? 'week' : 'weeks'} ago`;
+        }
+
+        if (months < 12) {
+            return `${months} ${months === 1 ? 'month' : 'months'} ago`;
+        }
+
+        const years =
+            Math.floor(months / 12);
+
+        return `${years} ${years === 1 ? 'year' : 'years'} ago`;
+    }
+
+    document
+        .querySelectorAll('.review-relative-date')
+        .forEach(element => {
+
+            const reviewDate =
+                getReviewDate(element);
+
+            if (!reviewDate) return;
+
+            element.dateTime =
+                reviewDate
+                    .toISOString()
+                    .slice(0, 10);
+
+            element.textContent =
+                formatRelativeDate(
+                    reviewDate
+                );
+        });
+
+    /* --------------------------
+       Gallery sizing
+    -------------------------- */
+
+    function syncTrackHeight() {
+        if (!mobileQuery.matches) {
+            track.style.height = '';
+            return;
+        }
+
+        const activeSlide =
+            slides[currentIndex];
+
+        if (!activeSlide) return;
+
+        requestAnimationFrame(() => {
+            track.style.height =
+                `${activeSlide.scrollHeight}px`;
+        });
+    }
+
+    if ('ResizeObserver' in window) {
+        const observer =
+            new ResizeObserver(
+                syncTrackHeight
+            );
+
+        slides.forEach(slide => {
+            observer.observe(slide);
+        });
+    }
+
+    /* --------------------------
+       Gallery navigation
+    -------------------------- */
+
+    function goToSlide(index) {
+        currentIndex =
+            (
+                index +
+                slides.length
+            ) %
+            slides.length;
+
+        track.scrollTo({
+            left:
+                currentIndex *
+                track.clientWidth,
+
+            behavior:
+                reducedMotion.matches
+                    ? 'auto'
+                    : 'smooth'
+        });
+
+        syncTrackHeight();
+    }
+
+    nextButton.addEventListener(
+        'click',
+        () => {
+            goToSlide(
+                currentIndex + 1
+            );
+        }
+    );
+
+    track.addEventListener(
+        'scroll',
+        () => {
+            if (scrollFrame) {
+                cancelAnimationFrame(
+                    scrollFrame
+                );
+            }
+
+            scrollFrame =
+                requestAnimationFrame(
+                    () => {
+                        const width =
+                            track.clientWidth;
+
+                        if (!width) return;
+
+                        currentIndex =
+                            Math.max(
+                                0,
+                                Math.min(
+                                    Math.round(
+                                        track.scrollLeft /
+                                        width
+                                    ),
+                                    slides.length - 1
+                                )
+                            );
+
+                        syncTrackHeight();
+                    }
+                );
+        },
+        { passive: true }
+    );
+
+    track.addEventListener(
+        'keydown',
+        event => {
+
+            if (event.key === 'ArrowRight') {
+                event.preventDefault();
+
+                goToSlide(
+                    currentIndex + 1
+                );
+            }
+
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+
+                goToSlide(
+                    currentIndex - 1
+                );
+            }
+        }
+    );
+
+    mobileQuery.addEventListener?.(
+        'change',
+        syncTrackHeight
+    );
+
+    syncTrackHeight();
+})();
 
 /* ==========================
    GOOGLE REVIEWS
