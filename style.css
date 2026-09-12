@@ -605,6 +605,10 @@ button {
     inset: 0;
 }
 
+.hero-slider {
+    touch-action: pan-y;
+}
+
 .hero-slide {
     position: absolute;
     inset: 0;
