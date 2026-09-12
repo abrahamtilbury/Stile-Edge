@@ -355,31 +355,17 @@ button {
 }
 
 .header-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     min-height: 42px;
-    padding: 0 18px;
-    background: #fff;
-    color: #111;
+    padding-left: 18px;
+    gap: 12px;
+
     font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .08em;
-    line-height: 1;
-    text-transform: uppercase;
-    border-radius: 6px 12px 6px 12px;
-    transition:
-        background-color .3s ease,
-        color .3s ease,
-        transform .3s ease;
 }
 
-.header-cta:hover {
-    background: var(--accent);
-    color: #080808;
-    transform: translateY(-1px);
+.header-cta .button-arrow {
+    width: 40px;
+    font-size: 17px;
 }
-
 
 /* =========================================================
    5.5 HEADER - COMPACT DESKTOP HEADER
@@ -3111,10 +3097,6 @@ button {
     .header-actions {
         display: flex;
         align-items: center;
-    }
-
-    .header-cta {
-        display: none;
     }
 
     .header-phone {
