@@ -18,7 +18,7 @@
     --accent: #f2c400;
     --accent-bright: #ffd21a;
     --line: rgba(255,255,255,.10);
-    --max-width: 1440px;
+    --max-width: 1180px;
     --page-padding: clamp(20px, 4vw, 72px);
     --section-space: clamp(55px, 6vw, 90px);
     --ease: cubic-bezier(.22, 1, .36, 1);
@@ -301,7 +301,7 @@ button {
     min-height: 76px;
     margin-inline: auto;
     display: grid;
-    grid-template-columns: 230px minmax(0, 1fr) auto;
+    grid-template-columns: 230px minmax(0, 1fr);
     align-items: center;
     column-gap: 40px;
 }
@@ -434,7 +434,7 @@ button {
     }
     
     .header-inner {
-        grid-template-columns: 170px minmax(0, 1fr) auto;
+        grid-template-columns: 170px minmax(0, 1fr);
         column-gap: 20px;
     }
     .site-logo,
@@ -1511,10 +1511,18 @@ button {
 ========================== */
 
 .feature-section {
+    width: min(
+        calc(100% - (var(--page-padding) * 2)),
+        var(--max-width)
+    );
+    margin-inline: auto;
+    margin-block: var(--section-space);
     display: grid;
     grid-template-columns: 1fr 1fr;
     min-height: 0;
     background: var(--surface);
+    border: 1px solid var(--line);
+    overflow: hidden;
 }
 
 .feature-section--spaced {
@@ -1530,12 +1538,7 @@ button {
     flex-direction: column;
     justify-content: center;
     align-self: stretch;
-    padding:
-        clamp(50px, 7vw, 110px)
-        max(
-            var(--page-padding),
-            calc((100vw - var(--max-width)) / 2)
-        );
+    padding: clamp(32px, 4vw, 56px);
 }
 
 .feature-copy h2 {
@@ -1561,7 +1564,8 @@ button {
 
 .feature-image {
     position: relative;
-    min-height: 560px;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
     background: var(--surface-2);
 }
@@ -3338,7 +3342,7 @@ button {
     }
     
     .header-inner {
-        grid-template-columns: 140px minmax(0, 1fr) auto;
+        grid-template-columns: 140px minmax(0, 1fr);
         column-gap: 12px;
     }
 
