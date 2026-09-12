@@ -1935,18 +1935,6 @@ button {
   height: 400px;
 }
 
-.contact .button-primary {
-    background: #080808;
-    border-color: #080808;
-    color: #fff;
-}
-
-.contact .button-primary:hover {
-    background: #222;
-    border-color: #222;
-    color: #fff;
-}
-
 .contact .button-secondary {
     border-color: rgba(0,0,0,.35);
     color: #080808;
