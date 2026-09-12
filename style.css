@@ -1858,8 +1858,8 @@ button {
 
 .contact {
     padding-block: clamp(70px, 8vw, 100px);
-    color: #080808;
-    background: var(--accent);
+    color: var(--text);
+    background: var(--surface);
     text-align: center;
     border-radius: 18px;
 }
