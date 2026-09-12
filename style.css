@@ -171,7 +171,7 @@ button {
 .apron-product-image,
 .feature-image,
 .gallery-grid img {
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -806,7 +806,7 @@ button {
     overflow: hidden;
     background: var(--surface);
     padding-block: clamp(40px, 4vw, 55px);
-    border-radius: 18px;
+    border-radius: 0;
 }
 
 .about-container {
@@ -983,7 +983,7 @@ button {
     flex-direction: column;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     padding: 0;
     border-bottom: 1px solid var(--line);
@@ -1070,7 +1070,7 @@ button {
     letter-spacing: .06em;
     text-transform: uppercase;
     background: rgba(255,255,255,.02);
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 /* ==========================
@@ -1205,7 +1205,7 @@ button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     border: 1px solid var(--line);
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     margin-bottom: 20px;
     gap: 0;
@@ -1453,7 +1453,7 @@ button {
     inset: 0;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    border-radius: 12px;
+    border-radius: 0;
     overflow: hidden;
     border: 1px solid var(--line);
 }
@@ -1490,7 +1490,7 @@ button {
 .project-back-image {
     width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     margin-bottom: 16px;
 }
@@ -1569,7 +1569,7 @@ button {
 .mini-profile-image {
     width: 72px;
     height: 52px;
-    border-radius: 6px;
+    border-radius: 0;
     overflow: hidden;
     flex-shrink: 0;
 }
@@ -1602,7 +1602,7 @@ button {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    border-radius: 6px;
+    border-radius: 0;
     background: rgba(255,255,255,.02);
 }
 
@@ -1693,7 +1693,7 @@ button {
     background: var(--surface);
     border: 1px solid rgba(255,255,255,.09);
     border-left: 2px solid var(--accent);
-    border-radius: 8px 18px 8px 18px;
+    border-radius: 0;
 }
 
 .google-review-card--fallback {
@@ -1861,7 +1861,7 @@ button {
     color: var(--text);
     background: var(--surface);
     text-align: center;
-    border-radius: 18px;
+    border-radius: 0;
 }
 
 .contact-highlight {
@@ -1881,7 +1881,7 @@ button {
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.03em;
-    border-radius: 6px;
+    border-radius: 0;
     transition: background-color .3s ease, transform .3s ease;
 }
 
@@ -1924,7 +1924,7 @@ button {
 
 .contact-map {
   margin-top: 3rem;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
   line-height: 0;
 }
@@ -2025,11 +2025,11 @@ button {
 .about-introduction,
 .about-statement,
 .about-service {
-    border-radius: 0 0 18px 18px;
+    border-radius: 0;
 }
 
 .about-cta {
-    border-radius: 18px;
+    border-radius: 0;
 }
 
 .about-statement,
@@ -2243,7 +2243,7 @@ button {
 .application-card {
     background: var(--surface);
     padding: 32px 28px;
-    border-radius: 12px;
+    border-radius: 0;
 }
 .application-card span {
     display: block;
@@ -2485,7 +2485,7 @@ button {
     padding: 36px 32px;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 12px;
+    border-radius: 0;
 }
 
 .contact-detail-label {
@@ -2701,7 +2701,7 @@ button {
     padding: 14px 16px;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 0;
     color: var(--text);
     font: inherit;
     font-size: 15px;
@@ -3100,7 +3100,7 @@ button {
         font-weight: 800;
         letter-spacing: .06em;
         text-transform: uppercase;
-        border-radius: 6px 12px 6px 12px;
+        border-radius: 0;
         transition: background-color .3s ease, transform .3s ease;
     }
 
