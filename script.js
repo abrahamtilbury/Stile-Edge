@@ -1,23 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.querySelector('.menu-button');
     const menu = document.querySelector('.mobile-menu');
-
     if (!menuButton || !menu) return;
+    function setMenuState(isOpen, returnFocus = false) {
+        menu.classList.toggle('open', isOpen);
+        menuButton.setAttribute(
+            'aria-expanded',
+            isOpen ? 'true' : 'false'
+        );
 
+        menuButton.setAttribute(
+            'aria-label',
+            isOpen ? 'Close navigation' : 'Open navigation'
+        );
+
+        if (!isOpen && returnFocus) {
+            menuButton.focus();
+        }
+    }
+
+    // Open / close from menu button
     menuButton.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-
-        const isOpen = menu.classList.toggle('open');
-        menuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        const isOpen =
+            menuButton.getAttribute('aria-expanded') === 'true';
+        setMenuState(!isOpen);
     });
 
-    // Close menu when a link is tapped
+    // Close when a navigation link is selected
     menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            menu.classList.remove('open');
-            menuButton.setAttribute('aria-expanded', 'false');
+            setMenuState(false);
         });
+    });
+
+    // Escape closes the menu and returns focus to the button
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        const isOpen =
+            menuButton.getAttribute('aria-expanded') === 'true';
+        if (!isOpen) return;
+        e.preventDefault();
+        setMenuState(false, true);
     });
 });
 
