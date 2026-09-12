@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 /* ==========================
    1. Design Tokens
 ========================== */
@@ -55,10 +54,10 @@
     
     /* genuine circles */
     --radius-avatar: 50%;
-
     --button-depth: 3px;
     --button-chamfer: 14px;
     --button-arrow-width: 56px;
+    --button-radius: 10px;
 }
 
 /* ==========================
@@ -393,6 +392,7 @@ button {
 .header-cta.button-primary {
     --button-chamfer: 10px;
     --button-depth: 2px;
+    --button-radius: 8px;
     min-height: 44px;
     padding-left: 16px;
     font-size: 11px;
@@ -535,7 +535,7 @@ button {
     background: transparent;
     color: var(--button-ink);
     border: 0;
-    border-radius: 0;
+    border-radius: var(--button-radius);
     overflow: visible;
     transition:
         transform .22s var(--ease),
@@ -549,14 +549,8 @@ button {
     inset: 0;
     z-index: -1;
     background: var(--button-face);
-    clip-path: polygon(
-        0 0,
-        calc(100% - var(--button-chamfer)) 0,
-        100% var(--button-chamfer),
-        100% calc(100% - var(--button-chamfer)),
-        calc(100% - var(--button-chamfer)) 100%,
-        0 100%
-    );
+    clip-path: none;
+    border-radius: inherit;
     box-shadow:
         inset 0 0 0 1px rgba(8, 8, 8, .28);
     transition:
@@ -570,14 +564,8 @@ button {
     inset: 0;
     z-index: -2;
     background: var(--button-depth-color);
-    clip-path: polygon(
-        0 0,
-        calc(100% - var(--button-chamfer)) 0,
-        100% var(--button-chamfer),
-        100% calc(100% - var(--button-chamfer)),
-        calc(100% - var(--button-chamfer)) 100%,
-        0 100%
-    );
+    clip-path: none;
+    border-radius: inherit;
     transform:
         translate(var(--button-depth), var(--button-depth));
     transition:
@@ -3263,10 +3251,7 @@ button {
         overflow: hidden;
     }
 
-    .top-bar-inner a[href="tel:0755982908"] {
-        display: none;
-    }
-
+    .top-bar-inner a[href="tel:0417300421"],
     .top-bar-inner span:nth-of-type(1) {
         display: none;
     }
@@ -3280,7 +3265,7 @@ button {
 
     .header-inner {
         min-height: 76px;
-        grid-template-columns: 1fr auto auto;   /* logo | phone | burger */
+        grid-template-columns: 1fr auto;   /* logo | burger */
         gap: 12px;
         align-items: center;
     }
@@ -3290,8 +3275,7 @@ button {
     }
 
     .header-actions {
-        display: flex;
-        align-items: center;
+        display: none;
     }
 
     .header-phone {
@@ -3431,6 +3415,7 @@ button {
     }
 
     .hero-actions .button-primary {
+        --button-radius: 12px;
         min-height: 50px;
         padding: 0 0 0 18px;
         font-size: 11px;
@@ -3659,6 +3644,16 @@ button {
     }
 }
 
+@media (max-width: 420px) {
+    .top-bar-inner {
+        gap: 10px;
+    }
+
+    .top-bar-inner span:nth-of-type(2) {
+        display: none;
+    }
+}
+
 /* ==========================
    13. LANDSCAPE OVERRIDES
 ========================== */
@@ -3718,6 +3713,10 @@ button {
         width: max-content !important;
         margin: 0 !important;
         z-index: 5 !important;
+    }
+
+    .hero-actions .button-primary {
+        --button-radius: 12px;
     }
 
     .hero-dots {
