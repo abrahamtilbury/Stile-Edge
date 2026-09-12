@@ -20,50 +20,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
 /* ==========================
    Hero Slider
 ========================== */
+
 (function () {
     const slider = document.querySelector('.hero-slider');
     if (!slider) return;
 
     const slides = Array.from(slider.querySelectorAll('.hero-slide'));
-    const nextBtn = document.querySelector('.hero-arrow-next');
-    if (!nextBtn) return;
-    const dotsContainer = document.querySelector('.hero-dots');
-    if (!dotsContainer) return;
+    if (slides.length < 2) return;
 
     let current = 0;
     let timer = null;
-    const INTERVAL = 9000;
+    let touchStartX = 0;
+    let touchEndX = 0;
 
-    // Build dots
-    slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'hero-dot' + (i === 0 ? ' is-active' : '');
-        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-        dot.addEventListener('click', () => goTo(i));
-        dotsContainer.appendChild(dot);
-    });
-
-    const dots = Array.from(dotsContainer.querySelectorAll('.hero-dot'));
+    const INTERVAL = 14000;
+    const SWIPE_THRESHOLD = 50;
 
     function goTo(index) {
-        const prev = current;
-        current = (index + slides.length) % slides.length;
+        slides[current].classList.remove('is-active');
 
-        slides[prev].classList.remove('is-active');
-        dots[prev].classList.remove('is-active');
+        current = (index + slides.length) % slides.length;
 
         requestAnimationFrame(() => {
             slides[current].classList.add('is-active');
-            dots[current].classList.add('is-active');
         });
     }
 
     function next() {
         goTo(current + 1);
+    }
+
+    function previous() {
+        goTo(current - 1);
     }
 
     function startAutoplay() {
@@ -72,28 +63,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function stopAutoplay() {
-        if (timer) clearInterval(timer);
-    }
-
-    nextBtn.addEventListener('click', () => {
-        next();
-        startAutoplay();
-    });
-
-    // Pause on hover
-    const hero = document.querySelector('.hero');
-    if (hero) {
-        hero.addEventListener('mouseenter', stopAutoplay);
-        hero.addEventListener('mouseleave', startAutoplay);
-    }
-
-    // Keyboard
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') {
-            next();
-            startAutoplay();
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
         }
-    });
+    }
+
+    slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].clientX;
+
+        const distance = touchEndX - touchStartX;
+
+        if (Math.abs(distance) < SWIPE_THRESHOLD) return;
+
+        if (distance < 0) {
+            next();
+        } else {
+            previous();
+        }
+
+        startAutoplay();
+    }, { passive: true });
 
     startAutoplay();
 })();
