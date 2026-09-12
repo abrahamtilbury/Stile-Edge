@@ -1266,45 +1266,6 @@ button {
     color: var(--text-muted);
 }
 
-.reviews-source-card {
-    margin-top: 32px;
-    padding-top: 18px;
-    border-top: 1px solid var(--line);
-}
-
-.reviews-source-card strong,
-.reviews-source-card > span {
-    display: block;
-}
-
-.reviews-source-card strong {
-    margin-bottom: 4px;
-    font-size: 15px;
-    font-weight: 700;
-}
-
-.reviews-source-card > span {
-    margin-bottom: 14px;
-    color: var(--text-muted);
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-.reviews-all-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    color: var(--accent);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-}
-
-.reviews-all-link:hover {
-    color: var(--accent-bright);
-}
-
 /* -------------------------
    Review gallery
 ------------------------- */
@@ -3325,11 +3286,6 @@ button {
 
     .reviews-overview h2 span {
         display: inline;
-    }
-
-    .reviews-source-card {
-        margin-top: 16px;
-        padding-top: 14px;
     }
 
     .reviews-gallery-track {
