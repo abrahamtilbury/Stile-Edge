@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const started = document.getElementById('form-started');
     const status = document.getElementById('form-status');
     const submitBtn = form.querySelector('[type="submit"]');
-
+    const submitLabel = submitBtn?.querySelector('.button-label');
     if (started) started.value = String(Date.now());
 
     form.addEventListener('submit', async (e) => {
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending…';
+        if (submitLabel) submitLabel.textContent = 'Sending…';
 
         try {
             const res = await fetch(form.action, {
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showStatus('Network error. Please email sales@stileedge.com.', false);
         } finally {
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Send message';
+            if (submitLabel) submitLabel.textContent = 'Send Enquiry';
         }
     });
 
