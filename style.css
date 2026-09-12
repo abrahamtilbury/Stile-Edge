@@ -1505,6 +1505,10 @@ button {
     background: var(--surface);
 }
 
+.feature-section--spaced {
+    margin-bottom: var(--section-space);
+}
+
 /* -----------------------------------
    7.4.1 HOME PAGE - Laminate Content
 ----------------------------------- */
@@ -2042,34 +2046,100 @@ button {
     border-radius: var(--radius-section);
 }
 
+/* -----------------------------------
+   Stile profile-contour CTA artwork
+----------------------------------- */
+
 .contact::before,
+.about-cta::before {
+    content: "";
+
+    position: absolute;
+    z-index: 0;
+
+    width: 820px;
+    height: 520px;
+
+    pointer-events: none;
+
+    background:
+        repeating-radial-gradient(
+            ellipse at center,
+            transparent 0 29px,
+            rgba(255,255,255,.17) 30px 31px,
+            transparent 32px 60px
+        );
+
+    opacity: .65;
+
+    filter: blur(.25px);
+
+    -webkit-mask-image:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            #000 18%,
+            #000 82%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            #000 18%,
+            #000 82%,
+            transparent 100%
+        );
+}
+
+/* Homepage: profile lines sweep in from right */
+.contact::before {
+    top: -215px;
+    right: -265px;
+
+    transform:
+        rotate(-13deg)
+        scaleX(1.2);
+}
+
+/* Inner pages: deliberately opposite composition */
+.about-cta::before {
+    left: -290px;
+    bottom: -235px;
+
+    transform:
+        rotate(11deg)
+        scaleX(1.28);
+}
+
+/* Soft depth rather than another drawn line */
 .contact::after,
-.about-cta::before,
 .about-cta::after {
     content: "";
     position: absolute;
     z-index: 0;
+    width: 480px;
+    height: 300px;
     pointer-events: none;
-    border: 1px solid rgba(255,255,255,.16);
-    border-radius: 50%;
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(0,0,0,.30) 0%,
+            rgba(0,0,0,.14) 36%,
+            transparent 72%
+        );
+    filter: blur(30px);
 }
 
-.contact::before,
-.about-cta::before {
-    width: 760px;
-    height: 250px;
-    top: -110px;
-    right: -170px;
-    transform: rotate(-8deg);
+.contact::after {
+    left: -120px;
+    bottom: -190px;
 }
 
-.contact::after,
 .about-cta::after {
-    width: 620px;
-    height: 220px;
-    bottom: -145px;
-    left: -180px;
-    transform: rotate(10deg);
+    top: -190px;
+    right: -120px;
 }
 
 .contact-content,
