@@ -55,6 +55,10 @@
     
     /* genuine circles */
     --radius-avatar: 50%;
+
+    --button-depth: 3px;
+    --button-chamfer: 14px;
+    --button-arrow-width: 56px;
 }
 
 /* ==========================
@@ -559,10 +563,10 @@ button {
     background: #080808;
     clip-path: polygon(
         0 0,
-        calc(100% - 14px) 0,
-        100% 14px,
-        100% calc(100% - 14px),
-        calc(100% - 14px) 100%,
+        calc(100% - var(--button-chamfer)) 0,
+        100% var(--button-chamfer),
+        100% calc(100% - var(--button-chamfer)),
+        calc(100% - var(--button-chamfer)) 100%,
         0 100%
     );
 
@@ -2515,16 +2519,7 @@ button {
     gap: 12px;
     flex-wrap: wrap;
 }
-.about-cta .button-primary {
-    background: #080808;
-    border-color: #080808;
-    color: #fff;
-}
-.about-cta .button-primary:hover {
-    background: #222;
-    border-color: #222;
-    color: #fff;
-}
+
 .about-cta .button-secondary {
     border-color: rgba(0,0,0,.35);
     color: #080808;
