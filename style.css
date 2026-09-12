@@ -476,16 +476,12 @@ button {
     align-items: center;
     justify-content: center;
     min-height: 52px;
-    padding: 15px 28px;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: .08em;
+    line-height: 1;
     text-transform: uppercase;
-    transition:
-        background-color .3s ease,
-        color .3s ease,
-        border-color .3s ease,
-        transform .3s ease;
+    cursor: pointer;
 }
 
 /* --------------------------------------------
@@ -493,17 +489,105 @@ button {
 ------------------------------------------ */
 
 .button-primary {
-    background: var(--accent);
+    position: relative;
+    isolation: isolate;
+    gap: 18px;
+    min-height: 52px;
+    padding: 0 0 0 24px;
+    background: transparent;
     color: #080808;
-    border: 1px solid var(--accent);
-    border-radius: 8px 14px 8px 14px;
+    border: 0;
+    border-radius: 0;
+    transition:
+        transform .25s var(--ease),
+        color .25s ease;
+}
+
+/* Yellow top face */
+.button-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--accent);
+
+    /* Small profiled / chamfered right edge */
+    clip-path: polygon(
+        0 0,
+        calc(100% - 9px) 0,
+        100% 9px,
+        100% calc(100% - 9px),
+        calc(100% - 9px) 100%,
+        0 100%
+    );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(8, 8, 8, .7);
+    transition: background-color .25s ease;
+}
+
+/* Black layer underneath = tile thickness */
+.button-primary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: #080808;
+    clip-path: polygon(
+        0 0,
+        calc(100% - 9px) 0,
+        100% 9px,
+        100% calc(100% - 9px),
+        calc(100% - 9px) 100%,
+        0 100%
+    );
+    transform: translate(4px, 4px);
+    transition: transform .25s var(--ease);
 }
 
 .button-primary:hover {
-    background: var(--accent-bright);
-    border-color: var(--accent-bright);
     color: #080808;
-    transform: translateY(-2px);
+    transform: translate(-1px, -1px);
+}
+
+.button-primary:hover::before {
+    background: var(--accent-bright);
+}
+
+.button-primary:hover::after {
+    transform: translate(6px, 6px);
+}
+
+.button-primary:active {
+    transform: translate(2px, 2px);
+}
+
+.button-primary:active::after {
+    transform: translate(2px, 2px);
+}
+
+.button-arrow {
+    align-self: stretch;
+    width: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid rgba(8, 8, 8, .24);
+    background: rgba(8, 8, 8, .07);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    transition:
+        background-color .25s ease,
+        transform .25s var(--ease);
+}
+
+.button-primary:hover .button-arrow {
+    background: rgba(8, 8, 8, .12);
+}
+
+.button-primary:hover .button-arrow {
+    transform: translateX(2px);
 }
 
 /* ----------------------------------------------
