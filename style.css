@@ -2039,17 +2039,6 @@ button {
   height: 400px;
 }
 
-.contact .button-secondary {
-    border-color: rgba(0,0,0,.35);
-    color: #080808;
-}
-
-.contact .button-secondary:hover {
-    background: #080808;
-    border-color: #080808;
-    color: #fff;
-}
-
 .contact .about-cta-actions {
     justify-content: center;
     margin-top: 28px;
@@ -2513,11 +2502,21 @@ button {
     margin: 0 0 32px;
     font-size: 17px;
 }
+
 .about-cta-actions {
     display: flex;
     justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
+}
+
+/* Inverse primary button on yellow CTA sections */
+.about-cta .button-primary {
+    --button-face: #080808;
+    --button-face-hover: #222;
+    --button-ink: #fff;
+    --button-depth-color: #080808;
+    --button-divider: rgba(255,255,255,.20);
 }
 
 .about-cta .button-secondary {
