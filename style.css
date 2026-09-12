@@ -420,6 +420,19 @@ button {
 
 @media (max-width: 1050px) {
 
+    .top-bar {
+        font-size: 8px;
+        letter-spacing: .06em;
+    }
+    
+    .top-bar-inner {
+        gap: 14px;
+    }
+    
+    .top-bar-inner > * {
+        white-space: nowrap;
+    }
+    
     .header-inner {
         grid-template-columns: 170px minmax(0, 1fr) auto;
         column-gap: 20px;
@@ -3264,11 +3277,11 @@ button {
     
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) and (min-width: 721px) {
 
     .profiles-intro,
     .profile-list {
-        max-width: 720px;
+        max-width: min(680px, 68vw);
     }
 
     .profile-list {
