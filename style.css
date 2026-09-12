@@ -1837,7 +1837,7 @@ button {
 .gallery {
     background: var(--surface);
     padding-top: clamp(48px, 5vw, 72px);
-    padding-bottom: 0;
+    padding-bottom: var(--section-space);
 }
 
 /* ==========================
