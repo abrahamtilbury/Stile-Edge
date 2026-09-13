@@ -3035,68 +3035,9 @@ button {
 ========================== */
 
 .site-footer {
-    padding: 28px 0 22px;
+    padding: clamp(44px, 5vw, 64px) 0 24px;
     background: #080808;
-}
-
-.footer-brand img {
-    width: 180px;
-    height: auto;
-}
-
-.footer-contact {
-    font-size: 14px;
-    line-height: 1.45;
-    color: var(--text-muted);
-}
-
-.footer-contact strong {
-    display: block;
-    margin-bottom: 2px;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text);
-}
-
-.footer-contact a {
-    font-weight: 600;
-    color: var(--accent);
-}
-
-.footer-contact p {
-    margin: 0 0 8px;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.footer-links a {
-    color: var(--text-muted);
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-}
-
-.footer-links a:hover {
-    color: var(--text);
-}
-
-.copyright {
-    width: min(
-        calc(100% - (var(--page-padding) * 2)),
-        var(--max-width)
-    );
-    margin: 28px auto 0;
-    padding-top: 18px;
     border-top: 1px solid var(--line);
-    color: #888888;
-    font-size: 13px;
 }
 
 .footer-inner {
@@ -3106,13 +3047,122 @@ button {
     );
     margin-inline: auto;
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    gap: 24px;
+    grid-template-columns:
+        minmax(180px, .8fr)
+        minmax(420px, 1.5fr)
+        minmax(140px, .6fr);
+    gap: clamp(32px, 5vw, 72px);
     align-items: start;
 }
 
-.footer-contact p:last-child {
+/* --------------------------
+   Brand
+-------------------------- */
+
+.footer-brand {
+    display: block;
+    width: fit-content;
+}
+
+.footer-brand img {
+    width: 180px;
+    height: auto;
+}
+
+/* --------------------------
+   Contact details
+-------------------------- */
+
+.footer-contact {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 32px;
+    margin: 0;
+    font-style: normal;
+}
+
+.footer-contact p {
+    min-width: 0;
+    margin: 0;
+}
+
+.footer-contact strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text);
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.footer-contact a,
+.footer-contact span {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.45;
+
+    overflow-wrap: anywhere;
+}
+
+.footer-contact a:hover {
     color: var(--accent);
+}
+
+.footer-contact-address {
+    grid-column: 1 / -1;
+}
+
+/* --------------------------
+   Navigation
+-------------------------- */
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.footer-links a:hover {
+    color: var(--text);
+}
+
+/* --------------------------
+   Footer bottom
+-------------------------- */
+
+.footer-bottom {
+    width: min(
+        calc(100% - (var(--page-padding) * 2)),
+        var(--max-width)
+    );
+    margin: 32px auto 0;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.copyright {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    color: #888888;
+    font-size: 12px;
 }
 
 /* ==========================
