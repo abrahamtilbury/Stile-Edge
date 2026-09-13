@@ -3217,26 +3217,6 @@ button {
         padding-right: 0;
     }
 
-    .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .footer-links {
-        gap: 6px;
-    }
-
-    .footer-links a {
-        font-size: 13px;
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-        color: var(--text-muted);
-    }
-
-    .footer-links a:hover {
-        color: var(--text);
-    }
-
     .feature-copy {
         padding: 50px var(--page-padding);
     }
@@ -3308,6 +3288,66 @@ button {
 @media (min-width: 901px) {
     .apron-feature + .apron-products {
         display: contents; /* lets the single product sit in the same visual row if you prefer */
+    }
+}
+
+@media (max-width: 900px) {
+
+    .footer-inner {
+        grid-template-columns: 1fr 1.4fr;
+    }
+
+    .footer-links {
+        grid-column: 1 / -1;
+
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        gap: 10px 20px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .site-footer {
+        padding-top: 40px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+    .footer-brand img {
+        width: 150px;
+    }
+
+    .footer-contact {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 20px 18px;
+    }
+
+    .footer-links {
+        grid-column: auto;
+    }
+
+    .footer-bottom {
+        margin-top: 28px;
+    }
+}
+
+
+@media (max-width: 420px) {
+
+    .footer-contact {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-contact-address {
+        grid-column: auto;
     }
 }
 
@@ -3831,52 +3871,6 @@ button {
         flex-direction: column;
         align-items: flex-start;
         padding-top: 50px;
-    }
-
-    .site-footer {
-        padding: 32px 0 24px;
-        text-align: center;
-    }
-
-    .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        justify-items: center;
-    }
-
-    .footer-brand img {
-        width: 140px;
-        margin-inline: auto;
-    }
-
-    .footer-contact {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 18px 24px;
-        text-align: left;
-        width: 100%;
-        max-width: 340px;
-        margin-inline: auto;
-    }
-
-    .footer-contact p {
-        margin: 0 0 12px;
-    }
-
-    .footer-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px 16px;
-    }
-
-    .footer-links a {
-        font-size: 12px;
-    }
-
-    .copyright {
-        margin-top: 20px;
-        text-align: center;
     }
 }
 
