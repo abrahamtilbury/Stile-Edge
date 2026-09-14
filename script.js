@@ -129,390 +129,601 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-/* ==========================
-   Edge Project Galleries
-========================== */
+/* =========================================================
+   20.10 - SHARED GALLERY SYSTEM
+   Service images + client reviews
+========================================================= */
 
-document.addEventListener('DOMContentLoaded', () => {
-    const galleries = Array.from(
-        document.querySelectorAll('[data-edge-gallery]')
-    );
+(() => {
 
-    if (!galleries.length) return;
-
-    const reducedMotion = window.matchMedia(
-        '(prefers-reduced-motion: reduce)'
-    );
-
-    let openGallery = null;
-
-    galleries.forEach((card, cardIndex) => {
-        const media =
-            card.querySelector('.profile-visual') ||
-            card.querySelector('.apron-feature-image') ||
-            card.querySelector('.apron-product-image');
-
-        if (!media) return;
-
-        const images = Array.from(
-            media.querySelectorAll(':scope > img')
+    const galleryCards =
+        Array.from(
+            document.querySelectorAll(
+                "[data-service-gallery]"
+            )
         );
 
-        if (!images.length) return;
+    if (!galleryCards.length) {
+        return;
+    }
 
+    const reducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        );
+
+    const galleries = [];
+
+    galleryCards.forEach(card => {
+
+        const track =
+            card.querySelector(
+                "[data-gallery-track]"
+            );
+
+        const slides =
+            Array.from(
+                card.querySelectorAll(
+                    ".service-gallery-slide, .review-gallery-slide"
+                )
+            );
+
+        card.classList.toggle(
+            "has-single-gallery-image",
+            slides.length === 1
+        );
+
+        const toggles =
+            Array.from(
+                card.querySelectorAll(
+                    "[data-gallery-toggle]"
+                )
+            );
+        
         const alwaysOpen =
-            card.hasAttribute('data-gallery-always-open');
-
-        const galleryId =
-            `edge-gallery-${cardIndex + 1}`;
-
-        /* --------------------------
-           Build gallery track
-        -------------------------- */
-
-        const track = document.createElement('div');
-
-        track.className = 'edge-gallery-track';
-        track.id = galleryId;
-        track.setAttribute('role', 'region');
-        track.setAttribute('tabindex', '0');
-
-        images.forEach(image => {
-            const slide = document.createElement('figure');
-
-            slide.className = 'edge-gallery-slide';
-
-            image.parentNode.insertBefore(slide, image);
-            slide.appendChild(image);
-            track.appendChild(slide);
-        });
-
-        media.prepend(track);
-
-        const slides = Array.from(
-            track.querySelectorAll('.edge-gallery-slide')
-        );
-
-        const hasMultiple = slides.length > 1;
-
-        /* --------------------------
-           Counter
-        -------------------------- */
-
-        const counter = document.createElement('div');
-
-        counter.className = 'edge-gallery-counter';
-        counter.setAttribute('aria-live', 'polite');
-
-        counter.innerHTML =
-            `<span data-edge-current>1</span> / ` +
-            `<span>${slides.length}</span>`;
-
-        if (!hasMultiple) {
-            counter.hidden = true;
-        }
-
-        media.appendChild(counter);
-
-        /* --------------------------
-           Previous / next arrows
-        -------------------------- */
-
-        const previous = document.createElement('button');
-        const next = document.createElement('button');
-
-        previous.type = 'button';
-        next.type = 'button';
-
-        previous.className =
-            'edge-gallery-arrow edge-gallery-arrow--prev';
-
-        next.className =
-            'edge-gallery-arrow edge-gallery-arrow--next';
-
-        previous.setAttribute(
-            'aria-label',
-            'Previous project photo'
-        );
-
-        next.setAttribute(
-            'aria-label',
-            'Next project photo'
-        );
-
-        previous.textContent = '←';
-        next.textContent = '→';
-
-        if (!hasMultiple) {
-            previous.hidden = true;
-            next.hidden = true;
-        }
-
-        media.append(previous, next);
-
-        /* --------------------------
-           Compact-card expand button
-        -------------------------- */
-
-        let expandButton = null;
-
-        if (!alwaysOpen) {
-            expandButton = document.createElement('button');
-
-            expandButton.type = 'button';
-            expandButton.className = 'edge-gallery-expand';
-            expandButton.setAttribute(
-                'aria-label',
-                'Expand project gallery'
-            );
-            expandButton.setAttribute(
-                'aria-expanded',
-                'false'
-            );
-            expandButton.setAttribute(
-                'aria-controls',
-                galleryId
+            card.hasAttribute(
+                "data-gallery-always-open"
             );
 
-            expandButton.textContent = '+';
+        const isReviewGallery =
+            card.hasAttribute(
+                "data-review-gallery"
+            );
 
-            media.appendChild(expandButton);
+        const previousButton =
+            card.querySelector(
+                "[data-gallery-prev]"
+            );
+
+        const nextButton =
+            card.querySelector(
+                "[data-gallery-next]"
+            );
+
+        const currentCounter =
+            card.querySelector(
+                "[data-gallery-current]"
+            );
+
+        const totalCounter =
+            card.querySelector(
+                "[data-gallery-total]"
+            );
+
+        if (
+            !track ||
+            !slides.length ||
+            (!alwaysOpen && !toggles.length) ||
+            (!isReviewGallery && !previousButton) ||
+            !nextButton ||
+            !currentCounter ||
+            !totalCounter
+        ) {
+            return;
         }
 
         let currentIndex = 0;
+
         let scrollFrame = null;
 
-        /* --------------------------
-           State helpers
-        -------------------------- */
+        /* =============================
+            MOBILE REVIEW HEIGHT
+        ============================= */
 
-        function updateInterface() {
-            const current =
-                counter.querySelector('[data-edge-current]');
+        const mobileReviewQuery =
+            isReviewGallery
+                ? window.matchMedia(
+                    "(max-width: 700px)"
+                )
+                : null;
 
-            if (current) {
-                current.textContent =
-                    String(currentIndex + 1);
+        const syncReviewTrackHeight = () => {
+
+            if (!isReviewGallery) {
+                return;
             }
+
+            if (!mobileReviewQuery.matches) {
+
+                track.style.height = "";
+
+                return;
+            }
+
+            const activeSlide =
+                slides[currentIndex];
+
+            if (!activeSlide) {
+                return;
+            }
+
+            requestAnimationFrame(() => {
+
+                track.style.height =
+                    `${activeSlide.scrollHeight}px`;
+            });
+        };
+
+        const reviewHeightObserver =
+            isReviewGallery &&
+            "ResizeObserver" in window
+                ? new ResizeObserver(
+                    () => {
+                        syncReviewTrackHeight();
+                    }
+                )
+                : null;
+
+        if (reviewHeightObserver) {
+
+            slides.forEach(slide => {
+
+                reviewHeightObserver.observe(
+                    slide
+                );
+            });
         }
 
-        function goToSlide(index) {
-            if (!hasMultiple) return;
+        /* =============================
+            20.11 - LAZY GALLERY IMAGES
+        ============================= */
+
+        /*
+        * Large service-gallery assets are only
+        * requested once that service is expanded.
+        *
+        * Review galleries contain no gallery
+        * images, so this safely does nothing there.
+        */
+
+        const loadGalleryImages = () => {
+
+            const images =
+                card.querySelectorAll(
+                    "img[data-gallery-src]"
+                );
+
+            images.forEach(image => {
+
+                const source =
+                    image.dataset.gallerySrc;
+
+                if (!source) {
+                    return;
+                }
+
+                image.loading = "eager";
+                image.src = source;
+                image.removeAttribute(
+                    "data-gallery-src"
+                );
+            });
+        };
+        
+        /* ==========================
+            20.12 - INTERFACE STATE
+        ========================== */
+
+        const updateInterface = () => {
+
+            currentCounter.textContent =
+                String(
+                    currentIndex + 1
+                );
+
+            totalCounter.textContent =
+                String(
+                    slides.length
+                );
+
+            slides.forEach(
+                (slide, index) => {
+
+                    slide.setAttribute(
+                        "aria-hidden",
+
+                        index === currentIndex
+                            ? "false"
+                            : "true"
+                    );
+                    
+                    if (
+                        isReviewGallery &&
+                        index !== currentIndex
+                    ) {
+
+                        slide
+                            .querySelectorAll(
+                                ".review-text-details[open]"
+                            )
+                            .forEach(details => {
+
+                                details.removeAttribute(
+                                    "open"
+                                );
+                            });
+
+                        slide
+                            .querySelectorAll(
+                                "[data-review-photo-gallery].is-photo-open"
+                            )
+                            .forEach(photoGallery => {
+
+                                photoGallery.dispatchEvent(
+                                    new Event(
+                                        "review-photo-close"
+                                    )
+                                );
+                            });
+                    }
+                }
+            );
+            syncReviewTrackHeight();
+        };
+
+        /* ==========================
+            20.13 - GALLERY STATE
+        ========================== */
+
+        const setExpanded =
+            expanded => {
+
+                card.classList.toggle(
+                    "is-gallery-open",
+                    expanded
+                );
+
+                toggles.forEach(toggle => {
+
+                    toggle.setAttribute(
+                        "aria-expanded",
+                        String(expanded)
+                    );
+
+                    if (
+                        toggle.tagName ===
+                        "BUTTON"
+                    ) {
+
+                        const label =
+                            expanded
+                                ? toggle.dataset.labelClose
+                                : toggle.dataset.labelOpen;
+
+                        if (label) {
+
+                            toggle.setAttribute(
+                                "aria-label",
+                                label
+                            );
+                        }
+                    }
+                });
+            };
+
+        const goToSlide = (
+            index,
+            behavior =
+                reducedMotion.matches
+                    ? "auto"
+                    : "smooth"
+        ) => {
 
             currentIndex =
-                (index + slides.length) % slides.length;
-
+                (
+                    index +
+                    slides.length
+                ) %
+                slides.length;
             track.scrollTo({
                 left:
-                    currentIndex * track.clientWidth,
-
-                behavior:
-                    reducedMotion.matches
-                        ? 'auto'
-                        : 'smooth'
+                    currentIndex *
+                    track.clientWidth,
+                behavior
             });
-
             updateInterface();
-        }
+        };
 
-        function setExpanded(expanded) {
-            card.classList.toggle(
-                'is-gallery-open',
-                expanded
-            );
-
-            if (expandButton) {
-                expandButton.setAttribute(
-                    'aria-expanded',
-                    String(expanded)
-                );
-
-                expandButton.setAttribute(
-                    'aria-label',
-                    expanded
-                        ? 'Collapse project gallery'
-                        : 'Expand project gallery'
-                );
+        const closeGallery = () => {
+            if (alwaysOpen) {
+                return;
             }
-        }
-
-        function close() {
-            if (alwaysOpen) return;
-
             setExpanded(false);
 
             currentIndex = 0;
 
             track.scrollTo({
                 left: 0,
-                behavior: 'auto'
+                behavior: "auto"
             });
 
             updateInterface();
-        }
 
-        function open() {
-            if (
-                openGallery &&
-                openGallery !== close
-            ) {
-                openGallery();
-            }
+        };
+
+        const openGallery = () => {
+
+            /*
+            * Preserve the clicked module's
+            * position in the viewport.
+            */
+
+            const originalTop =
+                card.getBoundingClientRect().top;
+
+            /*
+            * Only one expandable service gallery
+            * is open at a time.
+            *
+            * Always-open galleries, such as
+            * testimonials, are not added here.
+            */
+
+            galleries.forEach(gallery => {
+                if (
+                    gallery.card !== card
+                ) {
+                    gallery.close();
+                }
+            });
+
+            loadGalleryImages();
 
             setExpanded(true);
 
-            openGallery = close;
-
             requestAnimationFrame(() => {
-                goToSlide(0);
+
+                goToSlide(
+                    0,
+                    "auto"
+                );
+
+                const newTop =
+                    card.getBoundingClientRect().top;
+
+                const movement =
+                    newTop - originalTop;
+                if (
+                    Math.abs(movement) > 1
+                ) {
+                    window.scrollBy({
+                        top: movement,
+                        behavior: "auto"
+                    });
+                }
             });
-        }
+        };
 
-        /* --------------------------
-           Expand / collapse
-        -------------------------- */
+        /* ==========================
+            20.14 - BUTTON CONTROLS
+        ========================== */
 
-        if (alwaysOpen) {
-            card.classList.add('is-gallery-open');
-        }
+        toggles.forEach(toggle => {
 
-        if (expandButton) {
-            expandButton.addEventListener(
-                'click',
-                () => {
-                    if (
-                        card.classList.contains(
-                            'is-gallery-open'
-                        )
-                    ) {
-                        close();
-                    } else {
-                        open();
-                    }
-                }
-            );
-        }
-
-        /* --------------------------
-           Existing "View profile"
-           link becomes second toggle
-           on compact homepage cards
-        -------------------------- */
-
-        const textToggle =
-            card.querySelector('.profile-card-link');
-
-        if (textToggle && !alwaysOpen) {
-            textToggle.addEventListener(
-                'click',
+            toggle.addEventListener(
+                "click",
                 event => {
-                    event.preventDefault();
-
+                    /*
+                    * The Services-page href
+                    * remains a valid no-JS
+                    * fallback.
+                    */
                     if (
-                        card.classList.contains(
-                            'is-gallery-open'
-                        )
+                        toggle.tagName ===
+                        "A"
                     ) {
-                        close();
-                    } else {
-                        open();
+                        event.preventDefault();
+
                     }
+                    const isOpen =
+                        card.classList.contains(
+                            "is-gallery-open"
+                        );
+                    if (isOpen) {
+                        closeGallery();
+                    } else {
+                        openGallery();
+                    }
+                }
+            );
+        });
+
+        if (previousButton) {
+
+            previousButton.addEventListener(
+                "click",
+                () => {
+                    goToSlide(
+                        currentIndex - 1
+                    );
                 }
             );
         }
 
-        /* --------------------------
-           Gallery navigation
-        -------------------------- */
-
-        previous.addEventListener(
-            'click',
+        nextButton.addEventListener(
+            "click",
             () => {
-                goToSlide(currentIndex - 1);
+                goToSlide(
+                    currentIndex + 1
+                );
             }
         );
 
-        next.addEventListener(
-            'click',
-            () => {
-                goToSlide(currentIndex + 1);
-            }
-        );
+        /* ==========================
+            20.15 - SWIPE / SCROLL
+        ========================== */
+
+        /*
+        * Keep the counter and active slide
+        * synchronized after manual swiping.
+        */
 
         track.addEventListener(
-            'scroll',
+            "scroll",
             () => {
-                if (!hasMultiple) return;
+
+                if (
+                    !card.classList.contains(
+                        "is-gallery-open"
+                    )
+                ) {
+                    return;
+                }
 
                 if (scrollFrame) {
-                    cancelAnimationFrame(scrollFrame);
+
+                    cancelAnimationFrame(
+                        scrollFrame
+                    );
                 }
 
                 scrollFrame =
-                    requestAnimationFrame(() => {
-                        const width =
-                            track.clientWidth;
+                    requestAnimationFrame(
+                        () => {
 
-                        if (!width) return;
+                            const width =
+                                track.clientWidth;
 
-                        currentIndex =
-                            Math.max(
-                                0,
-                                Math.min(
-                                    Math.round(
-                                        track.scrollLeft /
-                                        width
-                                    ),
-                                    slides.length - 1
-                                )
-                            );
+                            if (!width) {
+                                return;
+                            }
 
-                        updateInterface();
-                    });
+                            currentIndex =
+                                Math.max(
+                                    0,
+                                    Math.min(
+                                        Math.round(
+                                            track.scrollLeft /
+                                            width
+                                        ),
+                                        slides.length - 1
+                                    )
+                                );
+                            updateInterface();
+                        }
+                    );
             },
-            { passive: true }
+            {
+                passive: true
+            }
         );
 
-        track.addEventListener(
-            'keydown',
-            event => {
-                if (event.key === 'ArrowLeft') {
-                    event.preventDefault();
-                    goToSlide(currentIndex - 1);
-                }
+        /* ==========================
+            20.16 - KEYBOARD NAVIGATION
+        ========================== */
 
-                if (event.key === 'ArrowRight') {
-                    event.preventDefault();
-                    goToSlide(currentIndex + 1);
+        track.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    !card.classList.contains(
+                        "is-gallery-open"
+                    )
+                ) {
+                    return;
                 }
 
                 if (
-                    event.key === 'Escape' &&
+                    event.key ===
+                    "ArrowLeft"
+                ) {
+
+                    event.preventDefault();
+
+                    goToSlide(
+                        currentIndex - 1
+                    );
+                }
+
+                if (
+                    event.key ===
+                    "ArrowRight"
+                ) {
+                    event.preventDefault();
+
+                    goToSlide(
+                        currentIndex + 1
+                    );
+                }
+
+                if (
+                    event.key ===
+                        "Escape" &&
                     !alwaysOpen
                 ) {
                     event.preventDefault();
-                    close();
+                    closeGallery();
                 }
             }
         );
 
-        window.addEventListener(
-            'resize',
-            () => {
-                if (!hasMultiple) return;
+        /* ==========================
+            20.17 - RESIZE HANDLING
+        ========================== */
 
-                track.scrollTo({
-                    left:
-                        currentIndex *
-                        track.clientWidth,
-                    behavior: 'auto'
-                });
+        /*
+        * Realign the active slide after
+        * orientation or viewport changes.
+        */
+
+        window.addEventListener(
+            "resize",
+            () => {
+                if (
+                    !card.classList.contains(
+                        "is-gallery-open"
+                    )
+                ) {
+                    return;
+                }
+                goToSlide(
+                    currentIndex,
+                    "auto"
+                );
             }
         );
 
+        /* ==========================
+            20.18 - INITIALISATION
+        ========================== */
+
+        if (alwaysOpen) {
+            card.classList.add(
+                "is-gallery-open"
+            );
+        }
+
         updateInterface();
+
+        if (!alwaysOpen) {
+            galleries.push({
+                card,
+                close: closeGallery
+            });
+        }
     });
-});
+})();
 
 /* ==========================
    Contact Form (Formspree)
