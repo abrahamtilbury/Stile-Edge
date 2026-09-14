@@ -130,6 +130,391 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================
+   Edge Project Galleries
+========================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const galleries = Array.from(
+        document.querySelectorAll('[data-edge-gallery]')
+    );
+
+    if (!galleries.length) return;
+
+    const reducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    );
+
+    let openGallery = null;
+
+    galleries.forEach((card, cardIndex) => {
+        const media =
+            card.querySelector('.profile-visual') ||
+            card.querySelector('.apron-feature-image') ||
+            card.querySelector('.apron-product-image');
+
+        if (!media) return;
+
+        const images = Array.from(
+            media.querySelectorAll(':scope > img')
+        );
+
+        if (!images.length) return;
+
+        const alwaysOpen =
+            card.hasAttribute('data-gallery-always-open');
+
+        const galleryId =
+            `edge-gallery-${cardIndex + 1}`;
+
+        /* --------------------------
+           Build gallery track
+        -------------------------- */
+
+        const track = document.createElement('div');
+
+        track.className = 'edge-gallery-track';
+        track.id = galleryId;
+        track.setAttribute('role', 'region');
+        track.setAttribute('tabindex', '0');
+
+        images.forEach(image => {
+            const slide = document.createElement('figure');
+
+            slide.className = 'edge-gallery-slide';
+
+            image.parentNode.insertBefore(slide, image);
+            slide.appendChild(image);
+            track.appendChild(slide);
+        });
+
+        media.prepend(track);
+
+        const slides = Array.from(
+            track.querySelectorAll('.edge-gallery-slide')
+        );
+
+        const hasMultiple = slides.length > 1;
+
+        /* --------------------------
+           Counter
+        -------------------------- */
+
+        const counter = document.createElement('div');
+
+        counter.className = 'edge-gallery-counter';
+        counter.setAttribute('aria-live', 'polite');
+
+        counter.innerHTML =
+            `<span data-edge-current>1</span> / ` +
+            `<span>${slides.length}</span>`;
+
+        if (!hasMultiple) {
+            counter.hidden = true;
+        }
+
+        media.appendChild(counter);
+
+        /* --------------------------
+           Previous / next arrows
+        -------------------------- */
+
+        const previous = document.createElement('button');
+        const next = document.createElement('button');
+
+        previous.type = 'button';
+        next.type = 'button';
+
+        previous.className =
+            'edge-gallery-arrow edge-gallery-arrow--prev';
+
+        next.className =
+            'edge-gallery-arrow edge-gallery-arrow--next';
+
+        previous.setAttribute(
+            'aria-label',
+            'Previous project photo'
+        );
+
+        next.setAttribute(
+            'aria-label',
+            'Next project photo'
+        );
+
+        previous.textContent = '←';
+        next.textContent = '→';
+
+        if (!hasMultiple) {
+            previous.hidden = true;
+            next.hidden = true;
+        }
+
+        media.append(previous, next);
+
+        /* --------------------------
+           Compact-card expand button
+        -------------------------- */
+
+        let expandButton = null;
+
+        if (!alwaysOpen) {
+            expandButton = document.createElement('button');
+
+            expandButton.type = 'button';
+            expandButton.className = 'edge-gallery-expand';
+            expandButton.setAttribute(
+                'aria-label',
+                'Expand project gallery'
+            );
+            expandButton.setAttribute(
+                'aria-expanded',
+                'false'
+            );
+            expandButton.setAttribute(
+                'aria-controls',
+                galleryId
+            );
+
+            expandButton.textContent = '+';
+
+            media.appendChild(expandButton);
+        }
+
+        let currentIndex = 0;
+        let scrollFrame = null;
+
+        /* --------------------------
+           State helpers
+        -------------------------- */
+
+        function updateInterface() {
+            const current =
+                counter.querySelector('[data-edge-current]');
+
+            if (current) {
+                current.textContent =
+                    String(currentIndex + 1);
+            }
+        }
+
+        function goToSlide(index) {
+            if (!hasMultiple) return;
+
+            currentIndex =
+                (index + slides.length) % slides.length;
+
+            track.scrollTo({
+                left:
+                    currentIndex * track.clientWidth,
+
+                behavior:
+                    reducedMotion.matches
+                        ? 'auto'
+                        : 'smooth'
+            });
+
+            updateInterface();
+        }
+
+        function setExpanded(expanded) {
+            card.classList.toggle(
+                'is-gallery-open',
+                expanded
+            );
+
+            if (expandButton) {
+                expandButton.setAttribute(
+                    'aria-expanded',
+                    String(expanded)
+                );
+
+                expandButton.setAttribute(
+                    'aria-label',
+                    expanded
+                        ? 'Collapse project gallery'
+                        : 'Expand project gallery'
+                );
+            }
+        }
+
+        function close() {
+            if (alwaysOpen) return;
+
+            setExpanded(false);
+
+            currentIndex = 0;
+
+            track.scrollTo({
+                left: 0,
+                behavior: 'auto'
+            });
+
+            updateInterface();
+        }
+
+        function open() {
+            if (
+                openGallery &&
+                openGallery !== close
+            ) {
+                openGallery();
+            }
+
+            setExpanded(true);
+
+            openGallery = close;
+
+            requestAnimationFrame(() => {
+                goToSlide(0);
+            });
+        }
+
+        /* --------------------------
+           Expand / collapse
+        -------------------------- */
+
+        if (alwaysOpen) {
+            card.classList.add('is-gallery-open');
+        }
+
+        if (expandButton) {
+            expandButton.addEventListener(
+                'click',
+                () => {
+                    if (
+                        card.classList.contains(
+                            'is-gallery-open'
+                        )
+                    ) {
+                        close();
+                    } else {
+                        open();
+                    }
+                }
+            );
+        }
+
+        /* --------------------------
+           Existing "View profile"
+           link becomes second toggle
+           on compact homepage cards
+        -------------------------- */
+
+        const textToggle =
+            card.querySelector('.profile-card-link');
+
+        if (textToggle && !alwaysOpen) {
+            textToggle.addEventListener(
+                'click',
+                event => {
+                    event.preventDefault();
+
+                    if (
+                        card.classList.contains(
+                            'is-gallery-open'
+                        )
+                    ) {
+                        close();
+                    } else {
+                        open();
+                    }
+                }
+            );
+        }
+
+        /* --------------------------
+           Gallery navigation
+        -------------------------- */
+
+        previous.addEventListener(
+            'click',
+            () => {
+                goToSlide(currentIndex - 1);
+            }
+        );
+
+        next.addEventListener(
+            'click',
+            () => {
+                goToSlide(currentIndex + 1);
+            }
+        );
+
+        track.addEventListener(
+            'scroll',
+            () => {
+                if (!hasMultiple) return;
+
+                if (scrollFrame) {
+                    cancelAnimationFrame(scrollFrame);
+                }
+
+                scrollFrame =
+                    requestAnimationFrame(() => {
+                        const width =
+                            track.clientWidth;
+
+                        if (!width) return;
+
+                        currentIndex =
+                            Math.max(
+                                0,
+                                Math.min(
+                                    Math.round(
+                                        track.scrollLeft /
+                                        width
+                                    ),
+                                    slides.length - 1
+                                )
+                            );
+
+                        updateInterface();
+                    });
+            },
+            { passive: true }
+        );
+
+        track.addEventListener(
+            'keydown',
+            event => {
+                if (event.key === 'ArrowLeft') {
+                    event.preventDefault();
+                    goToSlide(currentIndex - 1);
+                }
+
+                if (event.key === 'ArrowRight') {
+                    event.preventDefault();
+                    goToSlide(currentIndex + 1);
+                }
+
+                if (
+                    event.key === 'Escape' &&
+                    !alwaysOpen
+                ) {
+                    event.preventDefault();
+                    close();
+                }
+            }
+        );
+
+        window.addEventListener(
+            'resize',
+            () => {
+                if (!hasMultiple) return;
+
+                track.scrollTo({
+                    left:
+                        currentIndex *
+                        track.clientWidth,
+                    behavior: 'auto'
+                });
+            }
+        );
+
+        updateInterface();
+    });
+});
+
+/* ==========================
    Contact Form (Formspree)
 ========================== */
 document.addEventListener('DOMContentLoaded', () => {
