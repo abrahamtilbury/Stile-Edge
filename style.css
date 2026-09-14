@@ -17,6 +17,11 @@
     --text-dim: #888888;
     --accent: #f2c400;
     --accent-bright: #ffd21a;
+    --accent-ink: var(--accent);
+    --line-strong: rgba(255,255,255,.20);
+    --beam: var(--accent);
+    --beam-size: 2px;
+    --dark: #050505;
     --line: rgba(255,255,255,.10);
     --max-width: 1180px;
     --page-padding: clamp(20px, 4vw, 72px);
