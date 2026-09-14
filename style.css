@@ -666,7 +666,8 @@ button {
     border: 0;
 }
 
-.scope-items span {
+.scope-items span,
+.scope-items a {
     padding:
         8px
         11px;
@@ -680,6 +681,18 @@ button {
     font-weight: 700;
     letter-spacing: .08em;
     text-transform: uppercase;
+}
+
+.scope-items a {
+    transition:
+        color .18s ease,
+        border-color .18s ease,
+        background-color .18s ease;
+}
+
+.scope-items a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
 }
 
 /* =================================
@@ -1009,7 +1022,8 @@ button {
         gap: 7px;
     }
 
-    .scope-items span {
+    .scope-items span,
+    .scope-items a {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2045,8 +2059,18 @@ button {
 #half-bullnose,
 #full-bullnose,
 #flat-edge-bevel,
-#pencil-round {
+#pencil-round,
+#mitred-apron,
+#flat-edge-bevel-apron,
+#step-tread-grooves,
+#custom-profiles {
     scroll-margin-top: 24px;
+}
+
+.services-page-body .service-detail:target {
+    box-shadow:
+        inset 4px 0 0
+        var(--accent);
 }
 
 /* ====================================
