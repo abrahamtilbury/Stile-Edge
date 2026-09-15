@@ -2677,6 +2677,8 @@ button {
 }
 
 .project-card {
+    position: relative;
+    isolation: isolate;
     perspective: 1200px;
     cursor: pointer;
     aspect-ratio: 16 / 10;
@@ -2692,6 +2694,14 @@ button {
 
 .project-card.is-flipped .project-card-inner {
     transform: rotateY(180deg);
+}
+
+.project-card-toggle {
+    z-index: 10;
+}
+
+.project-card.is-flipped .project-card-toggle {
+    transform: rotate(45deg);
 }
 
 .project-card-front,
