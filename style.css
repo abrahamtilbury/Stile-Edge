@@ -2922,7 +2922,7 @@ button {
     overflow: hidden;
     padding-block: clamp(70px, 8vw, 100px);
     color: #fff;
-    background: var(--feature-red);
+    background: var(--feature-gold-surface);
     text-align: center;
     border-radius: var(--radius-section);
 }
@@ -3509,7 +3509,7 @@ button {
         transparent 52%,
         rgba(0,0,0,.05)
     ),
-    var(--feature-red);
+    var(--feature-gold-surface);
     color: #fff;
     text-align: center;
     padding-block: clamp(70px, 8vw, 110px);
