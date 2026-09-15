@@ -2218,33 +2218,32 @@ button {
 }
 
 .review-gallery-source {
-    color: var(--accent);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-}
-
-.review-gallery-source-link {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 5px;
 
-    margin-left: 5px;
+    color: rgba(255,255,255,.58);
 
-    color: var(--accent);
-    font-size: 13px;
+    font-size: 9px;
+    font-weight: 700;
     line-height: 1;
-    letter-spacing: 0;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+
+    cursor: pointer;
 
     transition:
-        color .18s ease,
-        transform .18s ease;
+        color .15s ease,
+        transform .15s ease;
 }
 
-.review-gallery-source-link:hover {
-    color: var(--accent-bright);
-    transform: translate(1px, -1px);
+.review-gallery-source:hover {
+    color: rgba(255,255,255,.82);
+}
+
+.review-gallery-source:active {
+    color: var(--accent);
+    transform: translateY(1px);
 }
 
 .review-gallery-stars {
