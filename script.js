@@ -211,6 +211,84 @@ document.addEventListener('DOMContentLoaded', () => {
             slides.length === 1
         );
 
+        /* =====================================
+           DETAIL PAGE EXPAND / COLLAPSE BUTTON
+        ===================================== */
+        
+        if (
+            card.classList.contains("service-detail") &&
+            !card.querySelector("[data-gallery-toggle]")
+        ) {
+        
+            const galleryMedia =
+                card.querySelector(
+                    ".service-detail-image"
+                );
+        
+            const heading =
+                card.querySelector(
+                    ".service-detail-main h2"
+                );
+        
+            const serviceName =
+                heading
+                    ? heading.textContent
+                        .replace(/\s+/g, " ")
+                        .trim()
+                        .replace(/^\d+\s*/, "")
+                    : "service";
+        
+            if (
+                galleryMedia &&
+                track.id
+            ) {
+        
+                const expandButton =
+                    document.createElement("button");
+        
+                expandButton.type = "button";
+        
+                expandButton.className =
+                    "service-gallery-expand";
+        
+                expandButton.setAttribute(
+                    "data-gallery-toggle",
+                    ""
+                );
+        
+                expandButton.setAttribute(
+                    "data-label-open",
+                    `Expand ${serviceName}`
+                );
+        
+                expandButton.setAttribute(
+                    "data-label-close",
+                    `Collapse ${serviceName}`
+                );
+        
+                expandButton.setAttribute(
+                    "aria-label",
+                    `Expand ${serviceName}`
+                );
+        
+                expandButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+        
+                expandButton.setAttribute(
+                    "aria-controls",
+                    track.id
+                );
+        
+                expandButton.textContent = "+";
+        
+                galleryMedia.appendChild(
+                    expandButton
+                );
+            }
+        }
+
         const toggles =
             Array.from(
                 card.querySelectorAll(
@@ -757,10 +835,100 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!alwaysOpen) {
             galleries.push({
                 card,
+                open: openGallery,
                 close: closeGallery
             });
         }
     });
+
+    /* =====================================
+       OPEN LINKED SERVICE AUTOMATICALLY
+       e.g. profiles.html#half-bullnose
+    ===================================== */
+    
+    const openLinkedGallery = () => {
+    
+        if (!window.location.hash) {
+            return;
+        }
+    
+        let targetId =
+            window.location.hash.slice(1);
+    
+        try {
+            targetId =
+                decodeURIComponent(targetId);
+        } catch {
+            /* Keep raw hash if decoding fails */
+        }
+    
+        const target =
+            document.getElementById(
+                targetId
+            );
+    
+        if (!target) {
+            return;
+        }
+    
+        const card =
+            target.matches(
+                "[data-service-gallery]"
+            )
+                ? target
+                : target.closest(
+                    "[data-service-gallery]"
+                );
+    
+        if (!card) {
+            return;
+        }
+    
+        const gallery =
+            galleries.find(
+                item =>
+                    item.card === card
+            );
+    
+        if (!gallery) {
+            return;
+        }
+    
+        gallery.open();
+    
+        /*
+         * Wait for the card to finish
+         * changing layout, then put its
+         * top neatly into view.
+         */
+        requestAnimationFrame(() => {
+    
+            requestAnimationFrame(() => {
+    
+                card.scrollIntoView({
+                    behavior: "auto",
+                    block: "start"
+                });
+    
+            });
+    
+        });
+    };
+    
+    
+    /* Initial page load with #profile */
+    
+    openLinkedGallery();
+    
+    
+    /* Also support hash changes
+       without a full reload */
+    
+    window.addEventListener(
+        "hashchange",
+        openLinkedGallery
+    );
+    
 })();
 
 /* ==========================
