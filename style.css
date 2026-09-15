@@ -3690,6 +3690,23 @@ button {
     color: var(--accent-bright);
 }
 
+.contact-detail-link {
+    display: inline-flex !important;
+    align-items: flex-start;
+    gap: 7px;
+}
+
+.contact-detail-arrow {
+    flex: 0 0 auto;
+    font-size: .8em;
+    line-height: 1.2;
+    transition: transform .18s ease;
+}
+
+.contact-detail-link:hover .contact-detail-arrow {
+    transform: translate(2px, -2px);
+}
+
 .contact-email-cta {
     background: var(--surface);
     padding-block: clamp(50px, 6vw, 80px);
