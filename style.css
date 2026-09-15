@@ -424,7 +424,8 @@ button {
    Expand / collapse
 ========================== */
 
-:is(.home-page, .services-page-body) .service-gallery-expand {
+:is(.home-page, .services-page-body) .service-gallery-expand,
+.project-card-toggle {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -450,12 +451,14 @@ button {
         border-color .18s ease;
 }
 
-:is(.home-page, .services-page-body) .service-gallery-expand:hover {
+:is(.home-page, .services-page-body) .service-gallery-expand:hover,
+.project-card-toggle:hover {
     background: rgba(18, 18, 18, .88);
     border-color: rgba(255, 255, 255, .7);
 }
 
-:is(.home-page, .services-page-body) .service-gallery-expand:active {
+:is(.home-page, .services-page-body) .service-gallery-expand:active,
+.project-card-toggle:active {
     transform: scale(.95);
 }
 
@@ -1150,19 +1153,19 @@ button {
     min-height: 76px;
     margin-inline: auto;
     display: grid;
-    grid-template-columns: 230px minmax(0, 1fr);
+    grid-template-columns: 210px minmax(0, 1fr);
     align-items: center;
     column-gap: 40px;
 }
 
 .site-logo {
     display: block;
-    width: 230px;
+    width: 210px;
 }
 
 .site-logo img {
     display: block;
-    width: 230px;
+    width: 210px;
     height: auto;
     max-width: 100%;
 }
@@ -3186,6 +3189,17 @@ button {
     overflow: hidden;
     background: var(--surface-2);
 }
+
+.about-project-card {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    aspect-ratio: auto;
+}
+
 .about-statement-image img {
     width: 100%;
     height: 100%;
@@ -4484,7 +4498,7 @@ button {
 
     .site-logo,
     .site-logo img {
-        width: 160px;
+        width: 150px;
     }
 
     .menu-button {
