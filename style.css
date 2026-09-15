@@ -27,7 +27,7 @@
     --page-padding: clamp(20px, 4vw, 72px);
     --section-space: clamp(56px, 6vw, 80px);
     --ease: cubic-bezier(.22, 1, .36, 1);
-    --feature-red: #f7403e;
+    --feature-red: #c9a227;
     --section-title-size: clamp(38px, 4vw, 54px);
     --card-title-size: clamp(28px, 2.6vw, 36px);
     --body-copy-size: 16px;
