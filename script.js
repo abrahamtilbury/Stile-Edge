@@ -122,11 +122,49 @@ document.addEventListener('DOMContentLoaded', () => {
    Project Cards Flip
 ========================== */
 document.addEventListener('DOMContentLoaded', () => {
+
     document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('is-flipped');
+
+        const toggle =
+            card.querySelector('.project-card-toggle');
+
+        const setFlipped = (isFlipped) => {
+
+            card.classList.toggle(
+                'is-flipped',
+                isFlipped
+            );
+
+            if (!toggle) return;
+
+            toggle.setAttribute(
+                'aria-expanded',
+                String(isFlipped)
+            );
+
+            toggle.setAttribute(
+                'aria-label',
+                isFlipped
+                    ? 'Show project photo'
+                    : 'Show tile edge profile used in this project'
+            );
+        };
+
+        card.addEventListener('click', event => {
+
+            /* Protect any links we may add
+               to the back of the card later. */
+            if (event.target.closest('a')) {
+                return;
+            }
+
+            setFlipped(
+                !card.classList.contains('is-flipped')
+            );
         });
+
     });
+
 });
 
 /* =========================================================
