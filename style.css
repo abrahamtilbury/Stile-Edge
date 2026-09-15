@@ -2104,8 +2104,8 @@ button {
     position: relative;
     padding-block: clamp(24px, 3.5vw, 42px);
     background: var(--surface-2);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    border-top: 0;
+    border-bottom: 0;
     overflow: hidden;
 }
 
@@ -2119,10 +2119,11 @@ button {
         solid
         var(--accent);
     border-bottom:
-        1px solid
-        var(--line);
-    overflow: hidden;
-}
+        var(--brand-edge-thickness)
+        solid
+        var(--accent);
+        overflow: hidden;
+    }
 
 /* -------------------------
    Review overview
@@ -2134,7 +2135,7 @@ button {
     justify-content: space-between;
     padding: 24px;
     background: var(--surface);
-    border-right: 1px solid var(--line);
+    border-right: 0;
 }
 
 .reviews-overview .eyebrow {
@@ -2220,6 +2221,28 @@ button {
     text-transform: uppercase;
 }
 
+.review-gallery-source-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 5px;
+
+    color: var(--accent);
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 0;
+
+    transition:
+        color .18s ease,
+        transform .18s ease;
+}
+
+.review-gallery-source-link:hover {
+    color: var(--accent-bright);
+    transform: translate(1px, -1px);
+}
+
 .review-gallery-stars {
     flex-shrink: 0;
     color: var(--accent);
@@ -2257,7 +2280,7 @@ button {
     gap: 24px;
     margin-top: auto;
     padding-top: 16px;
-    border-top: 1px solid var(--line);
+    border-top: 0;
 }
 
 .review-gallery-footer strong {
@@ -4269,7 +4292,7 @@ button {
         display: block;
         padding: 20px;
         border-right: 0;
-        border-bottom: 1px solid var(--line);
+        border-bottom: 0;
     }
 
     .reviews-overview h2 {
