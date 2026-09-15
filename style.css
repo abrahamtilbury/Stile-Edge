@@ -1387,6 +1387,7 @@ button {
     --button-ink: #080808;
     --button-depth-color: #080808;
     --button-divider: rgba(8, 8, 8, .18);
+    --button-chamfer: 8px;
     position: relative;
     isolation: isolate;
     z-index: 0;
@@ -1395,7 +1396,7 @@ button {
     background: transparent;
     color: var(--button-ink);
     border: 0;
-    border-radius: var(--button-radius);
+    border-radius: 0;
     overflow: visible;
     transition:
         transform .22s var(--ease),
@@ -1409,8 +1410,15 @@ button {
     inset: 0;
     z-index: -1;
     background: var(--button-face);
-    clip-path: none;
-    border-radius: inherit;
+    clip-path: polygon(
+        0 0,
+        calc(100% - var(--button-chamfer)) 0,
+        100% var(--button-chamfer),
+        100% 100%,
+        0 100%
+    );
+    
+    border-radius: 0;
     box-shadow:
         inset 0 0 0 1px rgba(8, 8, 8, .28);
     transition:
@@ -1424,8 +1432,15 @@ button {
     inset: 0;
     z-index: -2;
     background: var(--button-depth-color);
-    clip-path: none;
-    border-radius: inherit;
+    clip-path: polygon(
+        0 0,
+        calc(100% - var(--button-chamfer)) 0,
+        100% var(--button-chamfer),
+        100% 100%,
+        0 100%
+    );
+    
+    border-radius: 0;
     transform:
         translate(var(--button-depth), var(--button-depth));
     transition:
@@ -1671,12 +1686,20 @@ button {
 
 .hero-actions {
     position: absolute;
-    left: 50%;
+
+    left: max(
+        var(--page-padding),
+        calc((100vw - var(--max-width)) / 2)
+    );
+
     bottom: 42px;
-    transform: translateX(-50%);
+    transform: none;
+
     z-index: 3;
+
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+
     gap: 12px;
     flex-wrap: nowrap;
     width: max-content;
@@ -2889,11 +2912,15 @@ button {
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 360'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-opacity='.22' vector-effect='non-scaling-stroke'%3E%3Cpath d='M20 300H180C275 300 320 255 320 170C320 95 365 55 455 55H900'/%3E%3Cpath d='M75 330H315L470 175H900'/%3E%3Cpath d='M210 360V275L380 105H900'/%3E%3C/g%3E%3C/svg%3E");
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20900%20360'%3E%0A%3Cg%20fill%3D'none'%20stroke%3D'%23ffffff'%20stroke-width%3D'1.6'%20stroke-opacity%3D'.24'%20vector-effect%3D'non-scaling-stroke'%20stroke-linejoin%3D'round'%3E%0A%3Cpath%20d%3D'M300%2078H748L852%20138H404Z'%2F%3E%0A%3Cpath%20d%3D'M404%20138H748C806%20138%20852%20184%20852%20242C852%20300%20806%20330%20748%20330H404Z'%2F%3E%0A%3Cpath%20d%3D'M300%2078V270L404%20330'%2F%3E%0A%3Cpath%20d%3D'M300%20270H744C790%20270%20824%20252%20842%20222'%2F%3E%0A%3Cpath%20d%3D'M404%20138V330'%2F%3E%0A%3Cpath%20d%3D'M748%2078L852%20138'%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+
     background-repeat: no-repeat;
-    background-size: min(900px, 78vw) auto;
-    background-position: right -80px center;
-    opacity: .85;
+    background-size: min(760px, 72vw) auto;
+    background-position: right -20px center;
+
+    opacity: .9;
 }
 
 /* Reverse the composition on inner-page CTAs */
@@ -4500,7 +4527,7 @@ button {
         padding: 0;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         transform: none;
     }
 
@@ -4518,12 +4545,15 @@ button {
 
     .hero-actions {
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
+        left: max(
+            var(--page-padding),
+            calc((100vw - var(--max-width)) / 2)
+        );
         bottom: 42px;
+        transform: none;
         z-index: 3;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 10px;
         width: max-content;
     }
@@ -4777,8 +4807,8 @@ button {
 
     .hero-actions {
         position: absolute !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
+        left: var(--page-padding);
+        transform: none;
         bottom: 32px !important;
         top: auto !important;
         width: max-content !important;
