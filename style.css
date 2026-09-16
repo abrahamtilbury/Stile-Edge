@@ -1390,11 +1390,11 @@ button {
 ------------------------------------------ */
 
 .button-primary {
-    --button-face: var(--accent);
-    --button-face-hover: var(--accent-bright);
-    --button-ink: #080808;
+    --button-face: var(--cta);
+    --button-face-hover: var(--cta-hover);
+    --button-ink: #fff;
     --button-depth-color: #080808;
-    --button-divider: rgba(8, 8, 8, .18);
+    --button-divider: rgba(255,255,255,.22);
     --button-chamfer: 8px;
     position: relative;
     isolation: isolate;
@@ -1411,7 +1411,7 @@ button {
         color .22s ease;
 }
 
-/* Yellow top face */
+/* CTA top face */
 .button-primary::before {
     content: "";
     position: absolute;
@@ -3546,15 +3546,6 @@ button {
     justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
-}
-
-/* Inverse primary button on yellow CTA sections */
-.about-cta .button-primary {
-    --button-face: var(--accent);
-    --button-face-hover: var(--accent-bright);
-    --button-ink: #080808;
-    --button-depth-color: #080808;
-    --button-divider: rgba(8,8,8,.18);
 }
 
 .about-cta .button-secondary {
