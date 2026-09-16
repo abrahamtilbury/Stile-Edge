@@ -280,18 +280,21 @@
                                 id="photo-1"
                                 name="attachment-1"
                                 accept="image/jpeg,image/png,image/webp"
+                                aria-label="Project photo 1"
                             >
                             <input
                                 type="file"
                                 id="photo-2"
                                 name="attachment-2"
                                 accept="image/jpeg,image/png,image/webp"
+                                aria-label="Project photo 2"
                             >
                             <input
                                 type="file"
                                 id="photo-3"
                                 name="attachment-3"
                                 accept="image/jpeg,image/png,image/webp"
+                                aria-label="Project photo 3"
                             >
                         </div>
                     </div>
@@ -318,8 +321,19 @@
                         autocomplete="off"
                         aria-hidden="true"
                     >
-                    <button type="submit" class="button button-primary contact-form-submit">
-                        <span class="button-label">Send Enquiry</span>
+                    <button
+                        type="submit"
+                        class="button button-primary contact-form-submit"
+                    >
+                        <span class="button-label">
+                            Send Enquiry
+                        </span>
+                    
+                        <span class="button-arrow" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" focusable="false">
+                                <path d="M5 12h14M13 5l7 7-7 7" />
+                            </svg>
+                        </span>
                     </button>
                     <p class="form-status" id="form-status" role="status" aria-live="polite" hidden></p>
                 </form>
