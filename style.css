@@ -2371,32 +2371,6 @@ button {
     transform: translate(2px, -2px);
 }
 
-@media (max-width: 900px) {
-    .contact-page-details {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-        gap:
-            var(--space-6)
-            var(--space-7);
-    }
-
-    .contact-detail + .contact-detail::before {
-        display: none;
-    }
-
-    .contact-detail {
-        padding: 0;
-    }
-
-    .contact-detail:nth-child(-n + 2) {
-        border-top: 0;
-    }
-
-    .contact-detail:last-child {
-        grid-column: 1 / -1;
-    }
-}
-
 @media (max-width: 560px) {
     .contact-page-details {
         grid-template-columns: 1fr;
@@ -2404,11 +2378,8 @@ button {
     }
 
     .contact-detail {
-        border-top: 1px solid rgba(255,255,255,.10);
-    }
-
-    .contact-detail:first-child {
-        border-top: 0;
+        padding: 0;
+        border: 0;
     }
 
     .contact-detail:last-child {
@@ -2423,7 +2394,6 @@ button {
 .contact-form-section {
     padding-block: clamp(40px, 5vw, 64px);
     background: var(--bg);
-    border-top: 1px solid var(--line);
 }
 
 .contact-form-intro {
@@ -2659,30 +2629,6 @@ button {
    12. RESPONSIVE OVERRIDES
 ========================== */
 
-/* Detail services stack below 900px */
-
-@media (max-width: 900px) {
-
-    .service-detail-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .service-detail-main,
-    .service-detail:nth-of-type(even) .service-detail-main {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    .service-detail-image,
-    .service-detail:nth-of-type(even) .service-detail-image {
-        grid-column: 1;
-        grid-row: 2;
-        justify-self: start;
-        width: min(100%, 620px);
-    }
-}
-
 /* James homepage compact service rows */
 
 @media (min-width: 721px) {
@@ -2871,6 +2817,45 @@ button {
 @media (max-width: 900px) {
     .footer-links {
         gap: 10px 20px;
+    }
+
+    .contact-page-details {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap:
+            var(--space-6)
+            var(--space-7);
+    }
+
+    .contact-detail + .contact-detail::before {
+        display: none;
+    }
+
+    .contact-detail {
+        padding: 0;
+    }
+
+    .contact-detail:last-child {
+        grid-column: 1 / -1;
+    }
+
+    .service-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .service-detail-main,
+    .service-detail:nth-of-type(even) .service-detail-main {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .service-detail-image,
+    .service-detail:nth-of-type(even) .service-detail-image {
+        grid-column: 1;
+        grid-row: 2;
+        justify-self: start;
+        width: min(100%, 620px);
     }
 }
 
