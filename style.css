@@ -3062,6 +3062,10 @@ button {
         width: 150px;
     }
 
+    .footer-links a:first-child {
+        display: none;
+    }
+
     .footer-links {
         justify-content: flex-start;
         gap: 10px 18px;
