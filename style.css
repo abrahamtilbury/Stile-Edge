@@ -81,15 +81,16 @@
     --cta-surface:
         radial-gradient(
             circle at 18% 28%,
-            rgba(51, 76, 92, .34) 0%,
-            rgba(51, 76, 92, .12) 34%,
-            transparent 58%
+            rgba(74, 105, 121, .34) 0%,
+            rgba(51, 76, 92, .16) 36%,
+            transparent 60%
         ),
         linear-gradient(
             115deg,
-            var(--platinum-blue-deep) 0%,
-            var(--platinum-blue-deeper) 68%,
-            #090b0d 100%
+            #293f4b 0%,
+            #1d3039 48%,
+            #132229 76%,
+            #0c1418 100%
         );
     /* Spacing rhythm */
     --space-1: 4px;
