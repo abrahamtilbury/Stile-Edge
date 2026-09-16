@@ -16,12 +16,12 @@
     --text-muted: #9b9b9b;
     --text-dim: #888888;
     /* Brand */
-    --brand-gold: #ebad46;
-    --brand-gold-bright: #fed883;
-    --brand-gold-deep: #da9c2e;
-    --platinum-blue: #222ea0;
-    --platinum-blue-deep: #191d98;
-    --platinum-blue-deeper: #05053d;
+    --brand-gold: #d9a64a;
+    --brand-gold-bright: #e8c676;
+    --brand-gold-deep: #b98232;
+    --platinum-blue: #334c5c;
+    --platinum-blue-deep: #223640;
+    --platinum-blue-deeper: #101c22;
     /* Semantic */
     --accent: var(--brand-gold);
     --accent-bright: var(--brand-gold-bright);
