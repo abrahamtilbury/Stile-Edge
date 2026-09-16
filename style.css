@@ -4475,8 +4475,8 @@ button {
         min-height: 34px;
         padding: 0 12px;
         margin-right: 0;
-        background: var(--accent);
-        color: #080808;
+        background: var(--cta);
+        color: #fff;
         font-size: 10px;
         font-weight: 800;
         letter-spacing: .06em;
@@ -4486,8 +4486,8 @@ button {
     }
 
     .header-phone:hover {
-        background: var(--accent-bright);
-        color: #080808;
+        background: var(--cta-hover);
+        color: #fff;
         transform: translateY(-1px);
     }
 
