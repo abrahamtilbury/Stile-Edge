@@ -932,77 +932,64 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 /* ==========================
-   Contact Form (Formspree)
+   Contact Form
+   Attachment validation
 ========================== */
+
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form');
+    const form =
+        document.getElementById('contact-form');
+
     if (!form) return;
 
-    const started = document.getElementById('form-started');
-    const status = document.getElementById('form-status');
-    const submitBtn = form.querySelector('[type="submit"]');
-    const submitLabel = submitBtn?.querySelector('.button-label');
-    if (started) started.value = String(Date.now());
+    const status =
+        document.getElementById('form-status');
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    const fileInputs =
+        Array.from(
+            form.querySelectorAll(
+                'input[type="file"]'
+            )
+        );
 
-        const website = form.querySelector('[name="website"]');
-        const gotcha = form.querySelector('[name="_gotcha"]');
-        if ((website && website.value.trim() !== '') ||
-            (gotcha && gotcha.value.trim() !== '')) {
+    const MAX_TOTAL_SIZE =
+        10 * 1024 * 1024;
+
+    form.addEventListener('submit', (event) => {
+        const totalSize =
+            fileInputs.reduce(
+                (total, input) => {
+                    const file =
+                        input.files?.[0];
+
+                    return total +
+                        (file ? file.size : 0);
+                },
+                0
+            );
+
+        if (totalSize <= MAX_TOTAL_SIZE) {
             return;
         }
 
-        const t0 = Number(started?.value || 0);
-        if (t0 && Date.now() - t0 < 2500) {
-            showStatus('Please take a moment and try again.', false);
-            return;
+        event.preventDefault();
+
+        if (status) {
+            status.hidden = false;
+            status.textContent =
+                'Your photos must be 10 MB or less combined.';
+
+            status.classList.remove(
+                'is-success'
+            );
+
+            status.classList.add(
+                'is-error'
+            );
         }
 
-        // Turnstile required
-        const token = form.querySelector('[name="cf-turnstile-response"]')?.value;
-        if (!token) {
-            showStatus('Please complete the verification check.', false);
-            return;
-        }
-
-        submitBtn.disabled = true;
-        if (submitLabel) submitLabel.textContent = 'Sending…';
-
-        try {
-            const res = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { Accept: 'application/json' }
-            });
-
-            if (res.ok) {
-                form.reset();
-                if (started) started.value = String(Date.now());
-                if (window.turnstile) turnstile.reset();
-                showStatus('Message sent. We’ll get back to you shortly.', true);
-            } else {
-                const data = await res.json().catch(() => ({}));
-                showStatus(
-                    data.error || 'Something went wrong. Email sales@stileedge.com instead.',
-                    false
-                );
-            }
-        } catch {
-            showStatus('Network error. Please email sales@stileedge.com.', false);
-        } finally {
-            submitBtn.disabled = false;
-            if (submitLabel) submitLabel.textContent = 'Send Enquiry';
-        }
+        fileInputs[0]?.focus();
     });
-
-    function showStatus(msg, ok) {
-        status.hidden = false;
-        status.textContent = msg;
-        status.classList.toggle('is-success', ok);
-        status.classList.toggle('is-error', !ok);
-    }
 });
 
 /* ==========================
