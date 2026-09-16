@@ -1,0 +1,19 @@
+{
+  "name": "stile-edge-enquiry",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-16",
+
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "destination_address": "sales@stileedge.com"
+    }
+  ],
+
+  "vars": {
+    "FROM_EMAIL": "website@forms.stileedge.com",
+    "TO_EMAIL": "sales@stileedge.com",
+    "ALLOWED_ORIGINS": "https://stileedge.com,https://www.stileedge.com",
+    "TURNSTILE_HOSTNAMES": "stileedge.com,www.stileedge.com"
+  }
+}
