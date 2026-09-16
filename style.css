@@ -40,22 +40,56 @@
     --gold-button:
         linear-gradient(
             180deg,
+            rgba(255,255,255,.28) 0,
+            rgba(255,255,255,.06) 2px,
+            transparent 3px
+        ),
+        linear-gradient(
+            108deg,
+            transparent 0%,
+            transparent 34%,
+            rgba(255,255,255,.11) 46%,
+            transparent 60%
+        ),
+        linear-gradient(
+            180deg,
+            var(--brand-gold-bright) 0%,
+            var(--brand-gold) 44%,
+            var(--brand-gold-deep) 100%
+        );
+    
+    --gold-button-hover:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.34) 0,
+            rgba(255,255,255,.08) 2px,
+            transparent 3px
+        ),
+        linear-gradient(
+            108deg,
+            transparent 0%,
+            transparent 30%,
+            rgba(255,255,255,.16) 46%,
+            transparent 62%
+        ),
+        linear-gradient(
+            180deg,
             var(--brand-gold-bright) 0%,
             var(--brand-gold) 52%,
             var(--brand-gold-deep) 100%
         );
-    --gold-button-hover:
-        linear-gradient(
-            180deg,
-            var(--brand-gold-bright) 0%,
-            var(--brand-gold) 68%,
-            var(--brand-gold-deep) 100%
-        );
     --cta-surface:
+        radial-gradient(
+            circle at 16% 28%,
+            rgba(34,46,160,.32) 0%,
+            rgba(34,46,160,.12) 28%,
+            transparent 52%
+        ),
         linear-gradient(
             115deg,
-            var(--platinum-blue-deep) 0%,
-            var(--platinum-blue-deeper) 62%,
+            #121640 0%,
+            #0d1032 46%,
+            #090a1a 72%,
             #09090d 100%
         );
     /* Spacing rhythm */
@@ -986,7 +1020,9 @@ button {
     
     border-radius: 0;
     box-shadow:
-        inset 0 0 0 1px rgba(8, 8, 8, .28);
+        inset 0 1px 0 rgba(255,255,255,.30),
+        inset 0 -1px 0 rgba(82,48,0,.20),
+        inset 0 0 0 1px rgba(8,8,8,.22);
     transition:
         background-color .22s ease;
 }
@@ -1920,7 +1956,7 @@ button {
     pointer-events: none;
 
     background-image:
-        url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20900%20360'%3E%0A%3Cg%20fill%3D'none'%20stroke%3D'%23222ea0'%20stroke-width%3D'1.6'%20stroke-opacity%3D'.24'%20vector-effect%3D'non-scaling-stroke'%20stroke-linejoin%3D'round'%3E%0A%3Cpath%20d%3D'M300%2078H748L852%20138H404Z'%2F%3E%0A%3Cpath%20d%3D'M404%20138H748C806%20138%20852%20184%20852%20242C852%20300%20806%20330%20748%20330H404Z'%2F%3E%0A%3Cpath%20d%3D'M300%2078V270L404%20330'%2F%3E%0A%3Cpath%20d%3D'M300%20270H744C790%20270%20824%20252%20842%20222'%2F%3E%0A%3Cpath%20d%3D'M404%20138V330'%2F%3E%0A%3Cpath%20d%3D'M748%2078L852%20138'%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+        url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20900%20360'%3E%0A%3Cg%20fill%3D'none'%20stroke%3D'%23222ea0'%20stroke-width%3D'1.6'%20stroke-opacity%3D'.18'%20vector-effect%3D'non-scaling-stroke'%20stroke-linejoin%3D'round'%3E%0A%3Cpath%20d%3D'M300%2078H748L852%20138H404Z'%2F%3E%0A%3Cpath%20d%3D'M404%20138H748C806%20138%20852%20184%20852%20242C852%20300%20806%20330%20748%20330H404Z'%2F%3E%0A%3Cpath%20d%3D'M300%2078V270L404%20330'%2F%3E%0A%3Cpath%20d%3D'M300%20270H744C790%20270%20824%20252%20842%20222'%2F%3E%0A%3Cpath%20d%3D'M404%20138V330'%2F%3E%0A%3Cpath%20d%3D'M748%2078L852%20138'%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
 
     background-repeat: no-repeat;
     background-size: min(760px, 72vw) auto;
@@ -2489,13 +2525,7 @@ button {
 }
 
 .contact-form-submit {
-    min-width: 180px;
-    justify-content: center;
-    padding: 0 26px;
-}
-
-.contact-form-submit .button-label {
-    padding-right: 0;
+    min-width: 0;
 }
 
 .form-status {
