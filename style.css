@@ -2440,22 +2440,6 @@ button {
     transform: translate(2px, -2px);
 }
 
-@media (max-width: 560px) {
-    .contact-page-details {
-        grid-template-columns: 1fr;
-        gap: var(--space-6);
-    }
-
-    .contact-detail {
-        padding: 0;
-        border: 0;
-    }
-
-    .contact-detail:last-child {
-        grid-column: auto;
-    }
-}
-
 /* ==========================
    10. Contact Form
 ========================== */
@@ -3045,6 +3029,50 @@ button {
         grid-row: 2;
         justify-self: start;
         width: min(100%, 620px);
+    }
+}
+
+/* Phone contact details */
+@media (max-width: 560px) {
+    .contact-page-details {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+            "email office"
+            "mobile hours"
+            "location location";
+        gap:
+            var(--space-6)
+            var(--space-5);
+    }
+    .contact-detail {
+        min-width: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    .contact-detail:nth-child(1) {
+        grid-area: email;
+    }
+
+    .contact-detail:nth-child(2) {
+        grid-area: office;
+    }
+
+    .contact-detail:nth-child(3) {
+        grid-area: mobile;
+    }
+
+    .contact-detail:nth-child(4) {
+        grid-area: location;
+    }
+
+    .contact-detail:nth-child(5) {
+        grid-area: hours;
+    }
+
+    .contact-detail + .contact-detail::before {
+        display: none;
     }
 }
 
