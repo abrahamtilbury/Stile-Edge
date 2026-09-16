@@ -3917,10 +3917,6 @@ button {
     overflow: hidden;
 }
 
-.cf-turnstile {
-    margin: 4px 0 20px;
-}
-
 .contact-form-submit {
     min-width: 180px;
     justify-content: center;
@@ -3942,6 +3938,32 @@ button {
 
 .form-status.is-error {
     color: #ff6b6b;
+}
+
+.form-field input[type="file"] {
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.form-field input[type="file"] + input[type="file"] {
+    margin-top: 10px;
+}
+
+.form-field input[type="file"]::file-selector-button {
+    margin-right: 14px;
+    padding: 8px 12px;
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+    cursor: pointer;
+}
+
+.form-field-help {
+    margin: -4px 0 12px;
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 /* ==========================
