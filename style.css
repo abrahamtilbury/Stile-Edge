@@ -2250,9 +2250,8 @@ button {
 ========================== */
 
 .contact-page {
-    padding-block: clamp(36px, 4vw, 56px);
+    padding-block: clamp(40px, 4vw, 56px);
     background: var(--bg);
-    border-top: 1px solid var(--line);
 }
 
 .contact-page-details {
@@ -2264,24 +2263,30 @@ button {
         1.45fr
         1fr;
     gap: 0;
-    border-top: 1px solid rgba(255,255,255,.11);
-    border-bottom: 1px solid rgba(255,255,255,.11);
 }
 
 .contact-detail {
     position: relative;
     min-width: 0;
-    padding: var(--space-5) var(--space-4);
+    padding: var(--space-5);
 }
 
+/* Subtle desktop separators only */
 .contact-detail + .contact-detail::before {
     content: "";
     position: absolute;
     left: 0;
-    top: var(--space-5);
-    bottom: var(--space-5);
+    top: var(--space-4);
+    bottom: var(--space-4);
     width: 1px;
-    background: rgba(255,255,255,.10);
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(255,255,255,.12) 24%,
+            rgba(255,255,255,.12) 76%,
+            transparent 100%
+        );
 }
 
 .contact-detail-label {
@@ -2332,7 +2337,11 @@ button {
 
 @media (max-width: 900px) {
     .contact-page-details {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap:
+            var(--space-6)
+            var(--space-7);
     }
 
     .contact-detail + .contact-detail::before {
@@ -2340,7 +2349,7 @@ button {
     }
 
     .contact-detail {
-        border-top: 1px solid rgba(255,255,255,.10);
+        padding: 0;
     }
 
     .contact-detail:nth-child(-n + 2) {
@@ -2355,6 +2364,7 @@ button {
 @media (max-width: 560px) {
     .contact-page-details {
         grid-template-columns: 1fr;
+        gap: var(--space-6);
     }
 
     .contact-detail {
