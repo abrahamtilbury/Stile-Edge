@@ -945,6 +945,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const status =
         document.getElementById('form-status');
 
+    const params =
+        new URLSearchParams(window.location.search);
+    
+    if (
+        params.get('sent') === '1' &&
+        status
+    ) {
+        status.hidden = false;
+    
+        status.textContent =
+            'Thanks — your enquiry has been sent. We’ll be in touch shortly.';
+    
+        status.classList.remove('is-error');
+        status.classList.add('is-success');
+    
+        history.replaceState(
+            {},
+            '',
+            `${window.location.pathname}#contact-form`
+        );
+    }
+
     const fileInputs =
         Array.from(
             form.querySelectorAll(
