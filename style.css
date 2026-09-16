@@ -37,60 +37,20 @@
     --ease: cubic-bezier(.22, 1, .36, 1);
     --section-title-size: clamp(38px, 4vw, 54px);
     --body-copy-size: 16px;
-    --gold-button:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.28) 0,
-            rgba(255,255,255,.06) 2px,
-            transparent 3px
-        ),
-        linear-gradient(
-            108deg,
-            transparent 0%,
-            transparent 34%,
-            rgba(255,255,255,.11) 46%,
-            transparent 60%
-        ),
-        linear-gradient(
-            180deg,
-            var(--brand-gold-bright) 0%,
-            var(--brand-gold) 44%,
-            var(--brand-gold-deep) 100%
-        );
-    
-    --gold-button-hover:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.34) 0,
-            rgba(255,255,255,.08) 2px,
-            transparent 3px
-        ),
-        linear-gradient(
-            108deg,
-            transparent 0%,
-            transparent 30%,
-            rgba(255,255,255,.16) 46%,
-            transparent 62%
-        ),
-        linear-gradient(
-            180deg,
-            var(--brand-gold-bright) 0%,
-            var(--brand-gold) 52%,
-            var(--brand-gold-deep) 100%
-        );
+    --gold-button: var(--brand-gold);
+    --gold-button-hover: var(--brand-gold-bright);
     --cta-surface:
         radial-gradient(
             circle at 18% 28%,
-            rgba(34, 46, 160, .28) 0%,
-            rgba(34, 46, 160, .10) 34%,
+            rgba(51, 76, 92, .34) 0%,
+            rgba(51, 76, 92, .12) 34%,
             transparent 58%
         ),
         linear-gradient(
             115deg,
-            #171c5b 0%,
-            #12174c 44%,
-            #0e123d 72%,
-            #0b0e30 100%
+            var(--platinum-blue-deep) 0%,
+            var(--platinum-blue-deeper) 68%,
+            #090b0d 100%
         );
     /* Spacing rhythm */
     --space-1: 4px;
@@ -1052,11 +1012,6 @@ button {
     --button-chamfer: 10px;
     min-height: 58px;
     padding-left: 26px;
-    filter:
-        drop-shadow(
-            0 10px 18px
-            rgba(235, 173, 70, .10)
-        );
 }
 
 .contact .button-label,
