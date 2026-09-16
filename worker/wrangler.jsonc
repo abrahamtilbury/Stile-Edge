@@ -12,13 +12,13 @@
   "send_email": [
     {
       "name": "EMAIL",
-      "destination_address": "sales@stileedge.com"
+      "destination_address": "abrahamtilbury@gmail.com"
     }
   ],
 
   "vars": {
     "FROM_EMAIL": "website@notify.stileedge.com",
-    "TO_EMAIL": "sales@stileedge.com",
+    "TO_EMAIL": "abrahamtilbury@gmail.com",
     "ALLOWED_ORIGINS": "https://abrahamtilbury.github.io,https://stileedge.com,https://www.stileedge.com",
     "TURNSTILE_HOSTNAMES": "abrahamtilbury.github.io,stileedge.com,www.stileedge.com"
   }
