@@ -17,9 +17,9 @@
   ],
 
   "vars": {
-    "FROM_EMAIL": "website@forms.stileedge.com",
+    "FROM_EMAIL": "website@notify.stileedge.com",
     "TO_EMAIL": "sales@stileedge.com",
-    "ALLOWED_ORIGINS": "https://stileedge.com,https://www.stileedge.com",
-    "TURNSTILE_HOSTNAMES": "stileedge.com,www.stileedge.com"
+    "ALLOWED_ORIGINS": "https://abrahamtilbury.github.io,https://stileedge.com,https://www.stileedge.com",
+    "TURNSTILE_HOSTNAMES": "abrahamtilbury.github.io,stileedge.com,www.stileedge.com"
   }
 }
