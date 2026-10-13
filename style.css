@@ -80,9 +80,9 @@
     --cta-surface:
         linear-gradient(
             115deg,
-            #E5B858 0%,
-            #CC9B33 48%,
-            #AD7C26 100%
+            #896628 0%,
+            #75521F 48%,
+            #62451D 100%
         );
     /* Spacing rhythm */
     --space-1: 4px;
@@ -99,7 +99,7 @@
     --brand-edge-thickness: 2px;
 
     /* Shape system */
-    --radius-section: 0;
+    --radius-section: 14px;
     --radius-card: 0;
     --radius-media: 0;
     --radius-tag: 0;
@@ -1279,12 +1279,12 @@ button {
     line-height: .9;
     letter-spacing: -.05em;
     text-wrap: balance;
-    color: var(--logo-gold);
+    color: #FFFFFF;
 }
 
 .hero h1 span {
     display: block;
-    color: var(--logo-gold);
+    color: #FFFFFF;
 }
 
 .hero-text {
@@ -1970,7 +1970,7 @@ button {
     isolation: isolate;
     overflow: hidden;
     padding-block: clamp(70px, 8vw, 100px);
-    color: #14100A;
+    color: #FFFFFF;
     background: var(--cta-surface);
     text-align: center;
     border-radius: var(--radius-section);
@@ -1978,33 +1978,10 @@ button {
 
 .contact,
 .about-cta {
+    margin: 28px clamp(16px, 3vw, 40px) 32px;
     box-shadow:
         inset 0 1px 0 rgba(235, 173, 70, .14),
         inset 0 -1px 0 rgba(255, 255, 255, .05);
-}
-
-/* -----------------------------------
-   Stile Edge — profile line artwork
------------------------------------ */
-
-.contact::before,
-.about-cta::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background-image:
-        url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20900%20360'%3E%0A%3Cg%20fill%3D'none'%20stroke%3D'%23644512'%20stroke-width%3D'1.6'%20stroke-opacity%3D'.18'%20vector-effect%3D'non-scaling-stroke'%20stroke-linejoin%3D'round'%3E%0A%3Cpath%20d%3D'M300%2078H748L852%20138H404Z'%2F%3E%0A%3Cpath%20d%3D'M404%20138H748C806%20138%20852%20184%20852%20242C852%20300%20806%20330%20748%20330H404Z'%2F%3E%0A%3Cpath%20d%3D'M300%2078V270L404%20330'%2F%3E%0A%3Cpath%20d%3D'M300%20270H744C790%20270%20824%20252%20842%20222'%2F%3E%0A%3Cpath%20d%3D'M404%20138V330'%2F%3E%0A%3Cpath%20d%3D'M748%2078L852%20138'%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
-    background-repeat: no-repeat;
-    background-size: min(760px, 72vw) auto;
-    background-position: right -20px center;
-    opacity: .9;
-}
-
-/* Reverse the composition on inner-page CTAs */
-.about-cta::before {
-    transform: scaleX(-1);
 }
 
 /* Very subtle tonal depth — no circles */
@@ -2033,6 +2010,7 @@ button {
 .contact-content {
     max-width: 800px;
     margin: 0 auto;
+    padding-inline: 20px;
 }
 
 .contact h2 {
@@ -2111,11 +2089,11 @@ button {
     font-size: clamp(52px, 7vw, 96px);
     line-height: .9;
     letter-spacing: -.055em;
-    color: var(--logo-gold);
+    color: #FFFFFF;
 }
 .about-hero h1 span {
     display: block;
-    color: var(--logo-gold);
+    color: #FFFFFF;
 }
 .about-hero-text {
     max-width: 560px;
@@ -2285,7 +2263,7 @@ button {
         rgba(0,0,0,.05)
     ),
     var(--cta-surface); 
-    color: #14100A;
+    color: #FFFFFF;
     text-align: center;
     padding-block: clamp(70px, 8vw, 110px);
 }
@@ -2308,7 +2286,7 @@ button {
 
 .about-cta p {
     margin: 0 0 32px;
-    color: rgba(20,16,10,.85);
+    color: #FFFFFF;
     font-size: 17px;
 }
 
