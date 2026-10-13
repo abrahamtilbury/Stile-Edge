@@ -32,7 +32,8 @@
     --line: rgba(255,255,255,.10);
     --max-width: 1100px;
     --page-padding: clamp(20px, 4vw, 72px);
-    --section-space: clamp(56px, 6vw, 80px);
+    --section-space: clamp(48px, 5vw, 72px);
+    --section-gap: clamp(32px, 4vw, 56px);
     --ease: cubic-bezier(.22, 1, .36, 1);
     --section-title-size: clamp(38px, 4vw, 54px);
     --body-copy-size: 16px;
@@ -765,6 +766,10 @@ button {
     padding-block: var(--section-space);
 }
 
+.section + .section {
+    padding-top: var(--section-gap);
+}
+
 /* =========================================================
    5.1 HEADER - TOP INFORMATION BAR
 ========================================================= */
@@ -1318,7 +1323,7 @@ button {
 .profiles {
     background: var(--bg);
     padding-top: clamp(16px, 2vw, 28px);
-    padding-bottom: clamp(50px, 7vw, 110px);
+    padding-bottom: var(--section-gap);
 }
 
 .profiles-intro {
@@ -1789,10 +1794,11 @@ button {
 
 .aprons-intro {
     display: grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: 80px;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(40px, 5vw, 80px);
     align-items: start;
     margin-bottom: 80px;
+    margin-bottom: var(--section-gap); 
 }
 
 .aprons-heading h2 {
