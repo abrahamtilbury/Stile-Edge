@@ -1050,6 +1050,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let scrollFrame = null;
 
+    // Keep only the active review accessible.
+    function syncReviewAccessibility() {
+        slides.forEach((slide, index) => {
+            const isActive = index === currentIndex;
+            slide.inert = !isActive;
+            slide.setAttribute('aria-hidden', String(!isActive));
+        });
+    }
+
     const reducedMotion =
         window.matchMedia('(prefers-reduced-motion: reduce)');
 
@@ -1228,7 +1237,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 slides.length
             ) %
             slides.length;
-
+        syncReviewAccessibility();
         track.scrollTo({
             left:
                 currentIndex *
@@ -1281,6 +1290,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 )
                             );
 
+                        syncReviewAccessibility();
                         syncTrackHeight();
                     }
                 );
@@ -1315,5 +1325,6 @@ document.addEventListener('DOMContentLoaded', () => {
         syncTrackHeight
     );
 
+    syncReviewAccessibility();
     syncTrackHeight();
 })();
