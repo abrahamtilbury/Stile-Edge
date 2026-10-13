@@ -17,6 +17,7 @@
     --text-dim: #888888;
     /* Brand */
     --brand-gold: #d9a64a;
+    --logo-gold: #CC9B33;
     --brand-gold-bright: #e8c676;
     --brand-gold-deep: #b98232;
     --platinum-blue: #334c5c;
@@ -79,18 +80,11 @@
             var(--brand-gold-deep) 100%
         );
     --cta-surface:
-        radial-gradient(
-            circle at 18% 28%,
-            rgba(74, 105, 121, .34) 0%,
-            rgba(51, 76, 92, .16) 36%,
-            transparent 60%
-        ),
         linear-gradient(
             115deg,
-            #293f4b 0%,
-            #1d3039 48%,
-            #132229 76%,
-            #0c1418 100%
+            #E5B858 0%,
+            #CC9B33 48%,
+            #AD7C26 100%
         );
     /* Spacing rhythm */
     --space-1: 4px;
@@ -788,7 +782,8 @@ button {
     background: rgba(0, 0, 0, .33);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    color: rgba(255,255,255,.82);
+    color: var(--logo-gold);        
+    /* old - color: rgba(255,255,255,.82); -  */
     font-size: 9px;
     font-weight: 700;
     letter-spacing: .08em;
@@ -811,7 +806,8 @@ button {
 }
 
 .top-bar a {
-    color: rgba(255,255,255,.78);
+    color: var(--logo-gold);
+    /* old - color: rgba(255,255,255,.78); - */
 }
 
 .top-bar a:hover {
@@ -1061,13 +1057,14 @@ button {
 .contact .button-primary,
 .about-cta .button-primary {
     --button-chamfer: 10px;
+    --button-face: linear-gradient(180deg, #292929, #111111);
+    --button-face-hover: linear-gradient(180deg, #383838, #1D1D1D);
+    --button-ink: #FFFFFF;
+    --button-divider: rgba(255,255,255,.25);
     min-height: 58px;
     padding-left: 26px;
-    filter:
-        drop-shadow(
-            0 10px 18px
-            rgba(235, 173, 70, .10)
-        );
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
+    /* old - filter: drop-shadow( 0 10px 18px rgba(235, 173, 70, .10)); - */
 }
 
 .contact .button-label,
@@ -1284,11 +1281,13 @@ button {
     line-height: .9;
     letter-spacing: -.05em;
     text-wrap: balance;
+    color: var(--logo-gold);
 }
 
 .hero h1 span {
     display: block;
     color: rgba(255,255,255,.75);
+    color: var(--logo-gold);
 }
 
 .hero-text {
@@ -1974,7 +1973,7 @@ button {
     isolation: isolate;
     overflow: hidden;
     padding-block: clamp(70px, 8vw, 100px);
-    color: #fff;
+    color: #14100A;
     background: var(--cta-surface);
     text-align: center;
     border-radius: var(--radius-section);
@@ -1999,7 +1998,7 @@ button {
     z-index: 0;
     pointer-events: none;
     background-image:
-        url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20900%20360'%3E%0A%3Cg%20fill%3D'none'%20stroke%3D'%23222ea0'%20stroke-width%3D'1.6'%20stroke-opacity%3D'.18'%20vector-effect%3D'non-scaling-stroke'%20stroke-linejoin%3D'round'%3E%0A%3Cpath%20d%3D'M300%2078H748L852%20138H404Z'%2F%3E%0A%3Cpath%20d%3D'M404%20138H748C806%20138%20852%20184%20852%20242C852%20300%20806%20330%20748%20330H404Z'%2F%3E%0A%3Cpath%20d%3D'M300%2078V270L404%20330'%2F%3E%0A%3Cpath%20d%3D'M300%20270H744C790%20270%20824%20252%20842%20222'%2F%3E%0A%3Cpath%20d%3D'M404%20138V330'%2F%3E%0A%3Cpath%20d%3D'M748%2078L852%20138'%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
+        url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%20900%20360'%3E%0A%3Cg%20fill%3D'none'%20stroke%3D'%23644512'%20stroke-width%3D'1.6'%20stroke-opacity%3D'.18'%20vector-effect%3D'non-scaling-stroke'%20stroke-linejoin%3D'round'%3E%0A%3Cpath%20d%3D'M300%2078H748L852%20138H404Z'%2F%3E%0A%3Cpath%20d%3D'M404%20138H748C806%20138%20852%20184%20852%20242C852%20300%20806%20330%20748%20330H404Z'%2F%3E%0A%3Cpath%20d%3D'M300%2078V270L404%20330'%2F%3E%0A%3Cpath%20d%3D'M300%20270H744C790%20270%20824%20252%20842%20222'%2F%3E%0A%3Cpath%20d%3D'M404%20138V330'%2F%3E%0A%3Cpath%20d%3D'M748%2078L852%20138'%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E");
     background-repeat: no-repeat;
     background-size: min(760px, 72vw) auto;
     background-position: right -20px center;
@@ -2115,10 +2114,12 @@ button {
     font-size: clamp(52px, 7vw, 96px);
     line-height: .9;
     letter-spacing: -.055em;
+    color: var(--logo-gold);
 }
 .about-hero h1 span {
     display: block;
     color: rgba(255,255,255,.82);
+    color: var(--logo-gold);
 }
 .about-hero-text {
     max-width: 560px;
@@ -2287,8 +2288,8 @@ button {
         transparent 52%,
         rgba(0,0,0,.05)
     ),
-    var(--cta-surface);
-    color: #fff;
+    var(--cta-surface); 
+    color: #14100A;
     text-align: center;
     padding-block: clamp(70px, 8vw, 110px);
 }
@@ -2311,7 +2312,7 @@ button {
 
 .about-cta p {
     margin: 0 0 32px;
-    color: rgba(255,255,255,.78);
+    color: rgba(20,16,10,.85);
     font-size: 17px;
 }
 
