@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (
                 galleryMedia &&
                 track?.id
-            )
+            ) {
         
                 const expandButton =
                     document.createElement("button");
