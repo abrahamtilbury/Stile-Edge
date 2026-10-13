@@ -843,21 +843,32 @@ button {
     min-height: 76px;
     margin-inline: auto;
     display: grid;
-    grid-template-columns: 210px minmax(0, 1fr);
+    grid-template-columns: 280px minmax(0, 1fr);
     align-items: center;
     column-gap: 40px;
 }
 
+
 .site-logo {
-    display: block;
-    width: 210px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: fit-content;
+    max-width: 100%;
 }
 
 .site-logo img {
     display: block;
-    width: 210px;
     height: auto;
-    max-width: 100%;
+    max-width: none;
+}
+
+.site-logo .site-logo-mark {
+    width: 64px;
+}
+
+.site-logo .site-logo-wordmark {
+    width: 198px;
 }
 
 /* =========================================================
@@ -2593,7 +2604,7 @@ button {
 }
 
 .footer-brand img {
-    width: 180px;
+    width: 96px;
     height: auto;
 }
 
@@ -2892,7 +2903,7 @@ button {
     }
     
     .header-inner {
-        grid-template-columns: 160px minmax(0, 1fr);
+        grid-template-columns: 250px minmax(0, 1fr);
         column-gap: 20px;
     }
 
@@ -2922,10 +2933,19 @@ button {
         grid-column: auto;
     }
     
-    .site-logo,
-    .site-logo img {
-        width: 160px;
+    
+    .site-logo {
+        gap: 10px;
     }
+    
+    .site-logo .site-logo-mark {
+        width: 58px;
+    }
+    
+    .site-logo .site-logo-wordmark {
+        width: 180px;
+    }
+
 
     .desktop-nav {
         gap: 14px;
@@ -3067,7 +3087,7 @@ button {
     }
 
     .footer-brand img {
-        width: 150px;
+        width: 76px;
     }
 
     .footer-links {
@@ -3082,14 +3102,18 @@ button {
 
 @media (max-width: 900px) and (min-width: 721px) {
     .header-inner {
-        grid-template-columns: 140px minmax(0, 1fr);
+        grid-template-columns: 235px minmax(0, 1fr);
         column-gap: 12px;
     }
 
-    .site-logo,
-    .site-logo img {
-        width: 140px;
+    .site-logo .site-logo-mark {
+        width: 54px;
     }
+    
+    .site-logo .site-logo-wordmark {
+        width: 168px;
+    }
+
 
     .desktop-nav {
         gap: 8px;
@@ -3449,10 +3473,18 @@ button {
         display: none;
     }
 
-    .site-logo,
-    .site-logo img {
+    .site-logo {
+        gap: 10px;
+    }
+    
+    .site-logo .site-logo-mark {
+        width: 48px;
+    }
+    
+    .site-logo .site-logo-wordmark {
         width: 150px;
     }
+
 
     .menu-button {
         appearance: none;
