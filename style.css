@@ -3,11 +3,9 @@
 *::after {
     box-sizing: border-box;
 }
-
 /* ==========================
    1. Design Tokens
 ========================== */
-
 :root {
     --bg: #0a0a0a;
     --surface: #111111;
@@ -2578,7 +2576,7 @@ button {
 ========================== */
 
 .site-footer {
-    padding: clamp(44px, 5vw, 64px) 0 24px;
+    padding: clamp(24px, 3vw, 40px) 0 24px;
     background: #080808;
     border-top: 1px solid var(--line);
 }
@@ -2599,15 +2597,28 @@ button {
    Brand
 -------------------------- */
 
+
 .footer-brand {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 12px;
     width: fit-content;
+    max-width: 100%;
 }
 
 .footer-brand img {
-    width: 96px;
+    display: block;
     height: auto;
 }
+
+.footer-brand .footer-mark {
+    width: 72px;
+}
+
+.footer-brand .footer-wordmark {
+    width: 200px;
+}
+
 
 /* --------------------------
    Navigation
@@ -3078,7 +3089,7 @@ button {
 
 @media (max-width: 600px) {
     .site-footer {
-        padding-top: 40px;
+        padding-top: 24px;
     }
 
     .footer-inner {
@@ -3087,8 +3098,16 @@ button {
         gap: 24px;
     }
 
-    .footer-brand img {
-        width: 76px;
+    .footer-brand {
+        gap: 10px;
+    }
+    
+    .footer-brand .footer-mark {
+        width: 54px;
+    }
+    
+    .footer-brand .footer-wordmark {
+        width: 170px;
     }
 
     .footer-links {
