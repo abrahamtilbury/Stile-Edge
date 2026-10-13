@@ -1284,7 +1284,6 @@ button {
 
 .hero h1 span {
     display: block;
-    color: rgba(255,255,255,.75);
     color: var(--logo-gold);
 }
 
@@ -2116,7 +2115,6 @@ button {
 }
 .about-hero h1 span {
     display: block;
-    color: rgba(255,255,255,.82);
     color: var(--logo-gold);
 }
 .about-hero-text {
