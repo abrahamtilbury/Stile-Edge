@@ -2480,6 +2480,11 @@ button {
     color: var(--text-dim);
 }
 
+
+.form-upload-heading {
+    margin: 0;
+}
+
 .form-field .optional {
     font-weight: 500;
     text-transform: none;
