@@ -2265,7 +2265,7 @@ button {
     var(--cta-surface); 
     color: #FFFFFF;
     text-align: center;
-    padding-block: clamp(70px, 8vw, 56px);
+    padding-block: clamp(40px, 4vw, 56px);
 }
 
 .about-cta-inner {
