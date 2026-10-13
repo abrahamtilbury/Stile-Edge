@@ -3454,7 +3454,7 @@ button {
     .top-bar {
         display: block;
         height: 32px;
-        font-size: 8px;
+        font-size: 11px;
         letter-spacing: .06em;
     }
 
@@ -3470,6 +3470,13 @@ button {
         display: none;
     }
 
+    
+    /* Prioritise phone and email on narrow screens */
+    .top-bar-hours {
+        display: none;
+    }
+
+    
     .site-header {
         top: 32px;
         background: rgba(10, 10, 10, .45);
