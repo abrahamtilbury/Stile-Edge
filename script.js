@@ -85,6 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startAutoplay() {
         stopAutoplay();
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+        }
         timer = setInterval(next, INTERVAL);
     }
 
@@ -128,6 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const toggle =
             card.querySelector('.project-card-toggle');
 
+        const initialLabel = toggle?.getAttribute('aria-label')
+            || 'Show tile edge profile used in this project';
+        const back = card.querySelector('.project-card-back');
+        const front = card.querySelector('.project-card-front');
+
         const setFlipped = (isFlipped) => {
 
             card.classList.toggle(
@@ -135,6 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 isFlipped
             );
 
+            if (back) back.inert = !isFlipped;
+            if (front) front.inert = isFlipped;
             if (!toggle) return;
 
             toggle.setAttribute(
@@ -146,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'aria-label',
                 isFlipped
                     ? 'Show project photo'
-                    : 'Show tile edge profile used in this project'
+                    : initialLabel
             );
         };
 
@@ -162,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 !card.classList.contains('is-flipped')
             );
         });
+        setFlipped(false);
 
     });
 
@@ -240,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
             if (
                 galleryMedia &&
-                track.id
-            ) {
+                track?.id
+            )
         
                 const expandButton =
                     document.createElement("button");
