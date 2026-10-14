@@ -3134,6 +3134,391 @@ button {
     }
 }
 
+/* ============================================================
+   13. PROJECT GALLERY PAGE
+   Page-specific gallery styles share the global design tokens.
+   Scope every rule to .portfolio-page to protect other pages.
+   Gallery hero, buttons, CTA, and footer reuse shared styles.
+============================================================ */
+
+.portfolio-page .portfolio-hero .about-hero-image {
+    object-position: center 48%;
+}
+
+.portfolio-page .portfolio-eyebrow {
+    margin: 0 0 12px;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+/* Gallery introduction */
+.portfolio-page .portfolio-gallery {
+    padding-block: var(--section-space);
+    background: var(--bg);
+}
+
+.portfolio-page .portfolio-gallery-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+    align-items: end;
+    column-gap: clamp(30px, 5vw, 80px);
+    row-gap: 24px;
+    margin-bottom: clamp(26px, 4vw, 48px);
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+}
+
+.portfolio-page .portfolio-gallery-intro h2 {
+    position: relative;
+    margin: 0;
+    max-width: 700px;
+    padding-bottom: 16px;
+    font-size: var(--section-title-size);
+    font-weight: 500;
+    letter-spacing: -.04em;
+    line-height: .96;
+}
+
+/* Same short gold underline as other Stile Edge section headings. */
+.portfolio-page .portfolio-gallery-intro h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: var(--brand-edge-length);
+    height: var(--brand-edge-thickness);
+    background: var(--accent);
+}
+
+.portfolio-page .portfolio-gallery-description {
+    max-width: 380px;
+    justify-self: end;
+}
+
+.portfolio-page .portfolio-gallery-description p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--body-copy-size);
+    line-height: 1.6;
+}
+
+.portfolio-page .portfolio-gallery-description .portfolio-gallery-count {
+    margin-top: 18px;
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.portfolio-page .portfolio-gallery-count span {
+    color: var(--accent-bright);
+}
+
+/* Archive grid: three columns desktop, two tablet, one phone */
+.portfolio-page .portfolio-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.portfolio-page .portfolio-gallery-item {
+    min-width: 0;
+    margin: 0;
+}
+
+.portfolio-page .portfolio-gallery-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: 0;
+    background: var(--surface);
+    color: #fff;
+    text-align: left;
+    cursor: zoom-in;
+    isolation: isolate;
+    transition: border-color .22s ease, transform .22s ease;
+}
+
+.portfolio-page .portfolio-gallery-card::after {
+    content: "";
+    position: absolute;
+    inset: 40% 0 0;
+    z-index: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,.78), rgba(0,0,0,0));
+    pointer-events: none;
+}
+
+.portfolio-page .portfolio-gallery-card > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .6s var(--ease);
+}
+
+.portfolio-page .portfolio-card-index,
+.portfolio-page .portfolio-card-action {
+    position: absolute;
+    z-index: 1;
+    bottom: 17px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    pointer-events: none;
+}
+
+.portfolio-page .portfolio-card-index { left: 18px; }
+.portfolio-page .portfolio-card-index span { color: rgba(255,255,255,.7); }
+.portfolio-page .portfolio-card-action { right: 18px; text-align: right; }
+.portfolio-page .portfolio-card-action span {
+    display: inline-block;
+    margin-left: 4px;
+    color: var(--accent-bright);
+    font-size: 15px;
+    line-height: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .portfolio-page .portfolio-gallery-card:hover {
+        border-color: var(--accent);
+    }
+    .portfolio-page .portfolio-gallery-card:hover > img {
+        transform: scale(1.035);
+    }
+}
+
+.portfolio-page .portfolio-gallery-card:active {
+    transform: scale(.992);
+}
+
+.portfolio-page .portfolio-gallery-card:focus-visible {
+    outline: 3px solid var(--accent-bright);
+    outline-offset: 4px;
+}
+
+/* Full image viewer: native <dialog> provides modal focus and Escape */
+.portfolio-page .portfolio-viewer {
+    box-sizing: border-box;
+    width: min(1440px, calc(100vw - 32px));
+    max-width: 1440px;
+    max-height: calc(100dvh - 32px);
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.22);
+    border-top: 2px solid var(--accent);
+    border-radius: 0;
+    background: #0b0b0b;
+    color: #fff;
+    box-shadow: 0 28px 90px rgba(0,0,0,.8);
+}
+
+.portfolio-page .portfolio-viewer::backdrop {
+    background: rgba(0,0,0,.89);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.portfolio-page .portfolio-viewer-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: calc(100dvh - 36px);
+    padding: 52px 12px 12px;
+}
+
+.portfolio-page .portfolio-viewer-close {
+    position: absolute;
+    z-index: 2;
+    top: 9px;
+    right: 11px;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 38px;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 0;
+    background: #181818;
+    color: #fff;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.portfolio-page .portfolio-viewer-close:hover,
+.portfolio-page .portfolio-viewer-arrow:hover {
+    border-color: var(--accent-bright);
+    color: var(--accent-bright);
+}
+
+.portfolio-page .portfolio-viewer-stage {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) 54px;
+    align-items: center;
+    min-width: 0;
+    min-height: 0;
+}
+
+.portfolio-page .portfolio-viewer-arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 64px;
+    justify-self: center;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 0;
+    background: #141414;
+    color: #fff;
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.portfolio-page .portfolio-viewer-figure {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    margin: 0;
+}
+
+.portfolio-page .portfolio-viewer-figure > img {
+    display: block;
+    width: 100%;
+    height: min(73dvh, 790px);
+    max-height: calc(100dvh - 190px);
+    object-fit: contain;
+    background: #050505;
+}
+
+.portfolio-page .portfolio-viewer-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+    min-height: 46px;
+    padding: 13px 4px 0;
+    color: #f5f5f2;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.portfolio-page [data-portfolio-counter] {
+    flex-shrink: 0;
+    color: var(--accent-bright);
+    font-weight: 700;
+    letter-spacing: .1em;
+}
+
+.portfolio-page [data-portfolio-caption] {
+    text-align: right;
+}
+
+.portfolio-page .portfolio-viewer-hint {
+    margin: 10px 0 0;
+    color: var(--text-muted);
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: .04em;
+}
+
+.portfolio-page .portfolio-viewer button:focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 3px;
+}
+
+/* Soft expansion, without an exaggerated card-flip effect. */
+@media (prefers-reduced-motion: no-preference) {
+    .portfolio-page .portfolio-viewer[open] {
+        animation: portfolio-viewer-enter .24s ease-out both;
+    }
+    @keyframes portfolio-viewer-enter {
+        from { opacity: 0; transform: scale(.97) translateY(8px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+}
+
+/* Tablet / phone */
+@media (max-width: 900px) {
+    .portfolio-page .portfolio-gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .portfolio-page .portfolio-gallery-intro {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+    }
+    .portfolio-page .portfolio-gallery-description { justify-self: start; }
+    .portfolio-page .portfolio-gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+    .portfolio-page .portfolio-viewer {
+        width: calc(100vw - 16px);
+        max-height: calc(100dvh - 16px);
+    }
+    .portfolio-page .portfolio-viewer-panel {
+        padding: 52px 8px 10px;
+        max-height: calc(100dvh - 20px);
+    }
+    .portfolio-page .portfolio-viewer-stage {
+        position: relative;
+        display: block;
+    }
+    .portfolio-page .portfolio-viewer-arrow {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        width: 42px;
+        height: 52px;
+        transform: translateY(-75%);
+        background: rgba(10,10,10,.84);
+    }
+    .portfolio-page .portfolio-viewer-prev { left: 3px; }
+    .portfolio-page .portfolio-viewer-next { right: 3px; }
+    .portfolio-page .portfolio-viewer-figure > img {
+        height: 62dvh;
+        max-height: calc(100dvh - 185px);
+    }
+    .portfolio-page .portfolio-viewer-caption {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+        min-height: 0;
+        padding: 12px 6px 0;
+    }
+    .portfolio-page [data-portfolio-caption] { text-align: left; }
+    .portfolio-page .portfolio-viewer-hint { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .portfolio-page .portfolio-gallery-card,
+    .portfolio-page .portfolio-gallery-card > img {
+        transition: none;
+    }
+}
+
+
 /* ==========================
    13. LANDSCAPE OVERRIDES
 ========================== */
