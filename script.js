@@ -1328,3 +1328,102 @@ document.addEventListener('DOMContentLoaded', () => {
     syncReviewAccessibility();
     syncTrackHeight();
 })();
+
+/* ==============================================
+   21. PROJECT GALLERY / 24-PHOTO IMAGE VIEWER
+   Page-specific feature within shared script.js.
+   Images and captions come from gallery.html.
+================================================= */
+(() => {
+    'use strict';
+
+    const gallery = document.querySelector('[data-portfolio-gallery]');
+    const viewer = document.querySelector('[data-portfolio-viewer]');
+    if (!gallery || !viewer) return;
+
+    const items = [...gallery.querySelectorAll('[data-portfolio-item]')];
+    const expanded = viewer.querySelector('[data-portfolio-expanded]');
+    const counter = viewer.querySelector('[data-portfolio-counter]');
+    const caption = viewer.querySelector('[data-portfolio-caption]');
+    const closeButton = viewer.querySelector('[data-portfolio-close]');
+    const prevButton = viewer.querySelector('[data-portfolio-prev]');
+    const nextButton = viewer.querySelector('[data-portfolio-next]');
+    const stage = viewer.querySelector('[data-portfolio-stage]');
+    if (!items.length || !expanded || !counter || !caption ||
+        !closeButton || !prevButton || !nextButton || !stage) return;
+
+    let activeIndex = 0;
+    let openingButton = null;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    function display(index) {
+        activeIndex = (index + items.length) % items.length;
+        const thumbnail = items[activeIndex].querySelector('img');
+        if (!thumbnail) return;
+
+        // WebP images are used both in the grid and at full available size.
+        expanded.src = thumbnail.getAttribute('src');
+        expanded.alt = thumbnail.alt;
+        caption.textContent = thumbnail.alt;
+        counter.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(items.length).padStart(2, '0')}`;
+    }
+
+    function closeViewer() {
+        if (viewer.open) viewer.close();
+    }
+
+    items.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            openingButton = button;
+            display(index);
+            if (typeof viewer.showModal === 'function') {
+                viewer.showModal();
+                closeButton.focus();
+            }
+        });
+    });
+
+    closeButton.addEventListener('click', closeViewer);
+    prevButton.addEventListener('click', () => display(activeIndex - 1));
+    nextButton.addEventListener('click', () => display(activeIndex + 1));
+
+    // Clicking the shaded area outside the panel closes the modal.
+    viewer.addEventListener('click', (event) => {
+        if (event.target === viewer) closeViewer();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (!viewer.open) return;
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            display(activeIndex - 1);
+        } else if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            display(activeIndex + 1);
+        }
+        // Escape is managed by the browser's native <dialog> element.
+    });
+
+    // Swipe horizontally through images on touchscreens.
+    stage.addEventListener('touchstart', (event) => {
+        if (event.touches.length !== 1) return;
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', (event) => {
+        if (event.changedTouches.length !== 1) return;
+        const dx = event.changedTouches[0].clientX - touchStartX;
+        const dy = event.changedTouches[0].clientY - touchStartY;
+        if (Math.abs(dx) >= 50 && Math.abs(dx) > Math.abs(dy)) {
+            display(activeIndex + (dx < 0 ? 1 : -1));
+        }
+    }, { passive: true });
+
+    // Restore focus to the card that opened the viewer.
+    viewer.addEventListener('close', () => {
+        expanded.removeAttribute('src');
+        if (openingButton?.isConnected) openingButton.focus();
+    });
+})();
