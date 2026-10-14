@@ -140,7 +140,8 @@
                 <a href="about.html">About</a>
                 <a href="profiles.html">Profiles</a>
                 <a href="designideas.html">Design Ideas</a>
-                <a href="contact.html" aria-current="page">Contact</a>
+                <a href="gallery.html" aria-current="page">Gallery</a>
+                <a href="contact.html">Contact</a>
             </nav>
             <button
                 class="menu-button"
@@ -159,6 +160,7 @@
             <a href="about.html">About</a>
             <a href="profiles.html">Profiles</a>
             <a href="designideas.html">Design Ideas</a>
+            <a href="gallery.html" aria-current="page">Gallery</a>
             <a href="contact.html" aria-current="page">Contact</a>
         </nav>
     </header>
@@ -166,8 +168,17 @@
     <!-- =========================
          3. MAIN CONTENT
     ========================== -->
-    
-    <main>
+    <!-- 3.1 GALLERY HERO -->
+    <section class="about-hero about-hero--short portfolio-hero" aria-labelledby="portfolio-title">
+        <img src="images/heroabout.webp" alt="Stone pool coping and outdoor tiled terraces overlooking the water" class="about-hero-image" width="1920" height="1080" fetchpriority="high" decoding="async">
+        <div class="about-hero-overlay"></div>
+        <div class="about-hero-content">
+            <p class="portfolio-eyebrow">Stile Edge / Project archive</p>
+            <h1 id="portfolio-title">Finishes worth <span>looking closer.</span></h1>
+            <p class="about-hero-text">Explore a selection of tiled pools, steps, terraces and details from our original project gallery.</p>
+        </div>
+    </section>
+    <main id="main-content">
         <section id="gallery" class="portfolio-gallery section" data-portfolio-gallery aria-labelledby="portfolio-gallery-heading">
             <div class="container">
                 <div class="portfolio-gallery-intro">
@@ -352,7 +363,7 @@
                 <li class="portfolio-gallery-item">
                     <button class="portfolio-gallery-card" type="button" data-portfolio-item aria-label="Open photograph 13 of 24: Outdoor swimming pool with broad stone coping">
                         <img
-                            src="images/gallery/gallery-13.jpg"
+                            src="images/image-013.webp"
                             alt="Outdoor swimming pool with broad stone coping"
                             width="1000"
                             height="750"
@@ -520,6 +531,77 @@
                 </ol>
             </div>
         </section>
+         <section class="about-cta portfolio-cta" aria-labelledby="portfolio-cta-heading">
+
+            <div class="about-cta-inner">
+
+                <h2 id="portfolio-cta-heading">Have a project in mind?<span>Let's finish the edge.</span></h2>
+
+                <p>Send us your tile details and dimensions. We'll help you choose a suitable profile.</p>
+
+                <div class="about-cta-actions">
+
+                    <a href="contact.html#contact-form" class="button button-primary">
+
+                        <span class="button-label">Send Enquiry</span>
+
+                        <span class="button-arrow" aria-hidden="true">
+
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+
+             3.4 LARGE IMAGE VIEWER
+
+             Native dialog provides focus trapping and Escape.
+
+        ========================== -->
+
+        <dialog class="portfolio-viewer" data-portfolio-viewer aria-label="Expanded project photograph viewer">
+
+            <div class="portfolio-viewer-panel">
+
+                <button class="portfolio-viewer-close" type="button" data-portfolio-close aria-label="Close expanded photograph">✕</button>
+
+                <div class="portfolio-viewer-stage" data-portfolio-stage>
+
+                    <button class="portfolio-viewer-arrow portfolio-viewer-prev" type="button" data-portfolio-prev aria-label="Previous photograph">‹</button>
+
+                    <figure class="portfolio-viewer-figure">
+
+                        <img data-portfolio-expanded alt="" width="1000" height="750" decoding="async">
+
+                        <figcaption class="portfolio-viewer-caption">
+
+                            <span data-portfolio-counter>01 / 24</span>
+
+                            <span data-portfolio-caption aria-live="polite" aria-atomic="true">Project photograph</span>
+
+                        </figcaption>
+
+                    </figure>
+
+                    <button class="portfolio-viewer-arrow portfolio-viewer-next" type="button" data-portfolio-next aria-label="Next photograph">›</button>
+
+                </div>
+
+                <p class="portfolio-viewer-hint">← → Navigate <span aria-hidden="true">·</span> Esc to close</p>
+
+            </div>
+
+        </dialog>
     </main>
     <!-- =========================
          4. FOOTER
@@ -556,6 +638,7 @@
                 <a href="about.html">About</a>
                 <a href="profiles.html">Profiles</a>
                 <a href="designideas.html">Design Ideas</a>
+                <a href="gallery.html" aria-current="page">Gallery</a>
                 <a href="contact.html">Contact</a>
             </nav>
         </div>
