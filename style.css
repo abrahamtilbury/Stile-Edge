@@ -81,9 +81,9 @@
     --cta-surface:
         linear-gradient(
             115deg,
-            #896628 0%,
-            #75521F 48%,
-            #62451D 100%
+            #334C5C 0%,
+            #2C4250 50%,
+            #223640 100%
         );
     /* Spacing rhythm */
     --space-1: 4px;
