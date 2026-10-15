@@ -1617,8 +1617,8 @@ button {
     right: 18px;
     z-index: 4;
 
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     padding: 0;
 
     display: grid;
@@ -3340,7 +3340,7 @@ button {
     flex-direction: column;
     width: 100%;
     max-height: calc(100dvh - 36px);
-    padding: 52px 12px 12px;
+    padding: 60px 12px 12px;
 }
 
 .portfolio-page .portfolio-viewer-close {
@@ -3350,8 +3350,8 @@ button {
     right: 11px;
     display: grid;
     place-items: center;
-    width: 42px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 1px solid rgba(255,255,255,.25);
     border-radius: 0;
@@ -3489,7 +3489,7 @@ button {
         position: absolute;
         z-index: 1;
         top: 50%;
-        width: 42px;
+        width: 44px;
         height: 52px;
         transform: translateY(-75%);
         background: rgba(10,10,10,.84);
@@ -3807,8 +3807,8 @@ button {
 
     .review-gallery-next {
         right: 12px;
-        width: 40px;
-        height: 40px;
+        width: 44px;
+        height: 44px;
     }
     
     .form-grid {
