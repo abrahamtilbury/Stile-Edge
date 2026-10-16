@@ -1329,10 +1329,10 @@ document.addEventListener('DOMContentLoaded', () => {
     syncTrackHeight();
 })();
 
+
 /* ==============================================
    21. PROJECT GALLERY / 24-PHOTO IMAGE VIEWER
-   Page-specific feature within shared script.js.
-   Images and captions come from gallery.html.
+   Pinch-to-zoom, pan and normal swipe navigation
 ================================================= */
 (() => {
     'use strict';
@@ -1342,41 +1342,135 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!gallery || !viewer) return;
 
     const items = [...gallery.querySelectorAll('[data-portfolio-item]')];
+
     const expanded = viewer.querySelector('[data-portfolio-expanded]');
+    const viewport = viewer.querySelector('[data-portfolio-image-viewport]');
     const counter = viewer.querySelector('[data-portfolio-counter]');
     const caption = viewer.querySelector('[data-portfolio-caption]');
     const closeButton = viewer.querySelector('[data-portfolio-close]');
     const prevButton = viewer.querySelector('[data-portfolio-prev]');
     const nextButton = viewer.querySelector('[data-portfolio-next]');
-    const stage = viewer.querySelector('[data-portfolio-stage]');
-    if (!items.length || !expanded || !counter || !caption ||
-        !closeButton || !prevButton || !nextButton || !stage) return;
+
+    if (!items.length || !expanded || !viewport || !counter ||
+        !caption || !closeButton || !prevButton || !nextButton) return;
 
     let activeIndex = 0;
     let openingButton = null;
-    let touchStartX = 0;
-    let touchStartY = 0;
+
+    const MAX_SCALE = 4;
+    const SWIPE_THRESHOLD = 65;
+
+    let scale = 1;
+    let panX = 0;
+    let panY = 0;
+
+    let startX = 0;
+    let startY = 0;
+    let startPanX = 0;
+    let startPanY = 0;
+
+    let usedMultipleFingers = false;
+    let pinchStartDistance = 1;
+    let pinchStartScale = 1;
+    let pinchAnchorX = 0;
+    let pinchAnchorY = 0;
+
+    /* Zoom helpers */
+
+    function renderZoom() {
+        expanded.style.transform =
+            `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
+    }
+
+    function resetZoom() {
+        scale = 1;
+        panX = 0;
+        panY = 0;
+        usedMultipleFingers = false;
+        renderZoom();
+    }
+
+    function clampPan() {
+        if (scale <= 1) {
+            scale = 1;
+            panX = 0;
+            panY = 0;
+            return;
+        }
+
+        const rect = viewport.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+
+        const ratio = expanded.naturalWidth && expanded.naturalHeight
+            ? expanded.naturalWidth / expanded.naturalHeight
+            : 4 / 3;
+
+        const fittedWidth = Math.min(rect.width, rect.height * ratio);
+        const fittedHeight = Math.min(rect.height, rect.width / ratio);
+
+        const maxX = Math.max(0, (fittedWidth * scale - rect.width) / 2);
+        const maxY = Math.max(0, (fittedHeight * scale - rect.height) / 2);
+
+        panX = Math.max(-maxX, Math.min(maxX, panX));
+        panY = Math.max(-maxY, Math.min(maxY, panY));
+    }
+
+    function midpoint(event) {
+        const a = event.touches[0];
+        const b = event.touches[1];
+        const rect = viewport.getBoundingClientRect();
+
+        return {
+            x: (a.clientX + b.clientX) / 2 - rect.left - rect.width / 2,
+            y: (a.clientY + b.clientY) / 2 - rect.top - rect.height / 2,
+            distance: Math.hypot(
+                a.clientX - b.clientX,
+                a.clientY - b.clientY
+            )
+        };
+    }
+
+    function beginPinch(event) {
+        usedMultipleFingers = true;
+
+        const point = midpoint(event);
+
+        pinchStartDistance = Math.max(1, point.distance);
+        pinchStartScale = scale;
+        pinchAnchorX = (point.x - panX) / scale;
+        pinchAnchorY = (point.y - panY) / scale;
+    }
+
+    /* Display selected photograph */
 
     function display(index) {
+        resetZoom();
+
         activeIndex = (index + items.length) % items.length;
+
         const thumbnail = items[activeIndex].querySelector('img');
         if (!thumbnail) return;
 
-        // WebP images are used both in the grid and at full available size.
         expanded.src = thumbnail.getAttribute('src');
         expanded.alt = thumbnail.alt;
         caption.textContent = thumbnail.alt;
-        counter.textContent = `${String(activeIndex + 1).padStart(2, '0')} / ${String(items.length).padStart(2, '0')}`;
+
+        counter.textContent =
+            `${String(activeIndex + 1).padStart(2, '0')} / ` +
+            `${String(items.length).padStart(2, '0')}`;
     }
 
     function closeViewer() {
         if (viewer.open) viewer.close();
     }
 
+    /* Open / close / navigate */
+
     items.forEach((button, index) => {
         button.addEventListener('click', () => {
             openingButton = button;
             display(index);
+
             if (typeof viewer.showModal === 'function') {
                 viewer.showModal();
                 closeButton.focus();
@@ -1385,16 +1479,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     closeButton.addEventListener('click', closeViewer);
-    prevButton.addEventListener('click', () => display(activeIndex - 1));
-    nextButton.addEventListener('click', () => display(activeIndex + 1));
 
-    // Clicking the shaded area outside the panel closes the modal.
-    viewer.addEventListener('click', (event) => {
+    prevButton.addEventListener('click', () => {
+        display(activeIndex - 1);
+    });
+
+    nextButton.addEventListener('click', () => {
+        display(activeIndex + 1);
+    });
+
+    viewer.addEventListener('click', event => {
         if (event.target === viewer) closeViewer();
     });
 
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener('keydown', event => {
         if (!viewer.open) return;
+
         if (event.key === 'ArrowLeft') {
             event.preventDefault();
             display(activeIndex - 1);
@@ -1402,28 +1502,125 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
             display(activeIndex + 1);
         }
-        // Escape is managed by the browser's native <dialog> element.
     });
 
-    // Swipe horizontally through images on touchscreens.
-    stage.addEventListener('touchstart', (event) => {
-        if (event.touches.length !== 1) return;
-        touchStartX = event.touches[0].clientX;
-        touchStartY = event.touches[0].clientY;
-    }, { passive: true });
+    /* Touch gesture handling */
 
-    stage.addEventListener('touchend', (event) => {
-        if (event.changedTouches.length !== 1) return;
-        const dx = event.changedTouches[0].clientX - touchStartX;
-        const dy = event.changedTouches[0].clientY - touchStartY;
-        if (Math.abs(dx) >= 50 && Math.abs(dx) > Math.abs(dy)) {
-            display(activeIndex + (dx < 0 ? 1 : -1));
+    viewport.addEventListener('touchstart', event => {
+        if (event.touches.length >= 2) {
+            beginPinch(event);
+        } else if (
+            event.touches.length === 1 &&
+            !usedMultipleFingers
+        ) {
+            const touch = event.touches[0];
+
+            startX = touch.clientX;
+            startY = touch.clientY;
+            startPanX = panX;
+            startPanY = panY;
         }
     }, { passive: true });
 
-    // Restore focus to the card that opened the viewer.
+    viewport.addEventListener('touchmove', event => {
+        if (event.touches.length >= 2) {
+            event.preventDefault();
+
+            if (!usedMultipleFingers) beginPinch(event);
+
+            const point = midpoint(event);
+
+            scale = Math.max(
+                1,
+                Math.min(
+                    MAX_SCALE,
+                    pinchStartScale * point.distance / pinchStartDistance
+                )
+            );
+
+            panX = point.x - pinchAnchorX * scale;
+            panY = point.y - pinchAnchorY * scale;
+
+            clampPan();
+            renderZoom();
+
+        } else if (event.touches.length === 1) {
+            event.preventDefault();
+
+            if (usedMultipleFingers) return;
+
+            if (scale > 1) {
+                panX = startPanX + event.touches[0].clientX - startX;
+                panY = startPanY + event.touches[0].clientY - startY;
+
+                clampPan();
+                renderZoom();
+            }
+        }
+    }, { passive: false });
+
+    viewport.addEventListener('touchend', event => {
+        /* Don't navigate after a two-finger pinch */
+        if (event.touches.length) return;
+
+        if (
+            !usedMultipleFingers &&
+            scale === 1 &&
+            event.changedTouches.length === 1
+        ) {
+            const dx = event.changedTouches[0].clientX - startX;
+            const dy = event.changedTouches[0].clientY - startY;
+
+            if (
+                Math.abs(dx) >= SWIPE_THRESHOLD &&
+                Math.abs(dx) > Math.abs(dy)
+            ) {
+                display(activeIndex + (dx < 0 ? 1 : -1));
+            }
+        }
+
+        usedMultipleFingers = false;
+    }, { passive: true });
+
+    viewport.addEventListener('touchcancel', () => {
+        usedMultipleFingers = false;
+    }, { passive: true });
+
+    /* Prevent Safari zooming the entire document */
+
+    viewport.addEventListener(
+        'gesturestart',
+        event => event.preventDefault(),
+        { passive: false }
+    );
+
+    viewport.addEventListener(
+        'gesturechange',
+        event => event.preventDefault(),
+        { passive: false }
+    );
+
+    expanded.addEventListener('dragstart', event => {
+        event.preventDefault();
+    });
+
+    /* Recalculate zoom bounds after rotation */
+
+    window.addEventListener('resize', () => {
+        if (!viewer.open) return;
+
+        clampPan();
+        renderZoom();
+    });
+
+    /* Restore normal state when closed */
+
     viewer.addEventListener('close', () => {
+        resetZoom();
         expanded.removeAttribute('src');
-        if (openingButton?.isConnected) openingButton.focus();
+
+        if (openingButton?.isConnected) {
+            openingButton.focus();
+        }
     });
 })();
