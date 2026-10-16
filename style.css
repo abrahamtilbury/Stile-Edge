@@ -4493,7 +4493,7 @@ button {
     
     /* Email and Hours stay side by side */
     #contact-details .contact-detail:nth-child(1),
-    #contact-details .contact-detail:nth-child(5) {
+    #contact-details .contact-detail:nth-child(2) {
         padding-inline: 12px;
     }
 
