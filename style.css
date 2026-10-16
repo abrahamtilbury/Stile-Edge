@@ -3415,13 +3415,30 @@ button {
     margin: 0;
 }
 
-.portfolio-page .portfolio-viewer-figure > img {
-    display: block;
+
+/* Dedicated zoomable photograph area */
+.portfolio-page .portfolio-viewer-image-viewport {
+    position: relative;
     width: 100%;
     height: min(73dvh, 790px);
     max-height: calc(100dvh - 190px);
-    object-fit: contain;
+    overflow: hidden;
     background: #050505;
+    touch-action: none;
+    overscroll-behavior: contain;
+}
+
+.portfolio-page .portfolio-viewer-image-viewport > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    transform-origin: center center;
 }
 
 .portfolio-page .portfolio-viewer-caption {
@@ -3509,12 +3526,12 @@ button {
         transform: translateY(-75%);
         background: rgba(10,10,10,.84);
     }
-    .portfolio-page .portfolio-viewer-prev { left: 3px; }
-    .portfolio-page .portfolio-viewer-next { right: 3px; }
-    .portfolio-page .portfolio-viewer-figure > img {
+    
+    .portfolio-page .portfolio-viewer-image-viewport {
         height: 62dvh;
         max-height: calc(100dvh - 185px);
     }
+    
     .portfolio-page .portfolio-viewer-caption {
         flex-direction: column;
         align-items: flex-start;
@@ -3524,6 +3541,72 @@ button {
     }
     .portfolio-page [data-portfolio-caption] { text-align: left; }
     .portfolio-page .portfolio-viewer-hint { font-size: 10px; }
+}
+
+
+/* Fullscreen gallery viewer on mobile landscape */
+@media (max-width: 1024px) and (max-height: 520px)
+       and (orientation: landscape) {
+
+    .portfolio-page .portfolio-viewer {
+        position: fixed;
+        inset: 0;
+        display: none;
+        width: 100vw;
+        max-width: none;
+        height: 100dvh;
+        max-height: none;
+        margin: 0;
+        border: 0;
+    }
+
+    .portfolio-page .portfolio-viewer[open] {
+        display: block;
+    }
+
+    .portfolio-page .portfolio-viewer-panel {
+        width: 100%;
+        height: 100%;
+        max-height: none;
+        padding: 0;
+    }
+
+    .portfolio-page .portfolio-viewer-stage,
+    .portfolio-page .portfolio-viewer-figure {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+    }
+
+    .portfolio-page .portfolio-viewer-stage {
+        position: relative;
+        display: block;
+        flex: 1 1 auto;
+    }
+
+    .portfolio-page .portfolio-viewer-image-viewport {
+        height: 100%;
+        max-height: none;
+    }
+
+    .portfolio-page .portfolio-viewer-caption,
+    .portfolio-page .portfolio-viewer-hint {
+        display: none;
+    }
+
+    .portfolio-page .portfolio-viewer-arrow {
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        height: 52px;
+        transform: translateY(-50%);
+    }
+
+    .portfolio-page .portfolio-viewer-close {
+        z-index: 4;
+        top: max(8px, env(safe-area-inset-top));
+        right: max(8px, env(safe-area-inset-right));
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
