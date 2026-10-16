@@ -4510,7 +4510,7 @@ button {
     }
 
 
-    #contact-details .contact-detail:nth-child(4) .contact-detail-link {
+    #contact-details .contact-detail:nth-child(5) .contact-detail-link {
         font-size: 15px;
     }
 }
@@ -4521,14 +4521,15 @@ button {
         padding: 16px 14px;
     }
 
-    #contact-details .contact-detail:nth-child(2) .contact-detail-link,
-    #contact-details .contact-detail:nth-child(3) .contact-detail-link {
+    #contact-details .contact-detail:nth-child(3) .contact-detail-link,
+    #contact-details .contact-detail:nth-child(4) .contact-detail-link {
         font-size: 13px;
     }
 
-    #contact-details .contact-detail:nth-child(2) .contact-detail-arrow,
-    #contact-details .contact-detail:nth-child(3) .contact-detail-arrow {
+    #contact-details .contact-detail:nth-child(3) .contact-detail-arrow,
+    #contact-details .contact-detail:nth-child(4) .contact-detail-arrow {
         display: none;
     }
 }
+
 
