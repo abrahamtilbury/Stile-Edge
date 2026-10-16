@@ -839,6 +839,26 @@ button {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-bottom: 0;
+    isolation: isolate;
+}
+
+
+/* Soft shadow behind navigation, fading into hero */
+.site-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 170px;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, .32) 0%,
+        rgba(0, 0, 0, .14) 45%,
+        transparent 100%
+    );
 }
 
 .header-inner {
