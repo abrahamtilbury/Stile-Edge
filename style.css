@@ -3849,14 +3849,9 @@ button {
         overflow: hidden;
     }
 
-    .top-bar-mobile,
-    .top-bar-address {
-        display: none;
-    }
-
-    
-    /* Prioritise phone and email on narrow screens */
-    .top-bar-hours {
+    .top-bar .top-bar-mobile,
+    .top-bar .top-bar-address,
+    .top-bar .top-bar-hours {
         display: none;
     }
 
