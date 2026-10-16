@@ -3020,10 +3020,6 @@ button {
     .contact-page-details {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
-        grid-template-areas:
-            "email office"
-            "mobile hours"
-            "location location";
         gap:
             var(--space-6)
             var(--space-5);
