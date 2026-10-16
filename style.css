@@ -3015,46 +3015,6 @@ button {
     }
 }
 
-/* Phone contact details */
-@media (max-width: 560px) {
-    .contact-page-details {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-        gap:
-            var(--space-6)
-            var(--space-5);
-    }
-    .contact-detail {
-        min-width: 0;
-        padding: 0;
-        border: 0;
-    }
-
-    .contact-detail:nth-child(1) {
-        grid-area: email;
-    }
-
-    .contact-detail:nth-child(2) {
-        grid-area: office;
-    }
-
-    .contact-detail:nth-child(3) {
-        grid-area: mobile;
-    }
-
-    .contact-detail:nth-child(4) {
-        grid-area: location;
-    }
-
-    .contact-detail:nth-child(5) {
-        grid-area: hours;
-    }
-
-    .contact-detail + .contact-detail::before {
-        display: none;
-    }
-}
-
 /* Footer navigation — prevent Contact orphaning */
 
 @media (max-width: 700px) {
