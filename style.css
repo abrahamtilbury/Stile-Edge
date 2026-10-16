@@ -3846,7 +3846,7 @@ button {
         padding: 0;
         border: 0;
         background: transparent;
-        color: var(--text);
+        color: var(--logo-gold);
         cursor: pointer;
         position: relative;
         z-index: 20;
