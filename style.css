@@ -817,6 +817,14 @@ button {
 }
 
 
+/* Accessible utility and footer link targets */
+.top-bar a,
+.footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+}
+
 /* =========================================================
    5.2 HEADER - MAIN HEADER
 ========================================================= */
