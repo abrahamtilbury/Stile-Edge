@@ -919,6 +919,7 @@ button {
     letter-spacing: .095em;
     line-height: 1;
     text-transform: uppercase;
+    min-height: 24px;
     transition:
         color .3s ease,
         opacity .3s ease;
