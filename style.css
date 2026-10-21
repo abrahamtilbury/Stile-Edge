@@ -1841,12 +1841,16 @@ button {
 .contact,
 .about-cta {
     margin: 0;
+    padding-inline: max(0px, calc(var(--page-padding) - clamp(16px, 3vw, 40px)));
 }
 
 .contact-content,
 .about-cta-inner {
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: var(--max-width);
+    margin-inline: auto;
     width: min(
         calc(100% - (var(--page-padding) * 2)),
         var(--max-width)
@@ -1854,12 +1858,6 @@ button {
     max-width: none;
     margin-inline: auto;
     padding-inline: 0;
-}
-
-.contact-content {
-    max-width: 640px;
-    margin: 0 auto;
-    padding-inline: 24px;
 }
 
 .contact-content > p {
@@ -2030,10 +2028,8 @@ button {
 .about-project-card {
     position: absolute;
     inset: 0;
-
     width: 100%;
     height: 100%;
-
     aspect-ratio: auto;
 }
 
@@ -2130,12 +2126,6 @@ button {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-.about-cta-inner {
-    max-width: 800px;
-    margin: 0 auto;
-    padding-inline: var(--page-padding);
 }
 
 .about-cta h2 {
