@@ -31,9 +31,9 @@
     --dark: #050505;
     --line: rgba(255,255,255,.10);
     --max-width: 1100px;
-    --page-padding: clamp(20px, 4vw, 72px);
-    --section-space: clamp(48px, calc(40px + 2.5vw), 72px);
-    --section-gap: clamp(32px, calc(24px + 2.5vw), 56px);
+    --page-padding: clamp(24px, 4vw, 64px);
+    --section-space: 72px;
+    --section-gap: 48px;
     --ease: cubic-bezier(.22, 1, .36, 1);
     --section-title-size: clamp(38px, calc(32.667px + 1.667vw), 54px);
     --body-copy-size: 16px;
@@ -337,12 +337,12 @@ button {
     flex-direction: column;
     justify-content: center;
     padding:
-        clamp(40px, 6vw, 85px)
+        clamp(40px, 6vw, 80px)
         clamp(30px, 5vw, 70px);
 }
 
 .service-content h3 {
-    margin: 0 0 20px;
+    margin: 0 0 24px;
     font-family:
         "DM Sans",
         system-ui,
@@ -355,7 +355,7 @@ button {
 
 .service-content p {
     max-width: 530px;
-    margin: 0 0 25px;
+    margin: 0 0 24px;
     color: var(--text-muted);
     font-size: 16px;
     line-height: 1.7;
@@ -582,7 +582,7 @@ button {
 
 .service-detail {
     padding-block:
-        clamp(42px, 4.5vw, 60px);
+        clamp(48px, 4.5vw, 64px);
     border-bottom:
         1px solid
         var(--line-strong);
@@ -603,7 +603,7 @@ button {
         minmax(280px, .9fr)
         minmax(340px, 1.1fr);
     gap:
-        clamp(40px, 6vw, 84px);
+        clamp(40px, 6vw, 80px);
     align-items: center;
 }
 
@@ -620,11 +620,11 @@ button {
 .service-detail-main h2 {
     display: flex;
     align-items: baseline;
-    gap: 14px;
+    gap: 16px;
     margin:
         0
         0
-        18px;
+        24px;
     font-family:
         "DM Sans",
         system-ui,
@@ -652,7 +652,7 @@ button {
     margin:
         0
         0
-        22px;
+        24px;
     color: var(--text-muted);
     font-size: 16px;
     line-height: 1.65;
@@ -674,7 +674,7 @@ button {
 .scope-items a {
     padding:
         8px
-        11px;
+        16px;
     border:
         1px solid
         var(--line-strong);
@@ -741,7 +741,6 @@ button {
 .service-detail:nth-of-type(even)
 .service-detail-image {
     grid-column: 1;
-
     justify-self: start;
 }
 
@@ -767,9 +766,10 @@ button {
     padding-block: var(--section-space);
 }
 
-.section + .section {
-    padding-top: var(--section-gap);
+.services.section + .services.section {
+    padding-top: 0;
 }
+
 
 /* =========================================================
    5.1 HEADER - TOP INFORMATION BAR
@@ -1175,7 +1175,7 @@ button {
 
 .section-heading {
     max-width: 800px;
-    margin-bottom: 45px;
+    margin-bottom: 48px;
 }
 
 .section-heading h2 {
@@ -1190,7 +1190,7 @@ button {
 ======================================== */
 
 .eyebrow {
-    margin: 0 0 12px;
+    margin: 0 0 16px;
     color: var(--accent);
     font-size: 11px;
     font-weight: 800;
@@ -1205,7 +1205,7 @@ button {
 .text-link {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     color: var(--text);
     font-size: 12px;
     font-weight: 800;
@@ -1345,7 +1345,7 @@ button {
     z-index: 3;
     display: flex;
     justify-content: flex-start;
-    gap: 12px;
+    gap: 16px;
     flex-wrap: nowrap;
     width: max-content;
 }
@@ -1764,7 +1764,7 @@ button {
 
 .feature-copy h2 {
     max-width: 620px;
-    margin: 0 0 26px;
+    margin: 0 0 24px;
     font-size: clamp(50px, 6vw, 88px);
     line-height: .92;
     letter-spacing: -.06em;
@@ -1851,7 +1851,7 @@ button {
 }
 
 .aprons-intro-copy p {
-    margin: 0 0 25px;
+    margin: 0 0 24px;
 }
 
 /* ==========================
@@ -1871,7 +1871,7 @@ button {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 24px;
 }
 
 .project-card {
@@ -2004,7 +2004,7 @@ button {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    padding-block: clamp(70px, 8vw, 100px);
+    padding-block: clamp(64px, 8vw, 96px);
     color: #FFFFFF;
     background: var(--cta-surface);
     text-align: center;
@@ -2013,7 +2013,7 @@ button {
 
 .contact,
 .about-cta {
-    margin: 28px clamp(16px, 3vw, 40px) 32px;
+    margin: 32px clamp(16px, 3vw, 40px) 32px;
     box-shadow:
         inset 0 1px 0 rgba(235, 173, 70, .14),
         inset 0 -1px 0 rgba(255, 255, 255, .05);
@@ -2050,7 +2050,7 @@ button {
 
 .contact h2 {
     max-width: 850px;
-    margin: 0 auto 35px;
+    margin: 0 auto 32px;
     font-size: clamp(40px, 6vw, 80px);
     line-height: .94;
     letter-spacing: -.045em;
@@ -2059,7 +2059,7 @@ button {
 
 .contact .about-cta-actions {
     justify-content: center;
-    margin-top: 28px;
+    margin-top: 32px;
 }
 
 /* ==========================
@@ -2184,7 +2184,7 @@ button {
     font-size: 17px;
 }
 .about-introduction-copy p {
-    margin: 0 0 20px;
+    margin: 0 0 24px;
 }
 .about-lead {
     color: var(--text) !important;
@@ -2244,7 +2244,7 @@ button {
 }
 .about-statement-content p {
     max-width: 480px;
-    margin: 0 0 18px;
+    margin: 0 0 24px;
     color: var(--text-muted);
     font-size: 16px;
     line-height: 1.7;
@@ -2261,7 +2261,7 @@ button {
 .about-service-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
-    gap: 60px;
+    gap: 64px;
     align-items: start;
 }
 
@@ -2278,7 +2278,7 @@ button {
 }
 
 .about-service-copy p {
-    margin: 0 0 18px;
+    margin: 0 0 24px;
     line-height: 1.7;
 }
 
@@ -2308,8 +2308,9 @@ button {
     margin: 0 auto;
     padding-inline: var(--page-padding);
 }
+
 .about-cta h2 {
-    margin: 0 0 20px;
+    margin: 0 0 24px;
     font-size: clamp(40px, 5.5vw, 68px);
     line-height: .95;
     letter-spacing: -.045em;
@@ -2328,7 +2329,7 @@ button {
 .about-cta-actions {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 16px;
     flex-wrap: wrap;
 }
 
@@ -2363,7 +2364,7 @@ button {
     justify-content: center;
     min-width: 0;
     min-height: 104px;
-    padding: 24px 28px;
+    padding: 24px 32px;
     background: #1c1c1c;
 }
 
@@ -2401,7 +2402,7 @@ button {
 /* Labels */
 
 #contact-details .contact-detail-label {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     padding: 0;
     border: 0;
     color: #d6af5c;
@@ -2539,7 +2540,7 @@ button {
 }
 
 .contact-form-intro h2 {
-    margin: 0 0 14px;
+    margin: 0 0 16px;
     font-size: clamp(32px, 4vw, 48px);
     line-height: .95;
     letter-spacing: -.03em;
@@ -2563,7 +2564,7 @@ button {
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px 24px;
+    gap: 24px 24px;
     margin-bottom: 24px;
 }
 
@@ -2600,7 +2601,7 @@ button {
 .form-field input,
 .form-field textarea {
     width: 100%;
-    padding: 14px 16px;
+    padding: 16px 16px;
     background: var(--surface);
     border: 1px solid #707070;
     border-radius: var(--radius-field);
@@ -2633,7 +2634,7 @@ button {
 }
 
 .form-status {
-    margin-top: 18px;
+    margin-top: 16px;
     font-size: 15px;
 }
 
@@ -2701,7 +2702,7 @@ button {
 .footer-brand {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 16px;
     width: fit-content;
     max-width: 100%;
 }
@@ -2730,7 +2731,7 @@ button {
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;
-    gap: 10px 24px;
+    gap: 8px 24px;
 }
 
 .footer-links a {
@@ -2755,12 +2756,12 @@ button {
         var(--max-width)
     );
     margin: 32px auto 0;
-    padding-top: 18px;
+    padding-top: 16px;
     border-top: 1px solid var(--line);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 24px;
 }
 
 .copyright {
@@ -3050,7 +3051,7 @@ button {
 
     .hero h1 {
         font-size: clamp(40px, 5vw, 64px);
-        margin-bottom: 14px;
+        margin-bottom: 16px;
     }
 
     .hero-text {
@@ -3168,7 +3169,7 @@ button {
 }
 
 .portfolio-page .portfolio-eyebrow {
-    margin: 0 0 12px;
+    margin: 0 0 16px;
     color: var(--accent);
     font-size: 11px;
     font-weight: 800;
@@ -3187,9 +3188,9 @@ button {
     display: grid;
     grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
     align-items: end;
-    column-gap: clamp(30px, 5vw, 80px);
+    column-gap: clamp(32px, 5vw, 80px);
     row-gap: 24px;
-    margin-bottom: clamp(26px, 4vw, 48px);
+    margin-bottom: clamp(32px, 4vw, 48px);
     padding-bottom: 24px;
     border-bottom: 1px solid var(--line);
 }
@@ -3229,7 +3230,7 @@ button {
 }
 
 .portfolio-page .portfolio-gallery-description .portfolio-gallery-count {
-    margin-top: 18px;
+    margin-top: 16px;
     color: var(--text);
     font-size: 11px;
     font-weight: 700;
@@ -3245,7 +3246,7 @@ button {
 .portfolio-page .portfolio-gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    gap: 24px;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -3846,10 +3847,18 @@ button {
    MOBILE COMPACT STATE
 --------------------------------- */
 
+
+@media (min-width: 721px) and (max-width: 1024px) {
+    :root {
+        --section-space: 64px;
+    }
+}
+
 @media (max-width: 720px) {
     :root {
-        --page-padding: 20px;
-        --section-space: 52px;
+        --page-padding: 24px;
+        --section-space: 56px;
+        --section-gap: 32px;
     }
         
     /* ==========================
@@ -3857,7 +3866,7 @@ button {
     ========================== */
 
     .reviews-section {
-        padding-block: 20px;
+        padding-block: 24px;
     }
 
     .reviews-layout {
@@ -3866,7 +3875,7 @@ button {
 
     .reviews-overview {
         display: block;
-        padding: 20px;
+        padding: 24px;
         border-right: 0;
         border-bottom: 0;
     }
@@ -3888,10 +3897,10 @@ button {
 
     .review-gallery-slide {
         padding:
-            22px
-            62px
-            22px
-            20px;
+            24px
+            64px
+            24px
+            24px;
     }
 
     .review-gallery-top {
@@ -4040,7 +4049,7 @@ button {
         font-size: clamp(46px, 10vw, 58px);
         line-height: .92;
         letter-spacing: -.045em;
-        margin-bottom: 10px;
+        margin-bottom: 16px;
     }
 
     .hero-text {
@@ -4059,7 +4068,7 @@ button {
         z-index: 3;
         display: flex;
         justify-content: flex-start;
-        gap: 10px;
+        gap: 16px;
         width: max-content;
     }
 
@@ -4094,17 +4103,17 @@ button {
         width: 100%;
         margin: 0;
         padding-inline: var(--page-padding);
-        padding-block: 20px;
+        padding-block: 24px;
     }
     
     .about-introduction {
-        padding-top: 36px;
-        padding-bottom: 36px;
+        padding-top: 56px;
+        padding-bottom: 56px;
     }
     
     .about-service {
-        padding-top: 40px;
-        padding-bottom: 40px;
+        padding-top: 56px;
+        padding-bottom: 56px;
     }
     
     .about-service-grid {
@@ -4122,7 +4131,7 @@ button {
     .about-introduction-grid,
     .about-service-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 24px;
     }
 
     .about-statement,
@@ -4158,8 +4167,8 @@ button {
 
     .aprons-intro {
         grid-template-columns: 1fr;
-        gap: 30px;
-        margin-bottom: 55px;
+        gap: 32px;
+        margin-bottom: 48px;
     }
 
     .aprons-heading h2 {
@@ -4167,7 +4176,7 @@ button {
     }
 
     .gallery {
-        padding-top: 40px;
+        padding-top: 56px;
     }
     
     .home-page
