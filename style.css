@@ -3386,7 +3386,7 @@ button {
                 rgba(5, 29, 42, .84) 55%,
                 rgba(5, 25, 38, .87) 100%
             ),
-            url("images/cta-mobile2.webp");
+            url("images/cta-mobile.webp");
 
         background-position: center, center 22%;
         background-size: cover;
