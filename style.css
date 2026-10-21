@@ -1843,23 +1843,6 @@ button {
     margin: 32px clamp(16px, 3vw, 40px) 32px;
 }
 
-/* Very subtle tonal depth — no circles */
-.contact::after,
-.about-cta::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(
-            105deg,
-            rgba(0,0,0,.18) 0%,
-            rgba(0,0,0,.06) 42%,
-            transparent 68%
-        );
-}
-
 .contact-content,
 .about-cta-inner {
     position: relative;
@@ -1873,7 +1856,7 @@ button {
 }
 
 .contact-content > p {
-    color: var(--text-muted);
+    color: #D2DEE3;
     font-size: 16px;
     line-height: 1.6;
     max-width: 520px;
@@ -2119,13 +2102,7 @@ button {
     isolation: isolate;
     overflow: hidden;
     border-radius: 8px;
-    background:
-    linear-gradient(
-        110deg,
-        rgba(0,0,0,.13),
-        transparent 52%,
-        rgba(0,0,0,.05)
-    ),
+    background: var(--cta-surface);
     var(--cta-surface); 
     color: #FFFFFF;
     text-align: center;
@@ -2151,7 +2128,7 @@ button {
 
 .about-cta p {
     margin: 0 0 32px;
-    color: #FFFFFF;
+    color: #D2DEE3;
     font-size: 17px;
 }
 
