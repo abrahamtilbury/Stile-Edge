@@ -38,47 +38,6 @@
     --ease: cubic-bezier(.22, 1, .36, 1);
     --section-title-size: clamp(38px, calc(32.667px + 1.667vw), 54px);
     --body-copy-size: 16px;
-    --gold-button:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.28) 0,
-            rgba(255,255,255,.06) 2px,
-            transparent 3px
-        ),
-        linear-gradient(
-            108deg,
-            transparent 0%,
-            transparent 34%,
-            rgba(255,255,255,.11) 46%,
-            transparent 60%
-        ),
-        linear-gradient(
-            180deg,
-            var(--brand-gold-bright) 0%,
-            var(--brand-gold) 44%,
-            var(--brand-gold-deep) 100%
-        );
-    
-    --gold-button-hover:
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.34) 0,
-            rgba(255,255,255,.08) 2px,
-            transparent 3px
-        ),
-        linear-gradient(
-            108deg,
-            transparent 0%,
-            transparent 30%,
-            rgba(255,255,255,.16) 46%,
-            transparent 62%
-        ),
-        linear-gradient(
-            180deg,
-            var(--brand-gold-bright) 0%,
-            var(--brand-gold) 52%,
-            var(--brand-gold-deep) 100%
-        );
     --cta-surface: #1C2428;
     /* Spacing rhythm */
     --space-1: 4px;
@@ -93,7 +52,6 @@
     /* Stile edge motif */
     --brand-edge-length: 40px;
     --brand-edge-thickness: 2px;
-
     /* Shape system */
     --radius-section: 14px;
     --radius-card: 0;
@@ -101,16 +59,10 @@
     --radius-tag: 0;
     --radius-field: 0;
     --radius-section-edge: 0;
-    
-    /* Button geometry */
-    --button-depth: 2px;
-    --button-chamfer: 14px;
-    --button-arrow-width: 52px;
 }
 /* ==========================
    2. Fonts
 ========================== */
-
 /* dm-sans-regular - latin */
 @font-face {
   font-display: swap;
@@ -1016,10 +968,8 @@ button {
 
 .button-primary {
     position: relative;
-    isolation: isolate;
-    z-index: 0;
     min-height: 56px;
-    padding: 0 0 0 24px;
+    padding: 0 24px;
     background: var(--cta-gold);
     color: #141414;
     border: 0;
@@ -1027,7 +977,8 @@ button {
     overflow: hidden;
     transition:
         transform .22s var(--ease),
-        color .22s ease;
+        color .22s ease,
+        background-color .2s ease;
 }
 
 .button-label {
@@ -1063,23 +1014,10 @@ button {
 }
 
 .button-primary:hover {
-    color: var(--button-ink);
     background: #E8C676;
     color: #141414;
-    transition:
-        translateY(-2px)
-}
-
-.button-primary:hover::before {
-    background: var(--button-face-hover);
-}
-
-.button-primary:hover::after {
     transform:
-        translate(
-            var(--button-depth),
-            var(--button-depth)
-        );
+        translateY(-2px)
 }
 
 .button-primary:hover .button-arrow svg {
@@ -1088,10 +1026,6 @@ button {
 
 .button-primary:active {
     transform: translate(1px, 1px);
-}
-
-.button-primary:active::after {
-    transform: translate(2px, 2px);
 }
 
 /* ========================================
@@ -1593,10 +1527,6 @@ button {
     color: #090909;
 }
 
-.review-gallery-next:hover::before {
-    background: var(--gold-button-hover);
-}
-
 .review-gallery-next svg {
     width: 18px;
     height: 18px;
@@ -1926,6 +1856,23 @@ button {
     padding-inline: 24px;
 }
 
+.contact-content::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--brand-gold);
+    margin-bottom: 24px;
+}
+
+.contact-content > p {
+    color: var(--text-muted);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 0 0 32px;
+}
+
 .contact h2 {
     max-width: 850px;
     margin: 0 auto 24px;
@@ -1936,7 +1883,7 @@ button {
 }
 
 .contact .about-cta-actions {
-    justify-content: flex-start
+    justify-content: flex-start;
     margin-top: 0;
 }
 
@@ -2025,10 +1972,6 @@ button {
 .about-statement,
 .about-service {
     border-radius: var(--radius-section-edge);
-}
-
-.about-cta {
-    border-radius: 8px;
 }
 
 .about-statement,
@@ -2168,6 +2111,7 @@ button {
     position: relative;
     isolation: isolate;
     overflow: hidden;
+    border-radius: 8px;
     background:
     linear-gradient(
         110deg,
@@ -3348,54 +3292,24 @@ button {
     }
 
     /* Email and Hours side by side */
-
     #contact-details .contact-detail:nth-child(1),
     #contact-details .contact-detail:nth-child(2) {
         padding-inline: 12px;
     }
-
+    
     #contact-details .contact-detail:nth-child(1)
     .contact-detail-link {
         font-size: clamp(12px, 3.4vw, 16px);
         gap: 4px;
     }
-
+    
     #contact-details .contact-detail:nth-child(2)
     .contact-detail-hours {
         font-size: clamp(11px, 3vw, 14px);
     }
-
+    
     #contact-details .contact-detail:nth-child(5)
     .contact-detail-link {
-        font-size: 15px;
-    }
-    
-    #contact-details .contact-detail {
-        padding: 20px;
-        min-height: 94px;
-    }
-
-    
-    /* Email and Hours stay side by side */
-    #contact-details .contact-detail:nth-child(1),
-    #contact-details .contact-detail:nth-child(2) {
-        padding-inline: 12px;
-    }
-
-    #contact-details .contact-detail:nth-child(1)
-    .contact-detail-link {
-        font-size: clamp(12px, 3.4vw, 16px);
-        gap: 4px;
-    }
-
-    
-    #contact-details .contact-detail:nth-child(2)
-    .contact-detail-hours {
-        font-size: clamp(11px, 3vw, 14px);
-    }
-
-
-    #contact-details .contact-detail:nth-child(5) .contact-detail-link {
         font-size: 15px;
     }
     
@@ -3587,7 +3501,6 @@ button {
 ========================== */
 
 @media (prefers-reduced-motion: reduce) {
-
     html {
         scroll-behavior: auto;
     }
@@ -3880,7 +3793,6 @@ button {
         width: 150px;
     }
 
-
     .menu-button {
         appearance: none;
         display: flex;
@@ -3969,7 +3881,7 @@ button {
 
     .hero-actions .button-primary {
         min-height: 56px;
-        padding: 0 0 0 20px;
+        padding: 0 20px;
         font-size: 12px;
     }
     
@@ -4123,7 +4035,6 @@ button {
         grid-template-columns:
             112px
             minmax(0, 1fr);
-        min-height: 148px;
         margin-bottom: 12px;
         border:
             1px solid
