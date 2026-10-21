@@ -14,8 +14,9 @@
     --text-muted: #b3b3b3;
     --text-dim: #b3b3b3;
     /* Brand */
-    --brand-gold: #d9a64a;
+    --brand-gold: #C7A15F;
     --logo-gold: #CC9B33;
+    --cta-gold: #D6AF5C;
     --brand-gold-bright: #e8c676;
     --brand-gold-deep: #b98232;
     --platinum-blue: #334c5c;
@@ -78,13 +79,7 @@
             var(--brand-gold) 52%,
             var(--brand-gold-deep) 100%
         );
-    --cta-surface:
-        linear-gradient(
-            115deg,
-            #334C5C 0%,
-            #2C4250 50%,
-            #223640 100%
-        );
+    --cta-surface: #1C2428;
     /* Spacing rhythm */
     --space-1: 4px;
     --space-2: 8px;
@@ -1020,99 +1015,25 @@ button {
 ------------------------------------------ */
 
 .button-primary {
-    --button-face: var(--gold-button);
-    --button-face-hover: var(--gold-button-hover);
-    --button-ink: #090909;
-    --button-depth-color: #050505;
-    --button-divider: rgba(9, 9, 9, .14);
-    --button-chamfer: 8px;
     position: relative;
     isolation: isolate;
     z-index: 0;
-    min-height: 54px;
-    padding: 0 0 0 20px;
-    background: transparent;
-    color: var(--button-ink);
+    min-height: 56px;
+    padding: 0 0 0 24px;
+    background: var(--cta-gold);
+    color: #141414;
     border: 0;
-    border-radius: 0;
-    overflow: visible;
+    border-radius: 8px;
+    overflow: hidden;
     transition:
         transform .22s var(--ease),
         color .22s ease;
 }
 
-/* CTA top face */
-.button-primary::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--button-face);
-    clip-path: polygon(
-        0 0,
-        calc(100% - var(--button-chamfer)) 0,
-        100% var(--button-chamfer),
-        100% 100%,
-        0 100%
-    );
-    
-    border-radius: 0;
-    box-shadow:
-        inset 0 0 0 1px rgba(8,8,8,.22);
-    transition:
-        background-color .22s ease;
-}
-
-/* Black underlayer = tile thickness */
-.button-primary::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: var(--button-depth-color);
-    clip-path: polygon(
-        0 0,
-        calc(100% - var(--button-chamfer)) 0,
-        100% var(--button-chamfer),
-        100% 100%,
-        0 100%
-    );
-    
-    border-radius: 0;
-    transform:
-        translate(var(--button-depth), var(--button-depth));
-    transition:
-        transform .22s var(--ease);
-}
-
-.contact .button-primary,
-.about-cta .button-primary {
-    --button-chamfer: 10px;
-    --button-face: linear-gradient(180deg, #292929, #111111);
-    --button-face-hover: linear-gradient(180deg, #383838, #1D1D1D);
-    --button-ink: #FFFFFF;
-    --button-divider: rgba(255,255,255,.25);
-    min-height: 58px;
-    padding-left: 26px;
-    filter: drop-shadow(0 8px 12px rgba(0,0,0,.18));
-}
-
-.contact .button-label,
-.about-cta .button-label {
-    min-height: 58px;
-    padding-right: 20px;
-}
-
-.contact .button-arrow,
-.about-cta .button-arrow {
-    width: 60px;
-    min-height: 58px;
-}
-
 .button-label {
     display: inline-flex;
     align-items: center;
-    min-height: 54px;
+    min-height: 56px;
     padding-right: 16px;
     white-space: nowrap;
 }
@@ -1122,9 +1043,9 @@ button {
     align-items: center;
     justify-content: center;
     align-self: stretch;
-    width: var(--button-arrow-width);
-    min-height: 54px;
-    border-left: 1px solid var(--button-divider);
+    width: 20px;
+    min-height: 56px;
+    border-left: 0;
     background: transparent;
     color: inherit;
 }
@@ -1143,6 +1064,10 @@ button {
 
 .button-primary:hover {
     color: var(--button-ink);
+    background: #E8C676;
+    color: #141414;
+    transition:
+        translateY(-2px)
 }
 
 .button-primary:hover::before {
@@ -1650,62 +1575,18 @@ button {
     top: 50%;
     right: 18px;
     z-index: 4;
-
     width: 44px;
     height: 44px;
     padding: 0;
-
     display: grid;
     place-items: center;
-
-    background: transparent;
+    background: #D6AF5C;
     color: #090909;
-
     border: 0;
-    border-radius: 0;
-
+    border-radius: 8px;
     cursor: pointer;
-
     transform: translateY(-50%);
-
     isolation: isolate;
-}
-
-/* Gold face */
-.review-gallery-next::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--gold-button);
-    clip-path: polygon(
-        0 0,
-        calc(100% - 7px) 0,
-        100% 7px,
-        100% 100%,
-        0 100%
-    );
-    box-shadow:
-        inset 0 0 0 1px rgba(8,8,8,.22);
-    transition:
-        background-color .22s ease;
-}
-
-/* Dark tile-thickness layer */
-.review-gallery-next::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: #050505;
-    clip-path: polygon(
-        0 0,
-        calc(100% - 7px) 0,
-        100% 7px,
-        100% 100%,
-        0 100%
-    );
-    transform: translate(2px, 2px);
 }
 
 .review-gallery-next:hover {
@@ -2004,11 +1885,11 @@ button {
     position: relative;
     isolation: isolate;
     overflow: hidden;
-    padding-block: clamp(64px, 8vw, 96px);
+    padding-block: 64px;
     color: #FFFFFF;
     background: var(--cta-surface);
     text-align: center;
-    border-radius: var(--radius-section);
+    border-radius: 8px;
 }
 
 .contact,
@@ -2043,16 +1924,16 @@ button {
 }
 
 .contact-content {
-    max-width: 800px;
+    max-width: 640px;
     margin: 0 auto;
-    padding-inline: 20px;
+    padding-inline: 24px;
 }
 
 .contact h2 {
     max-width: 850px;
-    margin: 0 auto 32px;
-    font-size: clamp(40px, 6vw, 80px);
-    line-height: .94;
+    margin: 0 auto 24px;
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1.08;
     letter-spacing: -.045em;
     text-wrap: balance;
 }
@@ -2150,7 +2031,7 @@ button {
 }
 
 .about-cta {
-    border-radius: var(--radius-section);
+    border-radius: 8px;
 }
 
 .about-statement,
@@ -4073,19 +3954,19 @@ button {
     }
 
     .hero-actions .button-primary {
-        min-height: 50px;
-        padding: 0 0 0 18px;
-        font-size: 11px;
+        min-height: 56px;
+        padding: 0 0 0 20px;
+        font-size: 12px;
     }
     
     .hero-actions .button-label {
-        min-height: 50px;
-        padding-right: 14px;
+        min-height: 56px;
+        padding-right: 16px;
     }
     
     .hero-actions .button-arrow {
-        width: 46px;
-        min-height: 50px;
+        width: 20px;
+        min-height: 56px;
     }
     
     .hero-actions .button-arrow svg {
