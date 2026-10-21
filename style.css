@@ -2103,7 +2103,6 @@ button {
     overflow: hidden;
     border-radius: 8px;
     background: var(--cta-surface);
-    var(--cta-surface); 
     color: #FFFFFF;
     text-align: center;
     padding-block: clamp(40px, 4vw, 56px);
