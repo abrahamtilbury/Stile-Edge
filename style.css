@@ -92,6 +92,22 @@
    3. Base / Reset
 ========================== */
 
+.skip-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 5000;
+    padding: 12px 16px;
+    background: #FFFFFF;
+    color: #141414;
+    border-radius: 4px;
+    transform: translateY(-200%);
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
 @view-transition {
     navigation: auto;
 }
