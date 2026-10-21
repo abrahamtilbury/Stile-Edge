@@ -224,16 +224,27 @@
              3.1 MAIN - HERO
         ========================== -->
 
-        <section class="hero">
+        <section class="hero">       
             <div class="hero-slider">
                 <div class="hero-slide is-active">
-                    <img src="images/hero4.webp" alt="Custom profiled tile edging by Stile Edge" class="hero-image" width="1920" height="750" fetchpriority="high" decoding="async"/>
-                </div>
-                <div class="hero-slide">
-                    <img src="images/hero2.webp" alt="Precision tile edging for pool coping" class="hero-image" width="1920" height="750" loading="lazy" fetchpriority="low" decoding="async"/>
-                </div>
-                <div class="hero-slide">
-                    <img src="images/hero3.webp" alt="Architectural tile finishes by Stile Edge" class="hero-image" width="1920" height="750" loading="lazy" fetchpriority="low" decoding="async"/>
+                    <picture class="hero-picture">
+                        <source
+                            media="(max-width: 720px) and (orientation: portrait)"
+                            srcset="images/hero-home-mobile.webp"
+                            type="image/webp"
+                            width="1080"
+                            height="1440"
+                        >
+                        <img
+                            src="images/hero-home-desktop.webp"
+                            alt="Swimming pool with custom stone coping and architectural tile finishes"
+                            class="hero-image"
+                            width="2048"
+                            height="1152"
+                            fetchpriority="high"
+                            decoding="async"
+                        >
+                    </picture>
                 </div>
             </div>
             <div class="hero-overlay"></div>
