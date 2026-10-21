@@ -1888,16 +1888,13 @@ button {
     padding-block: 64px;
     color: #FFFFFF;
     background: var(--cta-surface);
-    text-align: center;
+    text-align: left;
     border-radius: 8px;
 }
 
 .contact,
 .about-cta {
     margin: 32px clamp(16px, 3vw, 40px) 32px;
-    box-shadow:
-        inset 0 1px 0 rgba(235, 173, 70, .14),
-        inset 0 -1px 0 rgba(255, 255, 255, .05);
 }
 
 /* Very subtle tonal depth — no circles */
@@ -1939,8 +1936,8 @@ button {
 }
 
 .contact .about-cta-actions {
-    justify-content: center;
-    margin-top: 32px;
+    justify-content: flex-start
+    margin-top: 0;
 }
 
 /* ==========================
@@ -2344,38 +2341,6 @@ button {
 #contact-details .contact-detail-link:hover
 .contact-detail-arrow {
     transform: translate(2px, -2px);
-}
-
-/* Mobile contact panel */
-
-@media (max-width: 700px) {
-    #contact-details .contact-detail {
-        min-height: 94px;
-        padding: 20px;
-    }
-
-    /* Email and Hours side by side */
-
-    #contact-details .contact-detail:nth-child(1),
-    #contact-details .contact-detail:nth-child(2) {
-        padding-inline: 12px;
-    }
-
-    #contact-details .contact-detail:nth-child(1)
-    .contact-detail-link {
-        font-size: clamp(12px, 3.4vw, 16px);
-        gap: 4px;
-    }
-
-    #contact-details .contact-detail:nth-child(2)
-    .contact-detail-hours {
-        font-size: clamp(11px, 3vw, 14px);
-    }
-
-    #contact-details .contact-detail:nth-child(5)
-    .contact-detail-link {
-        font-size: 15px;
-    }
 }
 
 /* Small phones */
@@ -2866,22 +2831,6 @@ button {
     }
 }
 
-/* Mobile homepage services */
-
-@media (max-width: 700px) {
-    .profiles-intro {
-        margin-bottom: 30px;
-    }
-
-    .profiles-heading h2 {
-        font-size: clamp(44px, 13vw, 64px);
-    }
-
-    .contact {
-        padding-block: 60px;
-    }
-}
-
 @media (max-width: 1050px) {
     .top-bar {
         font-size: 8px;
@@ -2963,14 +2912,6 @@ button {
         grid-row: 2;
         justify-self: start;
         width: min(100%, 620px);
-    }
-}
-
-/* Footer navigation — prevent Contact orphaning */
-
-@media (max-width: 700px) {
-    .footer-links a:first-child {
-        display: none;
     }
 }
 
@@ -3385,6 +3326,79 @@ button {
 }
 
 @media (max-width: 700px) {
+    .footer-links a:first-child {
+        display: none;
+    }
+    
+    .profiles-intro {
+        margin-bottom: 30px;
+    }
+
+    .profiles-heading h2 {
+        font-size: clamp(36px, 9vw, 40px);
+    }
+
+    .contact {
+        padding-block: 56px;
+    }
+    
+    #contact-details .contact-detail {
+        min-height: 94px;
+        padding: 20px;
+    }
+
+    /* Email and Hours side by side */
+
+    #contact-details .contact-detail:nth-child(1),
+    #contact-details .contact-detail:nth-child(2) {
+        padding-inline: 12px;
+    }
+
+    #contact-details .contact-detail:nth-child(1)
+    .contact-detail-link {
+        font-size: clamp(12px, 3.4vw, 16px);
+        gap: 4px;
+    }
+
+    #contact-details .contact-detail:nth-child(2)
+    .contact-detail-hours {
+        font-size: clamp(11px, 3vw, 14px);
+    }
+
+    #contact-details .contact-detail:nth-child(5)
+    .contact-detail-link {
+        font-size: 15px;
+    }
+    
+    #contact-details .contact-detail {
+        padding: 20px;
+        min-height: 94px;
+    }
+
+    
+    /* Email and Hours stay side by side */
+    #contact-details .contact-detail:nth-child(1),
+    #contact-details .contact-detail:nth-child(2) {
+        padding-inline: 12px;
+    }
+
+    #contact-details .contact-detail:nth-child(1)
+    .contact-detail-link {
+        font-size: clamp(12px, 3.4vw, 16px);
+        gap: 4px;
+    }
+
+    
+    #contact-details .contact-detail:nth-child(2)
+    .contact-detail-hours {
+        font-size: clamp(11px, 3vw, 14px);
+    }
+
+
+    #contact-details .contact-detail:nth-child(5) .contact-detail-link {
+        font-size: 15px;
+    }
+    
     .portfolio-page .portfolio-gallery-intro {
         grid-template-columns: minmax(0, 1fr);
         align-items: start;
@@ -3817,13 +3831,13 @@ button {
     /* Slim top-bar stays visible */
     .top-bar {
         display: block;
-        height: 32px;
-        font-size: 11px;
+        height: 40px;
+        font-size: 12px;
         letter-spacing: .06em;
     }
 
     .top-bar-inner {
-        height: 32px;
+        height: 40px;
         gap: 16px;
         justify-content: center;
         overflow: hidden;
@@ -3837,7 +3851,7 @@ button {
 
     
     .site-header {
-        top: 32px;
+        top: 40px;
         background: transparent;
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
@@ -4033,7 +4047,7 @@ button {
     }
 
     .feature-copy h2 {
-        font-size: clamp(48px, 13vw, 72px);
+        font-size: clamp(36px, 9vw, 40px);
     }
 
     .gallery-grid {
@@ -4053,7 +4067,7 @@ button {
     }
 
     .aprons-heading h2 {
-        font-size: clamp(44px, 13vw, 72px);
+        font-size: clamp(36px, 9vw, 40px);
     }
 
     .gallery {
@@ -4351,38 +4365,6 @@ button {
         -webkit-line-clamp: 2;
     }
 
-}
-
-/* Mobile layout */
-@media (max-width: 700px) {
-    #contact-details .contact-detail {
-        padding: 20px;
-        min-height: 94px;
-    }
-
-    
-    /* Email and Hours stay side by side */
-    #contact-details .contact-detail:nth-child(1),
-    #contact-details .contact-detail:nth-child(2) {
-        padding-inline: 12px;
-    }
-
-    #contact-details .contact-detail:nth-child(1)
-    .contact-detail-link {
-        font-size: clamp(12px, 3.4vw, 16px);
-        gap: 4px;
-    }
-
-    
-    #contact-details .contact-detail:nth-child(2)
-    .contact-detail-hours {
-        font-size: clamp(11px, 3vw, 14px);
-    }
-
-
-    #contact-details .contact-detail:nth-child(5) .contact-detail-link {
-        font-size: 15px;
-    }
 }
 
 /* Small phones */
