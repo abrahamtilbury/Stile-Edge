@@ -4054,16 +4054,17 @@ button {
         line-height: 1.5;
     }
 
+    
     .home-page .service-feature {
         grid-template-columns:
             112px
             minmax(0, 1fr);
+        min-height: 148px;
         margin-bottom: 12px;
-        border:
-            1px solid
-            var(--line-strong);
+        border: 1px solid var(--line-strong);
         overflow: hidden;
     }
+
 
     .home-page .service-feature .service-image,
     .home-page
@@ -4101,6 +4102,23 @@ button {
         margin-bottom: 10px;
         font-size: 12.5px;
         line-height: 1.45;
+    }
+    
+    /* Compact homepage cards */
+    .home-page
+    .service-feature--gallery:not(.is-gallery-open)
+    .service-content p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        margin-bottom: 0;
+    }
+    
+    .home-page
+    .service-feature--gallery:not(.is-gallery-open)
+    .service-content .text-link {
+        display: none;
     }
 
     .service-detail-main h2 {
